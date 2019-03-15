@@ -10,29 +10,34 @@
 
 [a-zA-Z]+   {
                if(strcmp(antigua, yytext)==0){
-                  fseek(yyin, - sizeof(yytext), SEEK_CUR);
-                  fprintf(yyin, "%s", nueva);
+                  fprintf(yyout, "%s", nueva);
                   palabras_sustituidas++;
                }
-               /* else{
-                  fprintf(yyin, "%s", yytext);
-               } */
+               else{
+                  fprintf(yyout, "%s", yytext);
+               }
             }
 
-.|\n        {;}
+.|\n        {fprintf(yyout, "%s", yytext);}
 
 %%
 
-extern FILE *yyin;
+extern FILE *yyin, *yyout;
 
 int main(int argc, char **argv){
-   yyin=fopen(argv[1], "r+");
+   yyin=fopen(argv[1], "r");
+   yyout=fopen("aux.txt", "a+");
 
    strcpy(antigua, argv[2]);
    strcpy(nueva, argv[3]);
+
    yylex();
 
    printf("palabras -> %i\n", palabras_sustituidas);
    fclose(yyin);
+   fclose(yyout);
+
+   remove(argv[1]);
+   rename("aux.txt", argv[1]);
    return 0;
 }
