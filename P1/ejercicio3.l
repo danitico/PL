@@ -1,16 +1,16 @@
 %{
 #include <stdio.h>
-#include <ejemplo3.h>
+#include "ejemplo3.h"
 %}
 
 digito      [0-9]
 letra       [a-zA-Z]
 
-identificador     {letra}({letra}\_?|{digito}\_?)*({letra}|{digito})+[^_]
+identificador     {letra}({letra}|{digito}|\_({letra}|{digito}))*
 
 numero            {digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 
-cadena            \'({letra}|[[:space:]]|\\\'({letra}|[[:space:]])*\\\')*\'
+cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 %x ESTADO_COMENTARIO
 
@@ -34,6 +34,10 @@ cadena            \'({letra}|[[:space:]]|\\\'({letra}|[[:space:]])*\\\')*\'
 (?i:hasta)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,HASTA);}
 (?i:paso)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,PASO);}
 (?i:fin_para)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,FIN_PARA);}
+
+{identificador}    {printf("\n Identificador: %s --> token %d\n", yytext, ID);}
+
+{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
 
 {cadena}          {printf("\n Cadena: %s --> token %d\n", yytext,CADENA);}
 
@@ -69,17 +73,17 @@ cadena            \'({letra}|[[:space:]]|\\\'({letra}|[[:space:]])*\\\')*\'
 
 ".y."             {printf("\n Operador CONJUNCION_LOGICA: %s --> token %d\n", yytext, CONJUNCION_LOGICA);}
 
-".no."            {printf("\n Operador NEGACION_LOGICA: %s --> token %d\n", yytext, NEGACION_LOGICA
+".no."            {printf("\n Operador NEGACION_LOGICA: %s --> token %d\n", yytext, NEGACION_LOGICA);}
 
-"/*"	      	   {BEGIN ESTADO_COMENTARIO;printf("Empieza comentario");}
+"/*"	      	   {BEGIN ESTADO_COMENTARIO;printf("\nEmpieza comentario\n");}
 
 <ESTADO_COMENTARIO>"/*"/(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
 
-<ESTADO_COMENTARIO>"*/"   {BEGIN 0;printf("\nTermina comentario\n");}
+<ESTADO_COMENTARIO>"*/"    {BEGIN 0;printf("\nTermina comentario\n");}
 
-<ESTADO_COMENTARIO>[.|\n|^("/*")|^("*/")]*        {printf("%s", yytext);}
+<ESTADO_COMENTARIO>.|\n    {ECHO;}
 
-.|\n     {;}
+.*     {printf("\n No lo reconozco -> %s", yytext);}
 
 %%
 
