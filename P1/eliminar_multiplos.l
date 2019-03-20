@@ -24,7 +24,7 @@ int main(int argc, char **argv){
    yyout=fopen(argv[3], "w");
 
    if(yyin == NULL || yyout == NULL || strcmp(argv[2], argv[3])==0){
-      printf("Error en la lectura y escritura de ficheros");
+      printf("Error");
       return 0;
    }
 

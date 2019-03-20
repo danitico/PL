@@ -1,5 +1,6 @@
 %{
 #include <stdio.h>
+#include <ejemplo3.h>
 %}
 
 digito      [0-9]
@@ -10,6 +11,9 @@ identificador     {letra}({letra}\_?|{digito}\_?)*({letra}|{digito})+[^_]
 numero            {digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 
 cadena            \'({letra}|[[:space:]]|\\\'({letra}|[[:space:]])*\\\')*\'
+
+%x ESTADO_COMENTARIO
+
 %%
 
 (?i:inicio) 	   {printf("\n Palabra reservada: %s --> token %d\n", yytext,INICIO);}
@@ -31,23 +35,49 @@ cadena            \'({letra}|[[:space:]]|\\\'({letra}|[[:space:]])*\\\')*\'
 (?i:paso)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,PASO);}
 (?i:fin_para)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,FIN_PARA);}
 
-{cadena}          {printf(yytext);printf("\n");}
+{cadena}          {printf("\n Cadena: %s --> token %d\n", yytext,CADENA);}
 
-":="              {printf("Operador asignacion");}
+":="              {printf("\n Operador Asignación: %s --> token %d\n", yytext, ASIGNACION);}
 
-"+"               {printf("Suma")}
+"+"               {printf("\n Operador SUMA: %s --> token %d\n", yytext, SUMA);}
 
-"-"               {printf("Resta")}
+"-"               {printf("\n Operador RESTA: %s --> token %d\n", yytext, RESTA);}
 
-"*"               {printf("Producto")}
+"*"               {printf("\n Operador PRODUCTO: %s --> token %d\n", yytext, PRODUCTO);}
 
-"/"               {printf("Division")}
+"/"               {printf("\n Operador DIVISION: %s --> token %d\n", yytext, DIVISION);}
 
-"__mod"           {printf("Modulo")}
+"__mod"           {printf("\n Operador MODULO: %s --> token %d\n", yytext, MODULO);}
 
-"**"              {printf("Potencia")}
+"**"              {printf("\n Operador POTENCIA: %s --> token %d\n", yytext, POTENCIA);}
 
-"||"              {}
+"||"              {printf("\n Operador CONCATENACION: %s --> token %d\n", yytext, CONCATENACION);}
+
+"<"               {printf("\n Operador MENOR_QUE: %s --> token %d\n", yytext, MENOR_QUE);}
+
+"<="              {printf("\n Operador MENOR_IGUAL_QUE: %s --> token %d\n", yytext, MENOR_IGUAL_QUE);}
+
+">"               {printf("\n Operador MAYOR_QUE: %s --> token %d\n", yytext, MAYOR_QUE);}
+
+">="              {printf("\n Operador MAYOR_IGUAL_QUE: %s --> token %d\n", yytext, MAYOR_IGUAL_QUE);}
+
+"=="              {printf("\n Operador IGUAL: %s --> token %d\n", yytext, IGUAL);}
+
+"<>"              {printf("\n Operador DISTINTO: %s --> token %d\n", yytext, DISTINTO);}
+
+".o."             {printf("\n Operador DISYUNCION_LOGICA: %s --> token %d\n", yytext, DISYUNCION_LOGICA);}
+
+".y."             {printf("\n Operador CONJUNCION_LOGICA: %s --> token %d\n", yytext, CONJUNCION_LOGICA);}
+
+".no."            {printf("\n Operador NEGACION_LOGICA: %s --> token %d\n", yytext, NEGACION_LOGICA
+
+"/*"	      	   {BEGIN ESTADO_COMENTARIO;printf("Empieza comentario");}
+
+<ESTADO_COMENTARIO>"/*"/(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
+
+<ESTADO_COMENTARIO>"*/"   {BEGIN 0;printf("\nTermina comentario\n");}
+
+<ESTADO_COMENTARIO>[.|\n|^("/*")|^("*/")]*        {printf("%s", yytext);}
 
 .|\n     {;}
 
