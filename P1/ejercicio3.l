@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "ejemplo3.h"
 %}
-
 digito      [0-9]
 letra       [a-zA-Z]
 
@@ -13,6 +12,7 @@ numero            {digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 %x ESTADO_COMENTARIO
+%x PARENTESIS
 
 %%
 
@@ -35,47 +35,61 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 (?i:paso)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,PASO);}
 (?i:fin_para)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,FIN_PARA);}
 
-{identificador}    {printf("\n Identificador: %s --> token %d\n", yytext, ID);}
+<INITIAL,PARENTESIS>{identificador}    {printf("\n Identificador: %s --> token %d\n", yytext, ID);}
 
-{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
+<INITIAL,PARENTESIS>{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
 
-{cadena}          {printf("\n Cadena: %s --> token %d\n", yytext,CADENA);}
+<INITIAL,PARENTESIS>{cadena}          {printf("\n Cadena: %s --> token %d\n", yytext,CADENA);}
 
-":="              {printf("\n Operador Asignación: %s --> token %d\n", yytext, ASIGNACION);}
+<INITIAL,PARENTESIS>":="              {printf("\n Operador Asignación: %s --> token %d\n", yytext, ASIGNACION);}
 
-"+"               {printf("\n Operador SUMA: %s --> token %d\n", yytext, SUMA);}
+<INITIAL,PARENTESIS>"+"               {printf("\n Operador SUMA: %s --> token %d\n", yytext, SUMA);}
 
-"-"               {printf("\n Operador RESTA: %s --> token %d\n", yytext, RESTA);}
+<INITIAL,PARENTESIS>"-"               {printf("\n Operador RESTA: %s --> token %d\n", yytext, RESTA);}
 
-"*"               {printf("\n Operador PRODUCTO: %s --> token %d\n", yytext, PRODUCTO);}
+<INITIAL,PARENTESIS>"*"               {printf("\n Operador PRODUCTO: %s --> token %d\n", yytext, PRODUCTO);}
 
-"/"               {printf("\n Operador DIVISION: %s --> token %d\n", yytext, DIVISION);}
+<INITIAL,PARENTESIS>"/"               {printf("\n Operador DIVISION: %s --> token %d\n", yytext, DIVISION);}
 
-"__mod"           {printf("\n Operador MODULO: %s --> token %d\n", yytext, MODULO);}
+<INITIAL,PARENTESIS>"__mod"           {printf("\n Operador MODULO: %s --> token %d\n", yytext, MODULO);}
 
-"**"              {printf("\n Operador POTENCIA: %s --> token %d\n", yytext, POTENCIA);}
+<INITIAL,PARENTESIS>"**"              {printf("\n Operador POTENCIA: %s --> token %d\n", yytext, POTENCIA);}
 
-"||"              {printf("\n Operador CONCATENACION: %s --> token %d\n", yytext, CONCATENACION);}
+<INITIAL,PARENTESIS>"||"              {printf("\n Operador CONCATENACION: %s --> token %d\n", yytext, CONCATENACION);}
 
-"<"               {printf("\n Operador MENOR_QUE: %s --> token %d\n", yytext, MENOR_QUE);}
+<INITIAL,PARENTESIS>"<"               {printf("\n Operador MENOR_QUE: %s --> token %d\n", yytext, MENOR_QUE);}
 
-"<="              {printf("\n Operador MENOR_IGUAL_QUE: %s --> token %d\n", yytext, MENOR_IGUAL_QUE);}
+<INITIAL,PARENTESIS>"<="              {printf("\n Operador MENOR_IGUAL_QUE: %s --> token %d\n", yytext, MENOR_IGUAL_QUE);}
 
-">"               {printf("\n Operador MAYOR_QUE: %s --> token %d\n", yytext, MAYOR_QUE);}
+<INITIAL,PARENTESIS>">"               {printf("\n Operador MAYOR_QUE: %s --> token %d\n", yytext, MAYOR_QUE);}
 
-">="              {printf("\n Operador MAYOR_IGUAL_QUE: %s --> token %d\n", yytext, MAYOR_IGUAL_QUE);}
+<INITIAL,PARENTESIS>">="              {printf("\n Operador MAYOR_IGUAL_QUE: %s --> token %d\n", yytext, MAYOR_IGUAL_QUE);}
 
-"=="              {printf("\n Operador IGUAL: %s --> token %d\n", yytext, IGUAL);}
+<INITIAL,PARENTESIS>"=="              {printf("\n Operador IGUAL: %s --> token %d\n", yytext, IGUAL);}
 
-"<>"              {printf("\n Operador DISTINTO: %s --> token %d\n", yytext, DISTINTO);}
+<INITIAL,PARENTESIS>"<>"              {printf("\n Operador DISTINTO: %s --> token %d\n", yytext, DISTINTO);}
 
-".o."             {printf("\n Operador DISYUNCION_LOGICA: %s --> token %d\n", yytext, DISYUNCION_LOGICA);}
+<INITIAL,PARENTESIS>".o."             {printf("\n Operador DISYUNCION_LOGICA: %s --> token %d\n", yytext, DISYUNCION_LOGICA);}
 
-".y."             {printf("\n Operador CONJUNCION_LOGICA: %s --> token %d\n", yytext, CONJUNCION_LOGICA);}
+<INITIAL,PARENTESIS>".y."             {printf("\n Operador CONJUNCION_LOGICA: %s --> token %d\n", yytext, CONJUNCION_LOGICA);}
 
-".no."            {printf("\n Operador NEGACION_LOGICA: %s --> token %d\n", yytext, NEGACION_LOGICA);}
+<INITIAL,PARENTESIS>".no."            {printf("\n Operador NEGACION_LOGICA: %s --> token %d\n", yytext, NEGACION_LOGICA);}
+
+";"               {printf("\n Caracter fin de Sentencia: %s --> token %d\n", yytext, FIN_SENTENCIA);}
 
 "/*"	      	   {BEGIN ESTADO_COMENTARIO;printf("\nEmpieza comentario\n");}
+
+"("               {
+                     BEGIN PARENTESIS;
+                     printf("\n Parentesis Izquierdo: %s --> token %d\n", yytext, PARENTESIS_IZQUIERDO);
+                     printf("\nContenido PARENTESIS \n");
+                  }
+
+<PARENTESIS>")"   {
+                     BEGIN 0;
+                     printf("\nTermina contenido PARENTESIS\n");
+                     printf("\n Parentesis Derecho: %s --> token %d\n", yytext, PARENTESIS_DERECHO);
+                  }
 
 <ESTADO_COMENTARIO>"/*"/(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
 
@@ -83,7 +97,7 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 <ESTADO_COMENTARIO>.|\n    {ECHO;}
 
-.*     {printf("\n No lo reconozco -> %s", yytext);}
+<INITIAL,PARENTESIS>.     {ECHO;}
 
 %%
 
