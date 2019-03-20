@@ -1,0 +1,2 @@
+'Ejemplo de cadena'
+'Ejemplo de cadena con \' comillas\' simples'
