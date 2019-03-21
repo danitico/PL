@@ -7,11 +7,14 @@ letra       [a-zA-Z]
 
 identificador     {letra}({letra}|{digito}|\_({letra}|{digito}))*
 
+malidentificador  ({letra}|{digito})+(\_\_)+({letra}+|{digito}+)?
+
 numero            {digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 
 cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 %x ESTADO_COMENTARIO
+%x ESTADO_COMENTARIO_1
 %x PARENTESIS
 
 %%
@@ -34,12 +37,6 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 (?i:hasta)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,HASTA);}
 (?i:paso)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,PASO);}
 (?i:fin_para)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,FIN_PARA);}
-
-<INITIAL,PARENTESIS>{identificador}    {printf("\n Identificador: %s --> token %d\n", yytext, ID);}
-
-<INITIAL,PARENTESIS>{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
-
-<INITIAL,PARENTESIS>{cadena}          {printf("\n Cadena: %s --> token %d\n", yytext,CADENA);}
 
 <INITIAL,PARENTESIS>":="              {printf("\n Operador Asignación: %s --> token %d\n", yytext, ASIGNACION);}
 
@@ -75,9 +72,31 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 <INITIAL,PARENTESIS>".no."            {printf("\n Operador NEGACION_LOGICA: %s --> token %d\n", yytext, NEGACION_LOGICA);}
 
+<INITIAL,PARENTESIS>(?i:{identificador})    {printf("\n Identificador: %s --> token %d\n", yytext, ID);}
+
+<INITIAL,PARENTESIS>{malidentificador}      {printf("\n Identificador no reconocible: %s\n", yytext);}
+
+<INITIAL,PARENTESIS>(\_+{identificador}|{identificador}\_+)      {printf("\n Identificador no reconocible: %s\n", yytext);}
+
+<INITIAL,PARENTESIS>{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
+
+<INITIAL,PARENTESIS>([\.|E]+{numero}|{numero}[\.|E]+{numero}|{numero}[E|\.])          {printf("\n Número no reconocido: %s\n", yytext);}
+
+<INITIAL,PARENTESIS>{cadena}          {printf("\n Cadena: %s --> token %d\n", yytext,CADENA);}
+
 ";"               {printf("\n Caracter fin de Sentencia: %s --> token %d\n", yytext, FIN_SENTENCIA);}
 
-"/*"	      	   {BEGIN ESTADO_COMENTARIO;printf("\nEmpieza comentario\n");}
+"#"             {BEGIN ESTADO_COMENTARIO_1; printf("\n Almohadilla: %s --> token %d\n", yytext, ALMOHADILLA);}
+
+<ESTADO_COMENTARIO_1>.*    {BEGIN 0; printf("\n Comentario: %s\n", yytext);}
+
+"(*"	      	   {BEGIN ESTADO_COMENTARIO;printf("\nEmpieza comentario\n");}
+
+<ESTADO_COMENTARIO>"(*"/(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
+
+<ESTADO_COMENTARIO>"*)"    {BEGIN 0;printf("\nTermina comentario\n");}
+
+<ESTADO_COMENTARIO>.|\n    {ECHO;}
 
 "("               {
                      BEGIN PARENTESIS;
@@ -91,13 +110,7 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
                      printf("\n Parentesis Derecho: %s --> token %d\n", yytext, PARENTESIS_DERECHO);
                   }
 
-<ESTADO_COMENTARIO>"/*"/(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
-
-<ESTADO_COMENTARIO>"*/"    {BEGIN 0;printf("\nTermina comentario\n");}
-
-<ESTADO_COMENTARIO>.|\n    {ECHO;}
-
-<INITIAL,PARENTESIS>.     {ECHO;}
+<INITIAL,PARENTESIS>.     {printf("\n Caracter no reconocido --> %s\n", yytext);}
 
 %%
 
