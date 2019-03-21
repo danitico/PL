@@ -1,0 +1,18 @@
+(*
+Identificadores con errores
+*)
+
+_______________________b.
+._gfisofsdnkoda
+.a__b.
+
+(*
+Numeros con errores
+*)
+
+2.5.6.7E
+E2.5E+25.7E
+
+# hola
+
+(* (* *)

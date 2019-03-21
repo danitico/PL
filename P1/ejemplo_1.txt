@@ -1,0 +1,36 @@
+(*
+
+   Esto es un ejemplo de un comentario en varias lineas
+
+
+*)
+
+# Esto es otro comentario correcto
+
+# Lo siguiente va a ser un número correcto
+1.234E+3
+
+# Lo siguiente son un identificadores correctos
+hola
+hola_1_s_f_a
+hola_2
+
+(*
+   A continuacion hay palabras reservadas
+   Como se puede ver, no se distinguen
+   entre mayúsculas y minúsculas
+*)
+
+InIcIo
+INIcio
+iniCIO
+mod
+MoD
+mOd
+
+#Cadenas correctas
+'Una cadena maravillosa'
+'La mejor \'cadena\' de todas'
+
+#Sentencia de codigo
+a = (2 < 5);

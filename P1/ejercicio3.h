@@ -40,3 +40,4 @@
 #define PARENTESIS_DERECHO    296
 #define ASIGNACION            297
 #define ALMOHADILLA           298
+#define MOD                   299

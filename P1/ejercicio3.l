@@ -1,6 +1,6 @@
 %{
 #include <stdio.h>
-#include "ejemplo3.h"
+#include "ejercicio3.h"
 %}
 digito      [0-9]
 letra       [a-zA-Z]
@@ -11,7 +11,7 @@ malidentificador  ({letra}|{digito})+(\_\_)+({letra}+|{digito}+)?
 
 numero            {digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 
-cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
+cadena            "'"(.*|"\'".*"\'")*"'"
 
 %x ESTADO_COMENTARIO
 %x ESTADO_COMENTARIO_1
@@ -21,6 +21,7 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 (?i:inicio) 	   {printf("\n Palabra reservada: %s --> token %d\n", yytext,INICIO);}
 (?i:fin)          {printf("\n Palabra reservada: %s --> token %d\n", yytext,FIN);}
+(?i:mod)          {printf("\n Palabra reservada: %s --> token %d\n", yytext,MOD);}
 (?i:leer)         {printf("\n Palabra reservada: %s --> token %d\n", yytext,LEER);}
 (?i:escribir)     {printf("\n Palabra reservada: %s --> token %d\n", yytext,ESCRIBIR);}
 (?i:si)           {printf("\n Palabra reservada: %s --> token %d\n", yytext,SI);}
@@ -76,7 +77,7 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 <INITIAL,PARENTESIS>{malidentificador}      {printf("\n Identificador no reconocible: %s\n", yytext);}
 
-<INITIAL,PARENTESIS>(\_+{identificador}|{identificador}\_+)      {printf("\n Identificador no reconocible: %s\n", yytext);}
+<INITIAL,PARENTESIS>.*(\_+{identificador}|{identificador}\_+).*      {printf("\n Identificador no reconocible: %s\n", yytext);}
 
 <INITIAL,PARENTESIS>{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
 
@@ -90,11 +91,11 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
 
 <ESTADO_COMENTARIO_1>.*    {BEGIN 0; printf("\n Comentario: %s\n", yytext);}
 
-"(*"	      	   {BEGIN ESTADO_COMENTARIO;printf("\nEmpieza comentario\n");}
+"(*"	      	   {BEGIN ESTADO_COMENTARIO;}
 
-<ESTADO_COMENTARIO>"(*"/(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
+<ESTADO_COMENTARIO>"(*"(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
 
-<ESTADO_COMENTARIO>"*)"    {BEGIN 0;printf("\nTermina comentario\n");}
+<ESTADO_COMENTARIO>"*)"    {BEGIN 0;}
 
 <ESTADO_COMENTARIO>.|\n    {ECHO;}
 
@@ -110,7 +111,7 @@ cadena            "'"({letra}|[[:space:]]|"\'"({letra}|[[:space:]])*"\'")*"'"
                      printf("\n Parentesis Derecho: %s --> token %d\n", yytext, PARENTESIS_DERECHO);
                   }
 
-<INITIAL,PARENTESIS>.     {printf("\n Caracter no reconocido --> %s\n", yytext);}
+<INITIAL,PARENTESIS>[^[[:space:]]|^\n]     {printf("\n Caracter no reconocido --> %s\n", yytext);}
 
 %%
 
