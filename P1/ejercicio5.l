@@ -1,18 +1,20 @@
 %{
    #include <stdlib.h>
+   #include <locale.h>
    #include <stdio.h>
    #include <string.h>
-   char mayusculas[]={"A", "B", "C", "D", "E", "F", "G", "H", "I",
-                      "J", "K", "L", "M", "N", "O", "P", "Q",
-                      "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}
+   char mayusculas[]={'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                      'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+                      'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
-   char minusculas[]={"a", "b", "c", "d", "e", "f", "g", "h", "i",
-                      "j", "k", "l", "m", "n", "o", "p", "q",
-                      "r", "s", "t", "u", "v", "w", "x"  "y", "z"}
+   char minusculas[]={'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+                      'j', 'k', 'l', 'm', 'n', 164, 'o', 'p', 'q',
+                      'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
    char estado[20];
-   char* vigenere(char *letra, char *estado);
-   int NumLetraLeida;
+   char clave[20];
+   int claveLeida=-1;
+   char vigenereMinuscula(char letra, char *estado);
 %}
 
 mayus    [A-Z]
@@ -20,30 +22,56 @@ minus    [a-z]
 
 %%
 
-{mayus}  {printf(vigenere(yytext, NumLetraLeida, estado)); NumLetraLeida++;}
 
-{minus}  {printf(vigenere(yytext, NumLetraLeida, estado)); NumLetraLeida++;}
+{minus}  {printf("%c", vigenereMinuscula(yytext[0], estado));}
 
 .        {ECHO;}
-
-\n       {}
 
 %%
 
 int main(int argc, char **argv){
-   if(argc!=2){
-      printf("Número incorrecto de incorrectos");
+   if(argc!=3){
+      printf("Número incorrecto de incorrectos\n");
+      printf("%s <cifrar/descifrar> <clave>\n", argv[0]);
+      exit(-1);
    }
+
    strcpy(estado, argv[1]);
-   NumLetraLeida=0;
+   strcpy(clave, argv[2]);
 
    yylex();
 
    return 0;
 }
 
-char *vigenere(char letra, int letraLeida, char *estado){
-   if(strcmp(estado, "cifrar")==0){
-      return isupper(letra) ? mayusculas[(letra - 65 - letraLeida)%26] : minusculas[(letra - 97 - letraLeida)%26]
-   }
+char vigenereMinuscula(char letra, char *estado){
+   /* if(strcmp(estado, "cifrar")==0){ */
+      char letraCifrada;
+      int letraClave;
+      claveLeida++;
+
+      if(clave[claveLeida%strlen(clave)]==(char)164){
+         letraClave=14;
+      }
+      else if((clave[claveLeida%strlen(clave)] - 97) < 14){
+         letraClave = clave[claveLeida%strlen(clave)] - 97;
+      }
+      else{
+         letraClave = clave[claveLeida%strlen(clave)] - 97 + 1;
+      }
+
+
+      if(letra == (char)164){
+         letraCifrada=minusculas[(14 + letraClave)%27];
+      }
+      else if(letra - 97 < 14){
+         letraCifrada=minusculas[(letra - 97 + letraClave)%27];
+      }
+      else{
+         letraCifrada=minusculas[(letra - 97 + 1 + letraClave)%27];
+      }
+
+      return letraCifrada;
+
+   /* } */
 }
