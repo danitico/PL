@@ -77,46 +77,49 @@ cadena            "'"(.*|"\'".*"\'")*"'"
 
 <INITIAL,PARENTESIS>{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
 
+
 <INITIAL,PARENTESIS>([\.|E]+{numero}|{numero}[\.|E]+{numero}|{numero}[E|\.])+          {printf("\n Número no reconocido: %s\n", yytext);}
 
+
 <INITIAL,PARENTESIS>(?i:{identificador})    {printf("\n Identificador: %s --> token %d\n", yytext, ID);}
-
 <INITIAL,PARENTESIS>{malidentificador}      {printf("\n Identificador no reconocible: %s\n", yytext);}
-
 <INITIAL,PARENTESIS>[\_|^.]+{identificador}.*    {printf("\n Identificador no reconocible: %s\n", yytext);}
 <INITIAL,PARENTESIS>{identificador}\_+    {printf("\n Identificador no reconocible: %s\n", yytext);}
 
-<INITIAL,PARENTESIS>"'"[^\\]          {
+
+<INITIAL,PARENTESIS>"'"          {
                                              printf("\n Comilla simple: %s --> token %d\n", yytext,COMILLA);
                                              printf("\n Empieza cadena \n");
                                              estadoAnterior = YYSTATE;
                                              BEGIN ESTADO_CADENA;
                                          }
+<ESTADO_CADENA>.                       {ECHO;}
+<ESTADO_CADENA>[^\\]"'"                {
+                                          printf("%c", yytext[0]);
+                                          printf("\n Termina cadena \n");
+                                          printf("\n Comilla simple: %c --> token %d\n", yytext[1],COMILLA);
+                                          BEGIN estadoAnterior;
+                                       }
 
-<ESTADO_CADENA>.                       {printf("%s", yytext);}
-
-<ESTADO_CADENA>[^\\]"'"                {printf("\n Termina cadena \n"); BEGIN estadoAnterior;}
 
 ";"               {printf("\n Caracter fin de Sentencia: %s --> token %d\n", yytext, FIN_SENTENCIA);}
 
-"#"             {BEGIN ESTADO_COMENTARIO_1; printf("\n Almohadilla: %s --> token %d\n", yytext, ALMOHADILLA);}
 
+"#"             {BEGIN ESTADO_COMENTARIO_1; printf("\n Almohadilla: %s --> token %d\n", yytext, ALMOHADILLA);}
 <ESTADO_COMENTARIO_1>.*    {BEGIN 0; printf("\n Comentario: %s\n", yytext);}
 
-"(*"	      	   {BEGIN ESTADO_COMENTARIO;}
 
-<ESTADO_COMENTARIO>"(*"(.|\n)  {printf("\n No se pueden anidar comentarios\n");}
+"(*"	      	   {BEGIN ESTADO_COMENTARIO; printf("\n Apertura comentario: %s --> token %d\n", yytext, ABRIR_COMENTARIO);}
+<ESTADO_COMENTARIO>[^"(*"|^"*)"|[[:alpha:]]|[[:digit:]]|^[[:space:]]]*    {ECHO;}
+<ESTADO_COMENTARIO>"(*"  {printf("\n         ¡No se pueden anidar comentarios!           \n");}
+<ESTADO_COMENTARIO>"*)"    {BEGIN 0; printf("\n Cerrando comentario: %s --> token %d\n", yytext, CERRAR_COMENTARIO);}
 
-<ESTADO_COMENTARIO>"*)"    {BEGIN 0;}
-
-<ESTADO_COMENTARIO>.|\n    {ECHO;}
 
 "("               {
                      BEGIN PARENTESIS;
                      printf("\n Parentesis Izquierdo: %s --> token %d\n", yytext, PARENTESIS_IZQUIERDO);
                      printf("\nContenido PARENTESIS \n");
                   }
-
 <PARENTESIS>")"   {
                      BEGIN 0;
                      printf("\nTermina contenido PARENTESIS\n");

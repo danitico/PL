@@ -1,5 +1,5 @@
 (*
-Identificadores con errores
+   Identificadores con errores
 *)
 
 _______________________b.

@@ -41,3 +41,5 @@
 #define ASIGNACION            297
 #define ALMOHADILLA           298
 #define MOD                   299
+#define ABRIR_COMENTARIO      300
+#define CERRAR_COMENTARIO     301
