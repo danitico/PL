@@ -10,7 +10,6 @@ int buscarFecha;
 
 username    ^([[:alpha:]]|[[:digit:]])+
 fecha       ([[:digit:]]{2,2}\/){2,2}[[:digit:]]{4,4}
-hora        [[:digit:]]{2,2}\:[[:digit:]]{2,2}$
 
 %x FECHA
 %%
@@ -61,6 +60,7 @@ int main(int argc, char **argv){
 
       default:
          printf("Numero incorrecto de argumentos\n");
+         printf("%s <fichero> <usuario> [<fecha>]\n", argv[0]);
          return 0;
    }
 

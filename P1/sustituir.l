@@ -1,9 +1,10 @@
 %{
    #include <stdio.h>
+   #include <stdlib.h>
    #include <string.h>
    int palabras_sustituidas=0;
-   char antigua[30];
-   char nueva[30];
+   char antigua[255];
+   char nueva[255];
 %}
 
 %%
@@ -16,7 +17,7 @@
                else{
                   fprintf(yyout, "%s", yytext);
                }
-            }
+               }
 
 .|\n        {fprintf(yyout, "%s", yytext);}
 
@@ -25,7 +26,17 @@
 extern FILE *yyin, *yyout;
 
 int main(int argc, char **argv){
+   if(argc!=4){
+      printf("Error en la llamada al programa\n");
+      printf("%s <nombre_fichero> <palabra_antigua> <palabra_nueva>\n", argv[0]);
+      exit(-1);
+   }
+
    yyin=fopen(argv[1], "r");
+   if(yyin == NULL){
+      printf("Error al abrir el archivo\n");
+      exit(-1);
+   }
    yyout=fopen("aux.txt", "a+");
 
    strcpy(antigua, argv[2]);
@@ -33,7 +44,7 @@ int main(int argc, char **argv){
 
    yylex();
 
-   printf("palabras -> %i\n", palabras_sustituidas);
+   printf("Palabras sustituidas-> %i\n", palabras_sustituidas);
    fclose(yyin);
    fclose(yyout);
 
