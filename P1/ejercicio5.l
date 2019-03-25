@@ -42,6 +42,11 @@ int main(int argc, char **argv){
    strcpy(estado, argv[1]);
    strcpy(clave, argv[2]);
 
+   unsigned int i = 0;
+   for(; i < strlen(clave); i++){
+      clave[i]=tolower(clave[i]);
+   }
+
    yylex();
 
    return 0;
