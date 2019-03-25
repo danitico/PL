@@ -82,7 +82,7 @@ void vigenereMayuscula(char letra, char *estado){
 
       letraClave = clave[claveLeida%strlen(clave)];
 
-      letraCifrada=mayusculas[(letra - 65 + letraClave - 65)%26];
+      letraCifrada=mayusculas[(letra - 65 + letraClave - 97)%26];
 
       printf("%c", letraCifrada);
    }
@@ -90,9 +90,9 @@ void vigenereMayuscula(char letra, char *estado){
       if(strcmp(estado, "descifrar")==0){
          char letraDescifrada;
 
-         letraClave = clave[claveLeida%strlen(clave)];
+         letraClave = clave[claveLeida%strlen(clave)] - 97;
 
-         letraDescifrada=mayusculas[( (letra - letraClave) % 26 + 26) % 26];
+         letraDescifrada=mayusculas[( (letra - 65 - letraClave) % 26 + 26) % 26];
 
          printf("%c", letraDescifrada);
       }
