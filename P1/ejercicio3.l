@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include "ejercicio3.h"
+int estadoAnterior;
 %}
 digito      [0-9]
 letra       [a-zA-Z]
@@ -16,6 +17,7 @@ cadena            "'"(.*|"\'".*"\'")*"'"
 %x ESTADO_COMENTARIO
 %x ESTADO_COMENTARIO_1
 %x PARENTESIS
+%x ESTADO_CADENA
 
 %%
 
@@ -73,17 +75,27 @@ cadena            "'"(.*|"\'".*"\'")*"'"
 
 <INITIAL,PARENTESIS>".no."            {printf("\n Operador NEGACION_LOGICA: %s --> token %d\n", yytext, NEGACION_LOGICA);}
 
+<INITIAL,PARENTESIS>{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
+
+<INITIAL,PARENTESIS>([\.|E]+{numero}|{numero}[\.|E]+{numero}|{numero}[E|\.])+          {printf("\n Número no reconocido: %s\n", yytext);}
+
 <INITIAL,PARENTESIS>(?i:{identificador})    {printf("\n Identificador: %s --> token %d\n", yytext, ID);}
 
 <INITIAL,PARENTESIS>{malidentificador}      {printf("\n Identificador no reconocible: %s\n", yytext);}
 
-<INITIAL,PARENTESIS>.*(\_+{identificador}|{identificador}\_+).*      {printf("\n Identificador no reconocible: %s\n", yytext);}
+<INITIAL,PARENTESIS>[\_|^.]+{identificador}.*    {printf("\n Identificador no reconocible: %s\n", yytext);}
+<INITIAL,PARENTESIS>{identificador}\_+    {printf("\n Identificador no reconocible: %s\n", yytext);}
 
-<INITIAL,PARENTESIS>{numero}          {printf("\n Número: %s --> token %d\n", yytext, NUMERO);}
+<INITIAL,PARENTESIS>"'"[^\\]          {
+                                             printf("\n Comilla simple: %s --> token %d\n", yytext,COMILLA);
+                                             printf("\n Empieza cadena \n");
+                                             estadoAnterior = YYSTATE;
+                                             BEGIN ESTADO_CADENA;
+                                         }
 
-<INITIAL,PARENTESIS>([\.|E]+{numero}|{numero}[\.|E]+{numero}|{numero}[E|\.])          {printf("\n Número no reconocido: %s\n", yytext);}
+<ESTADO_CADENA>.                       {printf("%s", yytext);}
 
-<INITIAL,PARENTESIS>{cadena}          {printf("\n Cadena: %s --> token %d\n", yytext,CADENA);}
+<ESTADO_CADENA>[^\\]"'"                {printf("\n Termina cadena \n"); BEGIN estadoAnterior;}
 
 ";"               {printf("\n Caracter fin de Sentencia: %s --> token %d\n", yytext, FIN_SENTENCIA);}
 

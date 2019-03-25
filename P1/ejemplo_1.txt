@@ -33,4 +33,4 @@ mOd
 'La mejor \'cadena\' de todas'
 
 #Sentencia de codigo
-a = (2 < 5);
+a := (2 < 5);

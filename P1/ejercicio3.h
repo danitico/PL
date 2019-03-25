@@ -18,7 +18,7 @@
 #define FIN_PARA   	         274
 #define ID		               275
 #define NUMERO		            276
-#define CADENA                277
+#define COMILLA               277
 #define SUMA                  278
 #define RESTA                 279
 #define PRODUCTO              280
