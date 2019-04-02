@@ -1,4 +1,7 @@
 P1ejemplos/
+P2ejemplos/
+*.zip
 *.exe
 *.o
 teoria/
+*Ejercicios*/
