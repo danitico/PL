@@ -3,7 +3,15 @@
    @brief Lexical file
 */
 %{
-extern int lineNumber;
+   #include <cstdlib>
+   #include "../ast/ast.hpp"
+   #include "interpreter.tab.h"
+   #include "../error/error.hpp"
+   #include "../table/table.hpp"
+   #include "../table/numericVariable.hpp"
+
+   extern lp::Table table;
+   extern int lineNumber;
 %}
 
 /** @name REGULAR EXPRESSIONS */
@@ -78,25 +86,50 @@ strings           "'"(.*|"\'".*"\'")*"'"
 \n                   {lineNumber++;}
 
 ?i:{identifier}   {
+                     std::string identifier(yytext);
+                     yylval.identifier = strdup(yytext);
 
-}
+                     if(! table.lookupSymbol(identifier)){
+                        lp::NumericVariable *var = new NumericVariable(identifier, VARIABLE, UNDEFINED, 0.0);
+                        table.installSymbol(var);
+
+                        return VARIABLE;
+                     }
+                     else{
+                        lp::Symbol *s = table.getSymbol(identifier);
+
+                        return s->getToken();
+                     }
+                  }
 
 {number}          {
-
-}
+                     yyval.number = atof(yytext);
+                     return NUMBER;
+                  }
 
 {strings}         {
+                     std::string aux(yytext);
+                     aux.substr(1, aux.size()-2);
+                     yyval.strings = strdup(aux);
 
-}
+                     return STRINGS;
+                  }
 
 <<EOF>>  {return 0;}
 
 .        {
             BEGIN(ERROR);
-            yymore()
+            yymore();
          }
 
 <ERROR>[^0-9+\-*/()\^%\|\: \t\n\;\,\#\@a-zA-Z=<>!&]   {
-   yymore();
-}
+                                                         yymore();
+                                                      }
+
+<ERROR>(.|\n)  {
+                  yyless(yyleng-1);
+                  warning("Lexical error", yytext);
+                  BEGIN(INITIAL);
+					}
+
 %%
