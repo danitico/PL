@@ -30,7 +30,7 @@
 
 	#include "../table/init.hpp"
 
-	/** 
+	/**
 		@brief  Lexical or scanner function
 		@return int
 		@note   C++ requires that yylex returns an int value
@@ -48,7 +48,7 @@
 	This is an array type capable of storing the information of a calling environment to be restored later.
 	This information is filled by calling macro setjmp and can be restored by calling function longjmp.
 	*/
-	jmp_buf begin; //!<  It enables recovery of runtime errors 
+	jmp_buf begin; //!<  It enables recovery of runtime errors
 
 	extern lp::Table table; //!< Extern Table of Symbols
 
@@ -62,18 +62,18 @@
 %union {
 	char * identifier;
 	char * strings;
-	double number;  
+	double number;
 	bool logic;
 	lp::ExpNode *expNode;
 	std::list<lp::ExpNode *>  *parameters;
 	std::list<lp::Statement *> *stmts;
 	lp::Statement *st;
-	lp::AST *prog;			 
+	lp::AST *prog;
 }
 
 /* Type of the non-terminal symbols */
 // New in example 17: cond
-%type <expNode> exp cond 
+%type <expNode> exp cond
 
 /* New in example 14 */
 %type <parameters> listOfExp restOfListOfExp
@@ -207,41 +207,167 @@ stmt: SEMICOLON
 		}
 ;
 
+exp:	NUMBER
+		{
+			// Create a new number node
+			$$ = new lp::NumberNode($1);
+		}
+
+	|	STRINGS
+		{
+			$$ = new lp::StringsNode($1);
+		}
+
+	| 	exp PLUS exp
+		{
+			// Create a new plus node
+			 $$ = new lp::PlusNode($1, $3);
+		 }
+
+	| 	exp MINUS exp
+      	{
+			// Create a new minus node
+			$$ = new lp::MinusNode($1, $3);
+		}
+
+	| 	exp MULTIPLICATION exp
+		{
+			// Create a new multiplication node
+			$$ = new lp::MultiplicationNode($1, $3);
+		}
+
+	| 	exp DIVISION exp
+		{
+		  // Create a new division node
+		  $$ = new lp::DivisionNode($1, $3);
+	   }
+
+	| 	LPAREN exp RPAREN
+       	{
+		    // just copy up the expression node
+			$$ = $2;
+		 }
+
+  	| 	PLUS exp %prec UNARY
+		{
+		  // Create a new unary plus node
+  		  $$ = new lp::UnaryPlusNode($2);
+		}
+
+	| 	MINUS exp %prec UNARY
+		{
+		  // Create a new unary minus node
+  		  $$ = new lp::UnaryMinusNode($2);
+		}
+
+	|	exp MODULO exp
+		{
+		  // Create a new modulo node
+		  $$ = new lp::ModuloNode($1, $3);
+       }
+
+	|	exp POWER exp
+     	{
+		  // Create a new power node
+  		  $$ = new lp::PowerNode($1, $3);
+		}
+
+	 | VARIABLE
+		{
+		  // Create a new variable node
+		  $$ = new lp::VariableNode($1);
+		}
+
+	| exp GREATER_THAN exp
+	 	{
+		  // Create a new "greater than" node
+ 			$$ = new lp::GreaterThanNode($1,$3);
+		}
+
+	| exp GREATER_OR_EQUAL exp
+	 	{
+		  // Create a new "greater or equal" node
+ 			$$ = new lp::GreaterOrEqualNode($1,$3);
+		}
+
+	| exp LESS_THAN exp
+	 	{
+		  // Create a new "less than" node
+ 			$$ = new lp::LessThanNode($1,$3);
+		}
+
+	| exp LESS_OR_EQUAL exp
+	 	{
+		  // Create a new "less or equal" node
+ 			$$ = new lp::LessOrEqualNode($1,$3);
+		}
+
+	| exp EQUAL exp
+	 	{
+		  // Create a new "equal" node
+ 			$$ = new lp::EqualNode($1,$3);
+		}
+
+    | exp NOT_EQUAL exp
+	 	{
+		  // Create a new "not equal" node
+ 			$$ = new lp::NotEqualNode($1,$3);
+		}
+
+    | exp AND exp
+	 	{
+		  // Create a new "logic and" node
+ 			$$ = new lp::AndNode($1,$3);
+		}
+
+    | exp OR exp
+	 	{
+		  // Create a new "logic or" node
+ 			$$ = new lp::OrNode($1,$3);
+		}
+
+    | NOT exp
+	 	{
+		  // Create a new "logic negation" node
+ 			$$ = new lp::NotNode($2);
+		}
+;
+
 asgn: VARIABLE ASSIGNMENT exp
 	{
 		$$ = new lp::AssignmentStmt($1, $3);
 	}
 ;
 
-para: FOR VARIABLE FROM exp UNTIL exp DO stmt END_FOR
+para: FOR VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 	{
 		//crear nodo AST
 	}
 
-	| FOR VARIABLE FROM exp UNTIL exp STEP exp DO stmt END_FOR
+	| FOR VARIABLE FROM exp UNTIL exp STEP exp DO stmtlist END_FOR
 	{
 		// Crear nodo AST
 	}
 ;
 
-repetir: REPETITION stmt UNTIL cond
+repetir: REPETITION stmtlist UNTIL cond
 		{
 			//crear nodo AST
 		}
 ;
 
-mientras: WHILE cond DO stmt END_WHILE
+mientras: WHILE cond DO stmtlist END_WHILE
 		{
 			//crear nodo AST
 		}
 ;
 
-si: IF cond THEN stmt END_IF
+si: IF cond THEN stmtlist END_IF
 	{
 		//CREAR NODO AST
 	}
 
-	| IF cond THEN stmt ELSE stmt END_IF
+	| IF cond THEN stmtlist ELSE stmtlist END_IF
 	{
 		//crear nodo ast
 	}
@@ -249,7 +375,7 @@ si: IF cond THEN stmt END_IF
 
 print: WRITE LEFTPARENTHESIS exp RIGHTPARENTESIS
 	{
-		//nodo ast
+		$$ = new lp::PrintStmt($3);
 	}
 
 	| WRITE_STRING LEFTPARENTHESIS exp RIGHTPARENTESIS
