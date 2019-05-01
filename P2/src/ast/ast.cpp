@@ -26,14 +26,15 @@
 
 //
 #include "../table/numericVariable.hpp"
+#include "../table/stringVariable.hpp"
 #include "../table/logicalVariable.hpp"
 
-#include "../table/numericConstant.hpp"
-#include "../table/logicalConstant.hpp"
+// #include "../table/numericConstant.hpp"
+// #include "../table/logicalConstant.hpp"
 
-#include "../table/builtinParameter0.hpp"
-#include "../table/builtinParameter1.hpp"
-#include "../table/builtinParameter2.hpp"
+// #include "../table/builtinParameter0.hpp"
+// #include "../table/builtinParameter1.hpp"
+// #include "../table/builtinParameter2.hpp"
 
 #include "../parser/interpreter.tab.h"
 
@@ -117,68 +118,85 @@ bool lp::VariableNode::evaluateBool()
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
+std::string lp::VariableNode::evaluateString(){
+	std::string result="";
 
-void lp::ConstantNode::print()
-{
-  std::cout << "ConstantNode: " << this->_id << std::endl;
-  std::cout << "Type: " << this->getType() << std::endl;
-}
+	if(this->getType() == STRINGS){
+		lp::StringVariable *var = (lp::StringVariable *) table.getSymbol(this->_id);
 
-int lp::ConstantNode::getType()
-{
-	// Get the identifier in the table of symbols as Constant
-	lp::Constant *var = (lp::Constant *) table.getSymbol(this->_id);
-
-	// Return the type of the Constant
-	return var->getType();
-}
-
-
-double lp::ConstantNode::evaluateNumber()
-{
-	double result = 0.0;
-
-	if (this->getType() == NUMBER)
-	{
-		// Get the identifier in the table of symbols as NumericConstant
-		lp::NumericConstant *constant = (lp::NumericConstant *) table.getSymbol(this->_id);
-
-		// Copy the value of the NumericConstant
-		result = constant->getValue();
+		result = var->getValue();
 	}
-	else
-	{
-		warning("Runtime error in evaluateNumber(): the constant is not numeric",
-				   this->_id);
+	else{
+		warning("Runtime error in evaluateString(): the variable is not a string",
+					this->_id);
 	}
 
-	// Return the value of the NumericVariable
 	return result;
 }
 
-bool lp::ConstantNode::evaluateBool()
-{
-	bool result = false;
 
-	if (this->getType() == BOOL)
-	{
-		// Get the identifier in the table of symbols as LogicalConstant
-		lp::LogicalConstant *constant = (lp::LogicalConstant *) table.getSymbol(this->_id);
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
-		// Copy the value of the LogicalConstant
-		result = constant->getValue();
-	}
-	else
-	{
-		warning("Runtime error in evaluateBool(): the constant is not boolean",
-				   this->_id);
-	}
-
-	// Return the value of the LogicalVariable
-	return result;
-}
+// void lp::ConstantNode::print()
+// {
+//   std::cout << "ConstantNode: " << this->_id << std::endl;
+//   std::cout << "Type: " << this->getType() << std::endl;
+// }
+//
+// int lp::ConstantNode::getType()
+// {
+// 	// Get the identifier in the table of symbols as Constant
+// 	lp::Constant *var = (lp::Constant *) table.getSymbol(this->_id);
+//
+// 	// Return the type of the Constant
+// 	return var->getType();
+// }
+//
+//
+// double lp::ConstantNode::evaluateNumber()
+// {
+// 	double result = 0.0;
+//
+// 	if (this->getType() == NUMBER)
+// 	{
+// 		// Get the identifier in the table of symbols as NumericConstant
+// 		lp::NumericConstant *constant = (lp::NumericConstant *) table.getSymbol(this->_id);
+//
+// 		// Copy the value of the NumericConstant
+// 		result = constant->getValue();
+// 	}
+// 	else
+// 	{
+// 		warning("Runtime error in evaluateNumber(): the constant is not numeric",
+// 				   this->_id);
+// 	}
+//
+// 	// Return the value of the NumericVariable
+// 	return result;
+// }
+//
+// bool lp::ConstantNode::evaluateBool()
+// {
+// 	bool result = false;
+//
+// 	if (this->getType() == BOOL)
+// 	{
+// 		// Get the identifier in the table of symbols as LogicalConstant
+// 		lp::LogicalConstant *constant = (lp::LogicalConstant *) table.getSymbol(this->_id);
+//
+// 		// Copy the value of the LogicalConstant
+// 		result = constant->getValue();
+// 	}
+// 	else
+// 	{
+// 		warning("Runtime error in evaluateBool(): the constant is not boolean",
+// 				   this->_id);
+// 	}
+//
+// 	// Return the value of the LogicalVariable
+// 	return result;
+// }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,7 +232,7 @@ void lp::StringsNode::print()
   std::cout << "StringsNode: " << this->_string << std::endl;
 }
 
-string lp::StringsNode::evaluateString()
+std::string lp::StringsNode::evaluateString()
 {
     return this->_string;
 }
@@ -1207,7 +1225,8 @@ void lp::PrintStringStmt::evaluate()
 	switch(this->_exp->getType())
 	{
 		case STRINGS:
-				for(auto letter : _exp->evaluateString()){
+				std::string printed = _exp->evaluateString();
+				for(auto letter : printed){
 					std::cout << letter;
 				}
 				break;
@@ -1273,31 +1292,31 @@ void lp::ReadStringStmt::print()
 
 void lp::ReadStringStmt::evaluate()
 {
-	string value;
-	std::cin >> value;
+	std::string value;
+	std::cin >> string;
 
 	/* Get the identifier in the table of symbols as Variable */
 	lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
 
-	// Check if the type of the variable is NUMBER
-	if (var->getType() == NUMBER)
+	// Check if the type of the variable is STRINGS
+	if (var->getType() == STRINGS)
 	{
 		/* Get the identifier in the table of symbols as NumericVariable */
-		lp::NumericVariable *n = (lp::NumericVariable *) table.getSymbol(this->_id);
+		lp::StringVariable *n = (lp::StringVariable *) table.getSymbol(this->_id);
 
 		/* Assignment the read value to the identifier */
 		n->setValue(value);
 	}
-	// The type of variable is not NUMBER
+	// The type of variable is not STRING
 	else
 	{
 		// Delete $1 from the table of symbols as Variable
 		table.eraseSymbol(this->_id);
 
-			// Insert $1 in the table of symbols as NumericVariable
+			// Insert $1 in the table of symbols as StringVariable
 		// with the type NUMBER and the read value
-		lp::NumericVariable *n = new lp::NumericVariable(this->_id,
-									  VARIABLE,NUMBER,value);
+		lp::StringVariable *n = new lp::StringVariable(this->_id,
+									  VARIABLE,STRINGS,value);
 
 		table.installSymbol(n);
 	}
@@ -1380,40 +1399,33 @@ void lp::WhileStmt::evaluate()
 
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
+void lp::EraseStmt::print()
+{
+  std::cout << "EraseStmt "  << std::endl;
+}
 
-
+void lp::EraseStmt::evaluate()
+{
+  std::cout << CLEAR_SCREEN;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// NEW in example 17
 
-void lp::BlockStmt::print()
+void lp::PlaceStmt::print()
 {
-  std::list<Statement *>::iterator stmtIter;
-
-  std::cout << "BlockStmt: "  << std::endl;
-
-  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
-  {
-     (*stmtIter)->print();
-  }
+  std::cout << "Place Stmt "  << std::endl;
+  std::cout << "x -> " << this->_x << std::endl;
+  std::cout << "y -> " << this->_y << std::endl;
 }
 
-
-void lp::BlockStmt::evaluate()
+void lp::EraseStmt::evaluate()
 {
-  std::list<Statement *>::iterator stmtIter;
-
-  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
-  {
-    (*stmtIter)->evaluate();
-  }
+  PLACE(this->_x, this->_y);
 }
-
-
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

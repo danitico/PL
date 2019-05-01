@@ -20,13 +20,14 @@
 	/* Table of symbol */
 	#include "../table/table.hpp"
 	#include "../table/numericVariable.hpp"
-	#include "../table/logicalVariable.hpp"
+	#include "../table/stringVariable.hpp"
+	/* #include "../table/logicalVariable.hpp" */
 
-	#include "../table/numericConstant.hpp"
-	#include "../table/logicalConstant.hpp"
-	#include "../table/builtinParameter1.hpp"
-	#include "../table/builtinParameter0.hpp"
-	#include "../table/builtinParameter2.hpp"
+	/* #include "../table/numericConstant.hpp" */
+	/* #include "../table/logicalConstant.hpp" */
+	/* #include "../table/builtinParameter1.hpp" */
+	/* #include "../table/builtinParameter0.hpp" */
+	/* #include "../table/builtinParameter2.hpp" */
 
 	#include "../table/init.hpp"
 
@@ -76,12 +77,12 @@
 %type <expNode> exp cond
 
 /* New in example 14 */
-%type <parameters> listOfExp restOfListOfExp
+/* %type <parameters> listOfExp restOfListOfExp */
 
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while for repeat
+%type <st> stmt asgn print read si mientras para repetir borrar lugar
 
 %type <prog> program
 
@@ -115,7 +116,7 @@
 %left PLUS MINUS
 %left PRODUCT DIVISION MODULUS INTEGER_DIVISION
 
-%left LEFTPARENTHESIS RIGHTPARENTESIS
+%left LEFTPARENTHESIS RIGHTPARENTHESIS
 
 %nonassoc UNARY
 
@@ -203,7 +204,7 @@ stmt: SEMICOLON
 
 		| lugar SEMICOLON
 		{
-			$$ = $1
+			$$ = $1;
 		}
 ;
 
@@ -230,7 +231,7 @@ exp:	NUMBER
 			$$ = new lp::MinusNode($1, $3);
 		}
 
-	| 	exp MULTIPLICATION exp
+	| 	exp PRODUCT exp
 		{
 			// Create a new multiplication node
 			$$ = new lp::MultiplicationNode($1, $3);
@@ -242,7 +243,7 @@ exp:	NUMBER
 		  $$ = new lp::DivisionNode($1, $3);
 	   }
 
-	| 	LPAREN exp RPAREN
+	| 	LEFTPARENTHESIS exp RIGHTPARENTHESIS
        	{
 		    // just copy up the expression node
 			$$ = $2;
@@ -260,13 +261,13 @@ exp:	NUMBER
   		  $$ = new lp::UnaryMinusNode($2);
 		}
 
-	|	exp MODULO exp
+	|	exp MODULUS exp
 		{
 		  // Create a new modulo node
 		  $$ = new lp::ModuloNode($1, $3);
        }
 
-	|	exp POWER exp
+	|	exp POWER_OF exp
      	{
 		  // Create a new power node
   		  $$ = new lp::PowerNode($1, $3);
@@ -373,41 +374,41 @@ si: IF cond THEN stmtlist END_IF
 	}
 ;
 
-print: WRITE LEFTPARENTHESIS exp RIGHTPARENTESIS
+print: WRITE LEFTPARENTHESIS exp RIGHTPARENTHESIS
 	{
 		$$ = new lp::PrintStmt($3);
 	}
 
-	| WRITE_STRING LEFTPARENTHESIS exp RIGHTPARENTESIS
+	| WRITE_STRING LEFTPARENTHESIS exp RIGHTPARENTHESIS
 	{
-		//nodo ast
+		$$ = new lp::PrintStringStmt($3);
 	}
 ;
 
-read: READ LEFTPARENTHESIS VARIABLE RIGHTPARENTESIS
+read: READ LEFTPARENTHESIS VARIABLE RIGHTPARENTHESIS
 	{
-		//nodo ast
+		$$ = new lp::ReadStmt($3);
 	}
 
-	| READ_STRING LEFTPARENTHESIS VARIABLE RIGHTPARENTESIS
+	| READ_STRING LEFTPARENTHESIS VARIABLE RIGHTPARENTHESIS
 	{
-
+		$$ = new lp::ReadStringStmt($3);
 	}
 ;
 
 borrar: ERASE
 	{
-		//utilizar macros para borrar la pantalla
+		$$ = new lp::EraseStmt();
 	}
 ;
 
-lugar: PLACE LEFTPARENTHESIS exp COMMA exp RIGHTPARENTESIS
+lugar: PLACE LEFTPARENTHESIS NUMBER COMMA NUMBER RIGHTPARENTHESIS
 	{
-		//utilizar macros para situar el puntero
+		$$ = new lp::PlaceStmt($3, $5);
 	}
 ;
 
-cond: LEFTPARENTHESIS exp RIGHTPARENTESIS
+cond: LEFTPARENTHESIS exp RIGHTPARENTHESIS
 	{
 		$$ = $2;
 	}

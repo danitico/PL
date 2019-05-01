@@ -19,10 +19,9 @@ OBJECTS= $(NAME).o
 INCLUDES = $(NAME).hpp \
 			../parser/interpreter.tab.h \
 			../includes/macros.hpp ../error/error.hpp \
-			../table/table.hpp  ../table/numericConstant.hpp \
-			../table/builtinParameter0.hpp ../table/builtinParameter1.hpp ../table/builtinParameter2.hpp
+			../table/table.hpp
 
-# Predefined macros 
+# Predefined macros
 #
 # $@: name of the target
 # $^: all the dependencies
@@ -35,7 +34,7 @@ INCLUDES = $(NAME).hpp \
 all: $(OBJECTS)
 
 
-# Error recovery functions 
+# Error recovery functions
 $(NAME).o: $(NAME).cpp $(INCLUDES)
 	@echo "Compiling " $<
 	@$(CPP) $(CFLAGS) $<
@@ -45,9 +44,8 @@ $(NAME).o: $(NAME).cpp $(INCLUDES)
 
 #######################################################
 # Auxiliary files directory are deleted
-clean: 
+clean:
 	@echo
 	@echo "Deleting in subdirectory ast"
-	@rm -f $(OBJECTS) *~ 
+	@rm -f $(OBJECTS) *~
 	@echo
-

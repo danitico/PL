@@ -75,6 +75,18 @@ namespace lp
 		return false;
 	}
 
+
+   /*!
+      \brief   Evaluate the expression as STRINGS
+      \warning Virtual function: could be redefined in the heir classes
+      \return  STRING
+      \sa		 print
+   */
+    virtual std::string evaluateString()
+   {
+      return "";
+   }
+
 };
 
 
@@ -131,6 +143,13 @@ class VariableNode : public ExpNode
 		\sa		 print
 	*/
 	  bool evaluateBool();
+
+   /*!
+     \brief   Evaluate the Variable as BOOL
+     \return  bool
+     \sa		 print
+   */
+      std::string evaluateString();
 
 };
 
@@ -250,7 +269,7 @@ class NumberNode : public ExpNode
 class StringsNode : public ExpNode
 {
  private:
-   string _string; //!< \brief string of the StringsNode
+   std::string _string; //!< \brief string of the StringsNode
 
  public:
 
@@ -260,7 +279,7 @@ class StringsNode : public ExpNode
 	\post  A new StringsNode is created with the value of the parameter
 	\note  Inline function
 */
-   StringsNode(string value)
+   StringsNode(std::string value)
 	{
 	    this->_string = value;
 	}
@@ -281,10 +300,10 @@ class StringsNode : public ExpNode
 
 	/*!
 		\brief   Evaluate the expression
-		\return  double
+		\return  string
 		\sa		 print
 	*/
-	double evaluateString();
+	std::string evaluateString();
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1797,54 +1816,85 @@ class WhileStmt : public Statement
   void evaluate();
 };
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// NEW in example 17
 
 /*!
-  \class   BlockStmt
-  \brief   Definition of atributes and methods of BlockStmt class
-  \note    BlockStmt Class publicly inherits from Statement class
+  \class   EraseStmt
+  \brief   Definition of atributes and methods of EraseStmt class
+  \note    EraseStmt Class publicly inherits from Statement class
 		   and adds its own print and evaluate functions
 */
-class BlockStmt : public Statement
+class EraseStmt : public Statement
 {
- private:
-   std::list<Statement *> *_stmts;  //!< List of statements
-
   public:
 /*!
-	\brief Constructor of  WhileStmt
-	\param stmtList: list of Statement
-	\post  A new BlockStmt is created with the parameters
+	\brief Constructor of  EraseStmt
+	\post  A new EraseStmt is created
 */
-  BlockStmt(std::list<Statement *> *stmtList): _stmts(stmtList)
+  EraseStmt()
 	{
 		// Empty
 	}
 
 
 /*!
-	\brief   Print the BlockStmt
+	\brief   Print the EraseStmt
 	\return  void
-	\sa		 evaluate
+	\sa		 evaluate()
 */
   void print();
 
 /*!
-	\brief   Evaluate the BlockStmt
+	\brief   Evaluate the EraseStmt
 	\return  void
 	\sa		 print
 */
   void evaluate();
 };
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+/*!
+  \class   PlaceStmt
+  \brief   Definition of atributes and methods of PlaceStmt class
+  \note    PlaceStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class PlaceStmt : public Statement
+{
+   private:
+      double _x, _y;
+
+   public:
+      /*!
+      	\brief Constructor of PlaceStmt
+      	\post  A new PlaceStmt is created
+      */
+      PlaceStmt(double x=0.0, double y=0.0)
+      {
+         this->_x = x;
+         this->_y = y;
+      }
+
+      /*!
+      	\brief   Print the PlaceStmt
+      	\return  void
+      	\sa		 evaluate()
+      */
+      void print();
+
+      /*!
+      \brief   Evaluate the PlaceStmt
+      \return  void
+      \sa		 print
+      */
+      void evaluate();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 /*!
   \class   AST

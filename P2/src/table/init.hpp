@@ -1,7 +1,7 @@
-/*!	
+/*!
 	\file   init.hpp
 	\brief   Prototype of the function for the initialization of table of symbols
-	\author  
+	\author
 	\date    2017-12-5
 	\version 1.0
 */
@@ -23,14 +23,14 @@
 
 ///////////////////////////////////////
 // NEW in example 13
-#include "mathFunction.hpp"
-#include "builtinParameter1.hpp"
+// #include "mathFunction.hpp"
+// #include "builtinParameter1.hpp"
 ///////////////////////////////////////
 
 ///////////////////////////////////////
 // NEW in example 14
-#include "builtinParameter0.hpp"
-#include "builtinParameter2.hpp"
+// #include "builtinParameter0.hpp"
+// #include "builtinParameter2.hpp"
 ///////////////////////////////////////
 
 
@@ -40,7 +40,7 @@
 static struct {
           std::string name ;
 	      double value;
-	      } numericConstant[] = { 
+	      } numericConstant[] = {
 	                    "PI",    3.14159265358979323846,
 	                    "E",     2.71828182845904523536,
 	                    "GAMMA", 0.57721566490153286060,
@@ -54,18 +54,18 @@ static struct {
 /*!
   \ brief Predefined logical constants
 */
-// NEW in example 15 
+// NEW in example 15
 static struct {
           std::string name ;
 	      bool value;
-	      } logicalConstant[] = { 
+	      } logicalConstant[] = {
 	                    "true", true,
 	                    "false", false,
 	                    "",      0
 	                   };
 
 
-// NEW in example 12 
+// NEW in example 12
 /*!
   \ brief Predefined keywords
 */
@@ -73,8 +73,10 @@ static struct {
           std::string name ;
 	      int token;
 	      } keyword[] = {
-	                    "print", PRINT,
-	                    "read",  READ,
+	                    "escribir", WRITE,
+	                    "leer",  READ,
+                       "escribir_cadena", WRITE_STRING,
+                       "leer_cadena", READ_STRING,
 						"if",	 IF,   		// NEW in example 17
 						"else",	 ELSE, 		// NEW in example 17
 						"while",  WHILE,	// NEW in example 17
@@ -84,46 +86,46 @@ static struct {
 
 // NEW in example 13
 
-static struct {    /* Predefined functions names */ 
-                std::string name ;
-				lp::TypePointerDoubleFunction_1 function;
-              } function_1 [] = {
-									"sin",     sin,
-		    						"cos",     cos,
-		    						"atan",    atan,
-		    						"log",     Log,
-		    						"log10",   Log10,
-		    						"exp",     Exp,
-		    						"sqrt",    Sqrt,
-		    						"integer", integer,
-		    						"abs",     fabs,   
-		    						"",       0
-		              };
+// static struct {    /* Predefined functions names */
+//                 std::string name ;
+// 				lp::TypePointerDoubleFunction_1 function;
+//               } function_1 [] = {
+// 									"sin",     sin,
+// 		    						"cos",     cos,
+// 		    						"atan",    atan,
+// 		    						"log",     Log,
+// 		    						"log10",   Log10,
+// 		    						"exp",     Exp,
+// 		    						"sqrt",    Sqrt,
+// 		    						"integer", integer,
+// 		    						"abs",     fabs,
+// 		    						"",       0
+// 		              };
+//
+// // NEW in example 14
+// static struct {
+//                 std::string name ;
+// 				lp::TypePointerDoubleFunction_0 function;
+//               } function_0 [] = {
+// 						"random", Random,
+// 		                "",       0
+// 		              };
+//
+//
+// // NEW in example 14
+// static struct {    /* Nombres predefinidos de funciones con 2 argumentos */
+//                 std::string name ;
+// 				lp::TypePointerDoubleFunction_2 function;
+//               } function_2 [] = {
+// 	                   "atan2",   Atan2,
+// 		                "",       0
+// 		              };
 
-// NEW in example 14
-static struct {   
-                std::string name ;
-				lp::TypePointerDoubleFunction_0 function;
-              } function_0 [] = {
-						"random", Random,
-		                "",       0
-		              };
 
 
-// NEW in example 14
-static struct {    /* Nombres predefinidos de funciones con 2 argumentos */ 
-                std::string name ;
-				lp::TypePointerDoubleFunction_2 function;
-              } function_2 [] = {
-	                   "atan2",   Atan2,
-		                "",       0
-		              };
-
-
-
-/*!		
+/*!
 	\brief   Initialize the table of symbols
-	\return  void 
+	\return  void
 */
 
 void init(lp::Table &t);

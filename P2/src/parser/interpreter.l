@@ -53,10 +53,10 @@ strings           "'"(.*|"\'".*"\'")*"'"
 "("                  {return LEFTPARENTHESIS;}
 ")"                  {return RIGHTPARENTHESIS;}
 
-"#"                  {BEGIN(COMMENTARY_1); return HASHTAG;}
-<COMMENTARY_1>.      {;}
-<COMMENTARY_1>\n     {lineNumber++;}
-<COMMENTARY_1>"#"    {BEGIN(INITIAL); return HASHTAG;}
+"#"                           {BEGIN(COMMENTARY_1); return HASHTAG;}
+<COMMENTARY_1>[^"#"|^\n]      {;}
+<COMMENTARY_1>\n              {lineNumber++;}
+<COMMENTARY_1>"#"             {BEGIN(INITIAL); return HASHTAG;}
 
 "@"                  {BEGIN(COMMENTARY_2); return AT;}
 <COMMENTARY_2>.      {;}
@@ -70,7 +70,7 @@ strings           "'"(.*|"\'".*"\'")*"'"
 (?i:hacer)           {return DO;}
 (?i:fin_para)        {return END_FOR;}
 (?i:mientras)        {return WHILE;}
-(?i:fin_mientras)    {return END_WHILE}
+(?i:fin_mientras)    {return END_WHILE;}
 (?i:si)              {return IF;}
 (?i:entonces)        {return THEN;}
 (?i:si_no)           {return ELSE;}
@@ -85,12 +85,15 @@ strings           "'"(.*|"\'".*"\'")*"'"
 [ \t]                {;}
 \n                   {lineNumber++;}
 
-?i:{identifier}   {
+{identifier}   {
+                     for(int i=0; yytext[i] != '\0'; i++){
+                        yytext[i]=toupper(yytext[i]);
+                     }
                      std::string identifier(yytext);
                      yylval.identifier = strdup(yytext);
 
                      if(! table.lookupSymbol(identifier)){
-                        lp::NumericVariable *var = new NumericVariable(identifier, VARIABLE, UNDEFINED, 0.0);
+                        lp::NumericVariable *var = new lp::NumericVariable(identifier, VARIABLE, UNDEFINED, 0.0);
                         table.installSymbol(var);
 
                         return VARIABLE;
@@ -103,14 +106,14 @@ strings           "'"(.*|"\'".*"\'")*"'"
                   }
 
 {number}          {
-                     yyval.number = atof(yytext);
+                     yylval.number = atof(yytext);
                      return NUMBER;
                   }
 
 {strings}         {
                      std::string aux(yytext);
                      aux.substr(1, aux.size()-2);
-                     yyval.strings = strdup(aux);
+                     yylval.strings = strdup(aux.c_str());
 
                      return STRINGS;
                   }
