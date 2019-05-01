@@ -11,7 +11,7 @@ CPP = g++
 # -Wall: all warnings
 # -ansi: standard language
 # -02: optimization level
-CFLAGS = -c -g  -Wall -ansi -O2
+CFLAGS = -c -g  -Wall -ansi -O2 -std=c++11
 
 # Objects
 # MODIFIED in example 10: init.o
@@ -20,7 +20,7 @@ CFLAGS = -c -g  -Wall -ansi -O2
 # MODIFIED in example 13: builtin.o builtinParameter1.o mathFunction.o
 # MODIFIED in example 14: builtinParameter0.o builtinParameter2.o
 OBJECTS= table.o symbol.o variable.o numericVariable.o \
-		init.o keyword.o stringVariable.o
+		init.o keyword.o stringVariable.o logicalVariable.o
 
 # Predefined macros
 #
@@ -55,9 +55,9 @@ stringVariable.o: stringVariable.cpp stringVariable.hpp variable.hpp symbol.hpp 
 
 #######################################################
 # NEW in example 15
-# logicalVariable.o: logicalVariable.cpp logicalVariable.hpp variable.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
+logicalVariable.o: logicalVariable.cpp logicalVariable.hpp variable.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
 #######################################################
 
 #######################################################

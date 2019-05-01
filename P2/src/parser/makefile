@@ -11,7 +11,7 @@ CPP = g++
 # -Wall: all warnings
 # -ansi: standard language
 # -02: optimization level
-CFLAGS = -c -g  -Wall -ansi -O2
+CFLAGS = -c -g  -Wall -ansi -O2 -std=c++11
 
 # The fast lexical analyser generator
 LEX = flex
@@ -44,7 +44,7 @@ OBJECTS= $(NAME).tab.o lex.yy.o
 # MODIFIED in example 15: ./includes/Value.hpp
 INCLUDES = ../error/error.hpp ../includes/macros.hpp \
 			../table/table.hpp  ../table/numericVariable.hpp \
-			../table/init.hpp ../table/stringVariable.hpp
+			../table/init.hpp ../table/stringVariable.hpp ../table/logicalVariable.hpp
 
 
 #######################################################

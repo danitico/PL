@@ -112,7 +112,7 @@ strings           "'"(.*|"\'".*"\'")*"'"
 
 {strings}         {
                      std::string aux(yytext);
-                     aux.substr(1, aux.size()-2);
+                     aux = aux.substr(1, aux.size()-2);
                      yylval.strings = strdup(aux.c_str());
 
                      return STRINGS;

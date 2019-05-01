@@ -9,7 +9,7 @@
   Departamento:  Informática y Análisis Numérico
   Centro:        Escuela Politécnica Superior de Córdoba
   Universidad de Córdoba
- 
+
   Curso académico: 2018 - 2019
 
   Fichero de ejemplo nº 2 para el intérprete de pseudocódigo en español: ipe.exe
@@ -27,8 +27,8 @@ leer(N);
 
 factorial := 1;
 
-para i desde 2 hasta N paso 1 hacer
-	factorial := factorial * i;
+para I desde 2 hasta N paso 1 hacer
+	factorial := factorial * I;
 fin_para;
 
 @ Se muestra el resultado

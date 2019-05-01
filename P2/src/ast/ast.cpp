@@ -7,7 +7,7 @@
 */
 
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <string>
 #include <list>
 
@@ -584,122 +584,122 @@ double lp::PowerNode::evaluateNumber()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-int lp::BuiltinFunctionNode_0::getType()
-{
-	return	NUMBER;
-}
-
-
-void lp::BuiltinFunctionNode_0::print()
-{
-	std::cout << "BuiltinFunctionNode_0: "  << std::endl;
-	std::cout << this->_id;
-	std::cout << " ( ) " ;
-}
-
-double lp::BuiltinFunctionNode_0::evaluateNumber()
-{
-	// Get the identifier in the table of symbols as BuiltinParameter0
-	lp::BuiltinParameter0 *f = (lp::BuiltinParameter0 *) table.getSymbol(this->_id);
-
-	// Apply the function and copy the result
-   	return f->getFunction()();
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-int lp::BuiltinFunctionNode_1::getType()
-{
-	int result = 0;
-
-	if (this->_exp->getType() == NUMBER)
-		result = NUMBER;
-	else
-		warning("Runtime error: incompatible type for", "BuiltinFunctionNode_1");
-
-	return	result;
-}
-
-void lp::BuiltinFunctionNode_1::print()
-{
-	std::cout << "BuiltinFunctionNode_1: "  << std::endl;
-	std::cout << this->_id;
-	std::cout << " ( " ;
-	this->_exp->print();
-	std::cout << " ) " ;
-}
-
-double lp::BuiltinFunctionNode_1::evaluateNumber()
-{
-	double result = 0.0;
-
-	// Ckeck the type of the expression
-	if (this->getType() == NUMBER)
-	{
-		// Get the identifier in the table of symbols as BuiltinParameter1
-		lp::BuiltinParameter1 *f = (lp::BuiltinParameter1 *) table.getSymbol( this->_id);
-
-		// Apply the function to the parameter and copy the result
-		result = f->getFunction()(this->_exp->evaluateNumber());
-	}
-	else
-	{
-		warning("Runtime error: incompatible type of parameter for ", this->_id);
-	}
-
-	return result;
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-int lp::BuiltinFunctionNode_2::getType()
-{
-	int result = 0;
-
-	if (this->_exp1->getType() == this->_exp2->getType())
-		result = this->_exp1->getType();
-	else
-		warning("Runtime error: incompatible types for", "BuiltinFunctionNode_2");
-
-	return	result;
-}
-
-
-void lp::BuiltinFunctionNode_2::print()
-{
-	std::cout << "BuiltinFunctionNode_2: "  << std::endl;
-	std::cout << this->_id;
-	std::cout << " ( " ;
-	this->_exp1->print();
-	std::cout << " , " ;
-	this->_exp2->print();
-	std::cout << " ) " ;
-}
-
-double lp::BuiltinFunctionNode_2::evaluateNumber()
-{
-	double result = 0.0;
-
-	// Ckeck the types of the expressions
-	if (this->getType() == NUMBER)
-	{
-		// Get the identifier in the table of symbols as BuiltinParameter2
-		lp::BuiltinParameter2 *f = (lp::BuiltinParameter2 *) table.getSymbol(this->_id);
-
-		// Apply the function to the parameters and copy the result
-	  	result = f->getFunction()(this->_exp1->evaluateNumber(),this->_exp2->evaluateNumber());
-	}
-	else
-	{
-		warning("Runtime error: incompatible types of parameters for ", this->_id);
-	}
-
-  return result;
-}
+// int lp::BuiltinFunctionNode_0::getType()
+// {
+// 	return	NUMBER;
+// }
+//
+//
+// void lp::BuiltinFunctionNode_0::print()
+// {
+// 	std::cout << "BuiltinFunctionNode_0: "  << std::endl;
+// 	std::cout << this->_id;
+// 	std::cout << " ( ) " ;
+// }
+//
+// double lp::BuiltinFunctionNode_0::evaluateNumber()
+// {
+// 	// Get the identifier in the table of symbols as BuiltinParameter0
+// 	lp::BuiltinParameter0 *f = (lp::BuiltinParameter0 *) table.getSymbol(this->_id);
+//
+// 	// Apply the function and copy the result
+//    	return f->getFunction()();
+// }
+//
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+//
+// int lp::BuiltinFunctionNode_1::getType()
+// {
+// 	int result = 0;
+//
+// 	if (this->_exp->getType() == NUMBER)
+// 		result = NUMBER;
+// 	else
+// 		warning("Runtime error: incompatible type for", "BuiltinFunctionNode_1");
+//
+// 	return	result;
+// }
+//
+// void lp::BuiltinFunctionNode_1::print()
+// {
+// 	std::cout << "BuiltinFunctionNode_1: "  << std::endl;
+// 	std::cout << this->_id;
+// 	std::cout << " ( " ;
+// 	this->_exp->print();
+// 	std::cout << " ) " ;
+// }
+//
+// double lp::BuiltinFunctionNode_1::evaluateNumber()
+// {
+// 	double result = 0.0;
+//
+// 	// Ckeck the type of the expression
+// 	if (this->getType() == NUMBER)
+// 	{
+// 		// Get the identifier in the table of symbols as BuiltinParameter1
+// 		lp::BuiltinParameter1 *f = (lp::BuiltinParameter1 *) table.getSymbol( this->_id);
+//
+// 		// Apply the function to the parameter and copy the result
+// 		result = f->getFunction()(this->_exp->evaluateNumber());
+// 	}
+// 	else
+// 	{
+// 		warning("Runtime error: incompatible type of parameter for ", this->_id);
+// 	}
+//
+// 	return result;
+// }
+//
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+//
+// int lp::BuiltinFunctionNode_2::getType()
+// {
+// 	int result = 0;
+//
+// 	if (this->_exp1->getType() == this->_exp2->getType())
+// 		result = this->_exp1->getType();
+// 	else
+// 		warning("Runtime error: incompatible types for", "BuiltinFunctionNode_2");
+//
+// 	return	result;
+// }
+//
+//
+// void lp::BuiltinFunctionNode_2::print()
+// {
+// 	std::cout << "BuiltinFunctionNode_2: "  << std::endl;
+// 	std::cout << this->_id;
+// 	std::cout << " ( " ;
+// 	this->_exp1->print();
+// 	std::cout << " , " ;
+// 	this->_exp2->print();
+// 	std::cout << " ) " ;
+// }
+//
+// double lp::BuiltinFunctionNode_2::evaluateNumber()
+// {
+// 	double result = 0.0;
+//
+// 	// Ckeck the types of the expressions
+// 	if (this->getType() == NUMBER)
+// 	{
+// 		// Get the identifier in the table of symbols as BuiltinParameter2
+// 		lp::BuiltinParameter2 *f = (lp::BuiltinParameter2 *) table.getSymbol(this->_id);
+//
+// 		// Apply the function to the parameters and copy the result
+// 	  	result = f->getFunction()(this->_exp1->evaluateNumber(),this->_exp2->evaluateNumber());
+// 	}
+// 	else
+// 	{
+// 		warning("Runtime error: incompatible types of parameters for ", this->_id);
+// 	}
+//
+//   return result;
+// }
 
 
 
@@ -1085,6 +1085,25 @@ void lp::AssignmentStmt::evaluate()
 			}
 			break;
 
+			case STRINGS:
+			{
+				std::string value;
+
+				value = this->_exp->evaluateString();
+
+				if(firstVar->getType() == STRINGS){
+					lp::StringVariable *v = (lp::StringVariable * ) table.getSymbol(this->_id);
+					v->setValue(value);
+				}
+				else{
+					table.eraseSymbol(this->_id);
+
+					lp::StringVariable *v = new lp::StringVariable(this->_id, VARIABLE, STRINGS, value);
+					table.installSymbol(v);
+				}
+			}
+			break;
+
 			default:
 				warning("Runtime error: incompatible type of expression for ", "Assigment");
 		}
@@ -1143,7 +1162,7 @@ void lp::AssignmentStmt::evaluate()
 				/* Get the identifier of the previous asgn in the table of symbols as LogicalVariable */
 				lp::LogicalVariable *secondVar = (lp::LogicalVariable *) table.getSymbol(this->_asgn->_id);
 				// Check the type of the first variable
-				if (firstVar->getType() == NUMBER)
+				if (firstVar->getType() == BOOL)
 				{
 				/* Get the identifier of the first variable in the table of symbols as LogicalVariable */
 				lp::LogicalVariable *firstVar = (lp::LogicalVariable *) table.getSymbol(this->_id);
@@ -1160,10 +1179,28 @@ void lp::AssignmentStmt::evaluate()
 					// Delete the first variable from the table of symbols
 					table.eraseSymbol(this->_id);
 
-					// Insert the first variable in the table of symbols as NumericVariable
+					// Insert the first variable in the table of symbols as LogicalVariable
 					// with the type BOOL and the value of the previous variable
 					lp::LogicalVariable *firstVar = new lp::LogicalVariable(this->_id,
 											VARIABLE,BOOL,secondVar->getValue());
+					table.installSymbol(firstVar);
+				}
+			}
+			break;
+
+			case STRINGS:
+			{
+				lp::StringVariable *secondVar = (lp::StringVariable *) table.getSymbol(this->_asgn->_id);
+				if(firstVar->getType() == STRINGS){
+					lp::StringVariable *firstVar = (lp::StringVariable *) table.getSymbol(this->_id);
+
+					firstVar->setValue(secondVar->getValue());
+				}
+				else{
+					table.eraseSymbol(this->_id);
+
+					lp::StringVariable *firstVar = new lp::StringVariable(this->_id,
+															VARIABLE, STRINGS, secondVar->getValue());
 					table.installSymbol(firstVar);
 				}
 			}
@@ -1222,12 +1259,27 @@ void lp::PrintStringStmt::print()
 
 void lp::PrintStringStmt::evaluate()
 {
+	std::string printed;
 	switch(this->_exp->getType())
 	{
 		case STRINGS:
-				std::string printed = _exp->evaluateString();
-				for(auto letter : printed){
-					std::cout << letter;
+				printed = _exp->evaluateString();
+				for(unsigned i=0; i<printed.size(); i++){
+					if(printed[i] == '\\'){
+						if(printed[i+1] == 'n'){
+							std::cout << std::endl;
+						}
+						else if(printed[i+1] == 't'){
+							std::cout << "\t";
+						}
+						else if(printed[i+1] == '\\'){
+							std::cout << "\\";
+						}
+						i+=1;
+					}
+					else{
+						std::cout << printed[i];
+					}
 				}
 				break;
 
@@ -1293,7 +1345,7 @@ void lp::ReadStringStmt::print()
 void lp::ReadStringStmt::evaluate()
 {
 	std::string value;
-	std::cin >> string;
+	std::cin >> value;
 
 	/* Get the identifier in the table of symbols as Variable */
 	lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
@@ -1402,6 +1454,103 @@ void lp::WhileStmt::evaluate()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+void lp::ForStmt::print()
+{
+  std::cout << "ForStmt: "  << std::endl;
+  // Variable
+  std::cout << this->_variable << std::endl;
+
+  // Body of the while loop
+  std::list<Statement *>::iterator stmtIter;
+
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+  {
+	  (*stmtIter)->print();
+  }
+
+  this->_inicio->print();
+
+  this->_fin->print();
+
+  this->_step->print();
+
+  std::cout << std::endl;
+}
+
+
+void lp::ForStmt::evaluate()
+{
+	std::cout << this->_variable << std::endl;
+	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_variable);
+
+	lp::NumericVariable *n;
+	if(firstVar->getType() != NUMBER){
+		table.eraseSymbol(this->_variable);
+
+		n = new NumericVariable(this->_variable, VARIABLE, NUMBER, 0.0);
+		table.installSymbol(n);
+	}
+	else{
+		n = (lp::NumericVariable *) table.getSymbol(this->_variable);
+	}
+
+	if(this->_inicio->getType() != NUMBER){
+		warning("Runtime error: incompatible type for ", "Initial Value");
+		return;
+	}
+
+	int inicio = this->_inicio->evaluateNumber();
+
+	if(this->_fin->getType() != NUMBER){
+		warning("Runtime error: incompatible type for ", "Final Value");
+		return;
+	}
+
+	int final = this->_fin->evaluateNumber();
+
+	int step;
+	if(this->_step == NULL){
+		step = 1;
+	}
+	else if(this->_step->getType() != NUMBER){
+		warning("Runtime error: incompatible type for ", "Step Value");
+		return;
+	}
+
+	step = this->_step->evaluateNumber();
+
+	if(inicio > final && step > 0){
+		warning("Runtime error: Infinite Loop", "inicio > final and step > 0");
+		return;
+	}
+	else if(inicio < final && step < 0){
+		warning("Runtime error: Infinite Loop", "inicio < final and step < 0");
+		return;
+	}
+	else if(step == 0){
+		warning("Runtime error: Infinite Loop", "step value is zero");
+		return;
+	}
+
+	//We set the numeric variable to the initial value
+	n->setValue(inicio);
+	std::list<Statement *>::iterator stmtIter;
+
+	for(; inicio <= final; inicio+=step){
+		for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++){
+		  (*stmtIter)->evaluate();
+		}
+
+		n->setValue(n->getValue() + step);
+	}
+
+	//We erase the variable because it is a temporal one
+	table.eraseSymbol(this->_variable);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 void lp::EraseStmt::print()
 {
   std::cout << "EraseStmt "  << std::endl;
@@ -1422,9 +1571,9 @@ void lp::PlaceStmt::print()
   std::cout << "y -> " << this->_y << std::endl;
 }
 
-void lp::EraseStmt::evaluate()
+void lp::PlaceStmt::evaluate()
 {
-  PLACE(this->_x, this->_y);
+  PLACE((int)this->_x, (int)this->_y);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

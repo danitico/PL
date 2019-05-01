@@ -338,16 +338,21 @@ asgn: VARIABLE ASSIGNMENT exp
 	{
 		$$ = new lp::AssignmentStmt($1, $3);
 	}
+
+	| VARIABLE ASSIGNMENT asgn
+	{
+		$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+	}
 ;
 
 para: FOR VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 	{
-		//crear nodo AST
+		$$ = new lp::ForStmt($2, $8, $4, $6);
 	}
 
 	| FOR VARIABLE FROM exp UNTIL exp STEP exp DO stmtlist END_FOR
 	{
-		// Crear nodo AST
+		$$ = new lp::ForStmt($2, $10, $4, $6, $8);
 	}
 ;
 

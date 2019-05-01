@@ -1195,7 +1195,7 @@ YY_RULE_SETUP
 #line 113 "interpreter.l"
 {
                      std::string aux(yytext);
-                     aux.substr(1, aux.size()-2);
+                     aux = aux.substr(1, aux.size()-2);
                      yylval.strings = strdup(aux.c_str());
 
                      return STRINGS;

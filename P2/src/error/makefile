@@ -10,7 +10,7 @@ CPP = g++
 # -Wall: all warnings
 # -ansi: standard language
 # -02: optimization level
-CFLAGS = -c -g  -Wall -ansi -O2
+CFLAGS = -c -g  -Wall -ansi -O2 -std=c++11
 
 # Objects
 OBJECTS= $(NAME).o
@@ -18,7 +18,7 @@ OBJECTS= $(NAME).o
 # Includes
 INCLUDES = $(NAME).hpp ../includes/macros.hpp
 
-# Predefined macros 
+# Predefined macros
 #
 # $@: name of the target
 # $^: all the dependencies
@@ -31,7 +31,7 @@ INCLUDES = $(NAME).hpp ../includes/macros.hpp
 all: $(OBJECTS)
 
 
-# Error recovery functions 
+# Error recovery functions
 $(NAME).o: $(NAME).cpp $(INCLUDES)
 	@echo "Compiling " $<
 	@$(CPP) $(CFLAGS) $<
@@ -41,9 +41,8 @@ $(NAME).o: $(NAME).cpp $(INCLUDES)
 
 #######################################################
 # Auxiliary files are deleted
-clean: 
+clean:
 	@echo
 	@echo "Deleting in subdirectory error"
-	@rm -f $(OBJECTS) *~ 
+	@rm -f $(OBJECTS) *~
 	@echo
-

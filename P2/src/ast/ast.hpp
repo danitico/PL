@@ -869,180 +869,180 @@ class PowerNode : public NumericOperatorNode
   \brief   Definition of atributes and methods of BuiltinFunctionNode class
   \note    BuiltinFunctionNode Class publicly inherits from ExpNode class
 */
-class BuiltinFunctionNode : public ExpNode
-{
-  protected:
-	std::string _id; //!< Name of the BuiltinFunctionNode
-
-  public:
-/*!
-	\brief Constructor of BuiltinFunctionNode
-	\param id: string, name of the BuiltinFunction
-	\post  A new BuiltinFunctionNode is created with the parameter
-*/
-  BuiltinFunctionNode(std::string id)
-	{
-		this->_id = id;
-	}
-
-};
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/*!
-  \class   BuiltinFunctionNode_0
-  \brief   Definition of atributes and methods of BuiltinFunctionNode_0 class
-  \note    BuiltinFunctionNode_0 Class publicly inherits from BuiltinFunctionNode class
-		   and adds its own print and evaluate functions
-*/
-class BuiltinFunctionNode_0 : public BuiltinFunctionNode
-{
-  public:
-/*!
-	\brief Constructor of BuiltinFunctionNode_0 uses BuiltinFunctionNode's constructor as member initializer
-	\param id: string, name of the BuiltinFunction
-	\post  A new BuiltinFunctionNode_2 is created with the parameter
-*/
-  BuiltinFunctionNode_0(std::string id): BuiltinFunctionNode(id)
-	{
-		//
-	}
-
-	/*!
-		\brief   Get the type of the child expression:
-		\return  int
-		\sa		 print
-	*/
-	int getType();
-
-
-
-	/*!
-		\brief   Print the BuiltinFunctionNode_0
-		\return  void
-		\sa		 evaluate()
-	*/
-	  void print();
-
-	/*!
-		\brief   Evaluate the BuiltinFunctionNode_0
-		\return  double
-		\sa		 print
-	*/
-	  double evaluateNumber();
-};
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/*!
-  \class   BuiltinFunctionNode_1
-  \brief   Definition of atributes and methods of BuiltinFunctionNode_1 class
-  \note    BuiltinFunctionNode_1 Class publicly inherits from BuiltinFunctionNode class
-		   and adds its own print and evaluate functions
-*/
-class BuiltinFunctionNode_1: public BuiltinFunctionNode
-{
-  private:
-	ExpNode *_exp;  //!< Argument of the BuiltinFunctionNode_1
-
-  public:
-/*!
-	\brief Constructor of BuiltinFunctionNode_1 uses BuiltinFunctionNode's constructor as member initializer
-	\param id: string, name of the BuiltinFunction
-	\param expression: pointer to ExpNode, argument of the BuiltinFunctionNode_1
-	\post  A new BuiltinFunctionNode_1 is created with the parameters
-*/
-  BuiltinFunctionNode_1(std::string id, ExpNode *expression): BuiltinFunctionNode(id)
-	{
-		this->_exp = expression;
-	}
-
-	/*!
-		\brief   Get the type of the child expression:
-		\return  int
-		\sa		 print
-	*/
-	int getType();
-
-	/*!
-		\brief   Print the BuiltinFunctionNode_1
-		\return  void
-		\sa		 evaluate()
-	*/
-	  void print();
-
-	/*!
-		\brief   Evaluate the BuiltinFunctionNode_1
-		\return  double
-		\sa		 print
-	*/
-	  double evaluateNumber();
-};
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/*!
-  \class   BuiltinFunctionNode_2
-  \brief   Definition of atributes and methods of BuiltinFunctionNode_2 class
-  \note    BuiltinFunctionNode_2 Class publicly inherits from BuiltinFunctionNode class
-		   and adds its own print and evaluate functions
-*/
-class BuiltinFunctionNode_2 : public BuiltinFunctionNode
-{
-	private:
-		ExpNode *_exp1; //!< First argument of the BuiltinFunction_2
-		ExpNode *_exp2; //!< Second argument of the BuiltinFunction_2
-
-	public:
-	/*!
-		\brief Constructor of BuiltinFunctionNode_2 uses BuiltinFunctionNode's constructor as member initializer
-		\param id: string, name of the BuiltinFunction_2
-		\param expression1: pointer to ExpNode, first argument of the BuiltinFunctionNode
-		\param expression2: pointer to ExpNode, second argument of the BuiltinFunctionNode
-		\post  A new BuiltinFunctionNode_2 is created with the parameters
-	*/
-	  BuiltinFunctionNode_2(std::string id,ExpNode *expression1,ExpNode *expression2): BuiltinFunctionNode(id)
-	{
-		this->_exp1 = expression1;
-		this->_exp2 = expression2;
-	}
-
-	/*!
-	\brief   Get the type of the children expressions
-	\return  int
-	\sa		 print
-	*/
-	int getType();
-
-
-
-	/*!
-		\brief   Print the BuiltinFunctionNode_2
-		\return  void
-		\sa		 evaluate()
-	*/
-	  void print();
-
-	/*!
-		\brief   Evaluate the BuiltinFunctionNode_2
-		\return  double
-		\sa		 print
-	*/
-	  double evaluateNumber();
-};
+// class BuiltinFunctionNode : public ExpNode
+// {
+//   protected:
+// 	std::string _id; //!< Name of the BuiltinFunctionNode
+//
+//   public:
+// /*!
+// 	\brief Constructor of BuiltinFunctionNode
+// 	\param id: string, name of the BuiltinFunction
+// 	\post  A new BuiltinFunctionNode is created with the parameter
+// */
+//   BuiltinFunctionNode(std::string id)
+// 	{
+// 		this->_id = id;
+// 	}
+//
+// };
+//
+//
+//
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+// /*!
+//   \class   BuiltinFunctionNode_0
+//   \brief   Definition of atributes and methods of BuiltinFunctionNode_0 class
+//   \note    BuiltinFunctionNode_0 Class publicly inherits from BuiltinFunctionNode class
+// 		   and adds its own print and evaluate functions
+// */
+// class BuiltinFunctionNode_0 : public BuiltinFunctionNode
+// {
+//   public:
+// /*!
+// 	\brief Constructor of BuiltinFunctionNode_0 uses BuiltinFunctionNode's constructor as member initializer
+// 	\param id: string, name of the BuiltinFunction
+// 	\post  A new BuiltinFunctionNode_2 is created with the parameter
+// */
+//   BuiltinFunctionNode_0(std::string id): BuiltinFunctionNode(id)
+// 	{
+// 		//
+// 	}
+//
+// 	/*!
+// 		\brief   Get the type of the child expression:
+// 		\return  int
+// 		\sa		 print
+// 	*/
+// 	int getType();
+//
+//
+//
+// 	/*!
+// 		\brief   Print the BuiltinFunctionNode_0
+// 		\return  void
+// 		\sa		 evaluate()
+// 	*/
+// 	  void print();
+//
+// 	/*!
+// 		\brief   Evaluate the BuiltinFunctionNode_0
+// 		\return  double
+// 		\sa		 print
+// 	*/
+// 	  double evaluateNumber();
+// };
+//
+//
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+// /*!
+//   \class   BuiltinFunctionNode_1
+//   \brief   Definition of atributes and methods of BuiltinFunctionNode_1 class
+//   \note    BuiltinFunctionNode_1 Class publicly inherits from BuiltinFunctionNode class
+// 		   and adds its own print and evaluate functions
+// */
+// class BuiltinFunctionNode_1: public BuiltinFunctionNode
+// {
+//   private:
+// 	ExpNode *_exp;  //!< Argument of the BuiltinFunctionNode_1
+//
+//   public:
+// /*!
+// 	\brief Constructor of BuiltinFunctionNode_1 uses BuiltinFunctionNode's constructor as member initializer
+// 	\param id: string, name of the BuiltinFunction
+// 	\param expression: pointer to ExpNode, argument of the BuiltinFunctionNode_1
+// 	\post  A new BuiltinFunctionNode_1 is created with the parameters
+// */
+//   BuiltinFunctionNode_1(std::string id, ExpNode *expression): BuiltinFunctionNode(id)
+// 	{
+// 		this->_exp = expression;
+// 	}
+//
+// 	/*!
+// 		\brief   Get the type of the child expression:
+// 		\return  int
+// 		\sa		 print
+// 	*/
+// 	int getType();
+//
+// 	/*!
+// 		\brief   Print the BuiltinFunctionNode_1
+// 		\return  void
+// 		\sa		 evaluate()
+// 	*/
+// 	  void print();
+//
+// 	/*!
+// 		\brief   Evaluate the BuiltinFunctionNode_1
+// 		\return  double
+// 		\sa		 print
+// 	*/
+// 	  double evaluateNumber();
+// };
+//
+//
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+// /*!
+//   \class   BuiltinFunctionNode_2
+//   \brief   Definition of atributes and methods of BuiltinFunctionNode_2 class
+//   \note    BuiltinFunctionNode_2 Class publicly inherits from BuiltinFunctionNode class
+// 		   and adds its own print and evaluate functions
+// */
+// class BuiltinFunctionNode_2 : public BuiltinFunctionNode
+// {
+// 	private:
+// 		ExpNode *_exp1; //!< First argument of the BuiltinFunction_2
+// 		ExpNode *_exp2; //!< Second argument of the BuiltinFunction_2
+//
+// 	public:
+// 	/*!
+// 		\brief Constructor of BuiltinFunctionNode_2 uses BuiltinFunctionNode's constructor as member initializer
+// 		\param id: string, name of the BuiltinFunction_2
+// 		\param expression1: pointer to ExpNode, first argument of the BuiltinFunctionNode
+// 		\param expression2: pointer to ExpNode, second argument of the BuiltinFunctionNode
+// 		\post  A new BuiltinFunctionNode_2 is created with the parameters
+// 	*/
+// 	  BuiltinFunctionNode_2(std::string id,ExpNode *expression1,ExpNode *expression2): BuiltinFunctionNode(id)
+// 	{
+// 		this->_exp1 = expression1;
+// 		this->_exp2 = expression2;
+// 	}
+//
+// 	/*!
+// 	\brief   Get the type of the children expressions
+// 	\return  int
+// 	\sa		 print
+// 	*/
+// 	int getType();
+//
+//
+//
+// 	/*!
+// 		\brief   Print the BuiltinFunctionNode_2
+// 		\return  void
+// 		\sa		 evaluate()
+// 	*/
+// 	  void print();
+//
+// 	/*!
+// 		\brief   Evaluate the BuiltinFunctionNode_2
+// 		\return  double
+// 		\sa		 print
+// 	*/
+// 	  double evaluateNumber();
+// };
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1810,6 +1810,56 @@ class WhileStmt : public Statement
 
 /*!
 	\brief   Evaluate the WhileStmt
+	\return  void
+	\sa		 print
+*/
+  void evaluate();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   ForStmt
+  \brief   Definition of atributes and methods of ForStmt class
+  \note    ForStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class ForStmt : public Statement
+{
+ private:
+  std::string _variable; //!< Name of the variable
+  ExpNode *_inicio;
+  ExpNode *_fin;
+  ExpNode *_step;
+  std::list<Statement *> *_stmts;  //!< List of statements
+
+  public:
+/*!
+	\brief Constructor of  ForStmt
+	\param condition: ExpNode of the condition
+	\param statement: Statement of the body of the loop
+	\post  A new ForStmt is created with the parameters
+*/
+  ForStmt(std::string variable, std::list<Statement *> *stmts, ExpNode *inicio, ExpNode *fin, ExpNode *step=NULL)
+	{
+		this->_variable = variable;
+		this->_stmts = stmts;
+      this->_inicio = inicio;
+      this->_fin = fin;
+      this->_step = step;
+	}
+
+
+/*!
+	\brief   Print the ForStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the ForStmt
 	\return  void
 	\sa		 print
 */
