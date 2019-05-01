@@ -326,10 +326,25 @@ int lp::LogicalOperatorNode:: getType()
 	return	result;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+int lp::StringOperatorNode::getType()
+{
+	int result = 0;
+
+	if ( (this->_left->getType() == STRINGS) and (this->_right->getType() == STRINGS))
+	{
+		result = STRINGS;
+	}
+	else
+		warning("Runtime error: incompatible types for", "String Operator");
+
+	return result;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 void lp::UnaryMinusNode::print()
 {
@@ -941,7 +956,7 @@ void lp::OrNode::print()
 {
   std::cout << "OrNode: " << std::endl;
   this->_left->print();
-  std::cout << " || ";
+  std::cout << " _o ";
   this->_right->print();
 }
 
@@ -994,8 +1009,32 @@ bool lp::NotNode::evaluateBool()
 	return result;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
+void lp::ConcatenateNode::print()
+{
+  std::cout << "ConcatenateNode: " << std::endl;
+  this->_left->print();
+  std::cout << " || ";
+  this->_right->print();
+}
 
+std::string lp::ConcatenateNode::evaluateString()
+{
+	std::string result = "";
+
+	if (this->getType() == STRINGS)
+	{
+		result = this->_left->evaluateString() + this->_right->evaluateString();
+	}
+	else
+	{
+		warning("Runtime error: incompatible types of parameters for ", "operator Concatenate");
+	}
+
+	return result;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

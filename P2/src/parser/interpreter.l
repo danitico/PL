@@ -22,7 +22,8 @@ identifier        {letter}({letter}|{digit}|\_({letter}|{digit}))*
 bad_identifier    ({letter}|{digit})+(\_\_)+({letter}+|{digit}+)?
 number            {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 strings           "'"(.*|"\'".*"\'")*"'"
-
+/* El regex de strings esta mal, me da problemas con el operador concatenar,
+tengo que mejorarlo para que este concatene bien */
 %x COMMENTARY_1
 %x COMMENTARY_2
 %x ERROR

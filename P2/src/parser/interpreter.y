@@ -332,6 +332,11 @@ exp:	NUMBER
 		  // Create a new "logic negation" node
  			$$ = new lp::NotNode($2);
 		}
+
+	 | exp CONCATENATE exp
+	 	{
+			$$ = new lp::ConcatenateNode($1, $3);
+		}
 ;
 
 asgn: VARIABLE ASSIGNMENT exp
