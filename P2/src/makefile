@@ -1,4 +1,4 @@
-NAME=interpreter
+NAME=ipe
 
 # Compiler
 CPP = g++
@@ -12,7 +12,7 @@ CPP = g++
 CFLAGS = -c -g  -Wall -ansi -O2 -std=c++11
 
 # Directive for flex's library
-LFLAGS = -lfl 
+LFLAGS = -lfl
 
 # Objects
 OBJECTS= $(NAME).o
@@ -32,7 +32,7 @@ INCLUDES = ./parser/interpreter.tab.h ./error/error.hpp \
 			./ast/ast.hpp
 
 #######################################################
-# Predefined macros 
+# Predefined macros
 #
 # $@: name of the target
 # $^: all the dependencies
@@ -45,7 +45,7 @@ INCLUDES = ./parser/interpreter.tab.h ./error/error.hpp \
 $(NAME).exe :  parser-dir error-dir table-dir ast-dir $(OBJECTS)
 	@echo "Generating " $(NAME).exe
 	@$(CPP) $(OBJECTS) $(OBJECTS-PARSER) $(OBJECTS-ERROR)  $(OBJECTS-TABLE)  $(OBJECTS-AST) \
-	$(LFLAGS) -o $(NAME).exe 
+	$(LFLAGS) -o $(NAME).exe
 
 
 # Main program
@@ -54,37 +54,37 @@ $(NAME).o: $(NAME).cpp parser-dir ast-dir $(INCLUDES)
 	@$(CPP) $(CFLAGS) $<
 	@echo
 
-# 
+#
 parser-dir:
-	@echo "Accessing directory parser" 
+	@echo "Accessing directory parser"
 	@echo
 	@make -C parser/
 	@echo
 
 error-dir:
-	@echo "Accessing directory error" 
+	@echo "Accessing directory error"
 	@echo
-	@make -C error/ 
+	@make -C error/
 	@echo
 
 # New in example 7
 table-dir:
-	@echo "Accessing directory table" 
+	@echo "Accessing directory table"
 	@echo
-	@make -C table/ 
+	@make -C table/
 	@echo
 
 
 # New in example 16
 ast-dir:
-	@echo "Accessing directory ast" 
+	@echo "Accessing directory ast"
 	@echo
-	@make -C ast/ 
+	@make -C ast/
 	@echo
 
 
 #######################################################
-$(NAME).output: 
+$(NAME).output:
 	@echo "Generating: " $@
 	@make -C parser/ $@
 	@echo
@@ -98,13 +98,13 @@ doc: Doxyfile
 #######################################################
 # Auxiliary files and html directory are deleted
 # Modified in examples 7, 16
-clean: 
+clean:
 	@echo "Deleting html"
-	@rm -rf html 
-	@echo "Deleting " $(OBJECTS)  $(NAME).exe  *~ 
-	@rm -f $(OBJECTS) $(NAME).exe *~ 
+	@rm -rf html
+	@echo "Deleting " $(OBJECTS)  $(NAME).exe  *~
+	@rm -f $(OBJECTS) $(NAME).exe *~
 	@echo
-	@make -C parser/ clean 
+	@make -C parser/ clean
 	@echo
 	@make -C error/ clean
 	@echo
@@ -112,5 +112,3 @@ clean:
 	@echo
 	@make -C ast/ clean
 	@echo
-
-

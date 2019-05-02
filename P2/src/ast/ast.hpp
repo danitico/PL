@@ -261,6 +261,49 @@ class NumberNode : public ExpNode
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+class BoolNode : public ExpNode
+{
+ private:
+   bool _boolean; //!< \brief boolean of boolNode
+
+ public:
+
+/*!
+	\brief Constructor of BoolNode
+	\param value: bool
+	\post  A new BoolNode is created with the value of the parameter
+	\note  Inline function
+*/
+  BoolNode(bool value)
+	{
+	    this->_boolean = value;
+	}
+
+	/*!
+	\brief   Get the type of the expression: BOOL
+	\return  int
+	\sa		 print
+	*/
+	int getType();
+
+	/*!
+		\brief   Print the expression
+		\return  void
+		\sa		 evaluate()
+	*/
+	void print();
+
+	/*!
+		\brief   Evaluate the expression
+		\return  bool
+		\sa		 print
+	*/
+	bool evaluateBool();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 /*!
   \class StringsNode
   \brief Definition of atributes and methods of StringsNode class

@@ -218,6 +218,11 @@ exp:	NUMBER
 			$$ = new lp::StringsNode($1);
 		}
 
+	|	BOOL
+		{
+			$$ = new lp::BoolNode($1);
+		}
+
 	| 	exp PLUS exp
 		{
 			// Create a new plus node

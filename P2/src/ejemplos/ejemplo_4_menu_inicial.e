@@ -9,7 +9,23 @@
   Departamento:  Informática y Análisis Numérico
   Centro:        Escuela Politécnica Superior de Córdoba
   Universidad de Córdoba
- 
+ #
+  Asignatura:    Procesadores de Lenguajes
+
+  Titulación:    Ingeniería Informática
+  Especialidad:  Computación
+  Curso:         Tercero
+  Cuatrimestre:  Segundo
+
+  Departamento:  Informática y Análisis Numérico
+  Centro:        Escuela Politécnica Superior de Córdoba
+  Universidad de Córdoba
+
+  Curso académico: 2018 - 2019
+
+  Fichero de ejemplo nº 3 para el intérprete de pseudocódigo en español: ipe.exe
+#
+
   Curso académico: 2018 - 2019
 
   Fichero de ejemplo nº 4 para el intérprete de pseudocódigo en español: ipe.exe
@@ -38,7 +54,7 @@ _lugar(40,10);
 escribir_cadena('Pulsa una tecla para continuar');
 leer_cadena(pausa);
 
-repetir 
+repetir
 
  @ Opciones disponibles
  _borrar;
@@ -59,8 +75,8 @@ repetir
 
  _borrar;
 
- si (opcion = 0)        
-    entonces  
+ si (opcion = 0)
+    entonces
 	@ Fin del programa
         _lugar(10,10);
         escribir_cadena(nombre);
@@ -73,7 +89,7 @@ repetir
                 _lugar(10,10);
 		escribir_cadena('Ha elegido la opción de Factorial de un número  ');
 
-	si_no  
+	si_no
  		@ Máximo común divisor
 		si (opcion = 2)
 		   entonces
@@ -81,22 +97,23 @@ repetir
 			escribir_cadena(' Ha elegido la opción de Máximo común divisor');
 
 		@ Resto de opciones
-		si_no  
+		si_no
 			_lugar(15,10);
 			escribir_cadena(' Ha elegido una opción incorrecta ');
-		fin_si;  			
-	fin_si;  
- fin_si;  
+		fin_si;
+	fin_si;
+ fin_si;
 
- _lugar(40,10); 
+ _lugar(40,10);
  escribir_cadena('\n Pulse una tecla para continuar --> ');
  leer_cadena(pausa);
- 
- hasta (opcion = 0); 
+
+ escribir(opcion);
+ hasta (_no (opcion = 0));
 
 
 @ Despedida final
 
-_borrar;
-_lugar(10,10);
+@ _borrar;
+@ _lugar(10,10);
 escribir_cadena('El programa ha concluido');

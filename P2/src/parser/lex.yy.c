@@ -1173,7 +1173,7 @@ YY_RULE_SETUP
                      yylval.identifier = strdup(yytext);
 
                      if(! table.lookupSymbol(identifier)){
-                        lp::NumericVariable *var = new lp::NumericVariable(identifier, VARIABLE, UNDEFINED, 0.0);
+                        lp::NumericVariable *var = new lp::NumericVariable(identifier, VARIABLE, NUMBER, 0.0);
                         table.installSymbol(var);
 
                         return VARIABLE;
