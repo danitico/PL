@@ -1789,36 +1789,36 @@ class IfStmt : public Statement
 {
  private:
   ExpNode *_cond; //!< Condicion of the if statement
-  Statement *_stmt1; //!< Statement of the consequent
-  Statement *_stmt2; //!< Statement of the alternative
+  std::list<Statement *> *_stmts1; //!< Statements of the consequent
+  std::list<Statement *> *_stmts2; //!< Statements of the alternative
 
   public:
 /*!
 	\brief Constructor of Single IfStmt (without alternative)
 	\param condition: ExpNode of the condition
-	\param statement1: Statement of the consequent
+	\param statemenst1: Statements of the consequent
 	\post  A new IfStmt is created with the parameters
 */
-  IfStmt(ExpNode *condition, Statement *statement1)
+  IfStmt(ExpNode *condition, std::list<Statement *> *stmts1)
 	{
 		this->_cond = condition;
-		this->_stmt1 = statement1;
-		this->_stmt2 = NULL;
+		this->_stmts1 = stmts1;
+		this->_stmts2 = NULL;
 	}
 
 
 /*!
 	\brief Constructor of Compound IfStmt (with alternative)
 	\param condition: ExpNode of the condition
-	\param statement1: Statement of the consequent
-	\param statement2: Statement of the alternative
+	\param statements1: Statements of the consequent
+	\param statements2: Statements of the alternative
 	\post  A new IfStmt is created with the parameters
 */
-  IfStmt(ExpNode *condition, Statement *statement1, Statement *statement2)
+  IfStmt(ExpNode *condition, std::list<Statement *> *stmts1, std::list<Statement *> *stmts2)
 	{
 		this->_cond = condition;
-		this->_stmt1 = statement1;
-		this->_stmt2 = statement2;
+		this->_stmts1 = stmts1;
+		this->_stmts2 = stmts2;
 	}
 
 
@@ -1855,7 +1855,7 @@ class WhileStmt : public Statement
 {
  private:
   ExpNode *_cond; //!< Condicion of the while statement
-  Statement *_stmt; //!< Statement of the body of the while loop
+  std::list<Statement *> *_stmts;  //!< List of statements
 
   public:
 /*!
@@ -1864,10 +1864,10 @@ class WhileStmt : public Statement
 	\param statement: Statement of the body of the loop
 	\post  A new WhileStmt is created with the parameters
 */
-  WhileStmt(ExpNode *condition, Statement *statement)
+  WhileStmt(ExpNode *condition, std::list<Statement *> *stmts)
 	{
 		this->_cond = condition;
-		this->_stmt = statement;
+		this->_stmts = stmts;
 	}
 
 
@@ -1930,6 +1930,50 @@ class ForStmt : public Statement
 
 /*!
 	\brief   Evaluate the ForStmt
+	\return  void
+	\sa		 print
+*/
+  void evaluate();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   RepeatStmt
+  \brief   Definition of atributes and methods of RepeatStmt class
+  \note    RepeatStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class RepeatStmt : public Statement
+{
+ private:
+  std::list<Statement *> *_stmts;  //!< List of statements
+  ExpNode *_cond;
+
+  public:
+/*!
+	\brief Constructor of RepeatStmt
+	\param condition: ExpNode of the condition
+	\param statement: Statement of the body of the loop
+	\post  A new RepeatStmt is created with the parameters
+*/
+  RepeatStmt(std::list<Statement *> *stmts, ExpNode *cond)
+	{
+		this->_cond = cond;
+		this->_stmts = stmts;
+	}
+
+
+/*!
+	\brief   Print the RepeatStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the RepeatStmt
 	\return  void
 	\sa		 print
 */

@@ -1269,13 +1269,13 @@ void lp::PrintStmt::evaluate()
 	switch(this->_exp->getType())
 	{
 		case NUMBER:
-				std::cout << this->_exp->evaluateNumber() << std::endl;
+				std::cout << this->_exp->evaluateNumber();
 				break;
 		case BOOL:
 			if (this->_exp->evaluateBool())
-				std::cout << "true" << std::endl;
+				std::cout << "true";
 			else
-				std::cout << "false" << std::endl;
+				std::cout << "false";
 
 			break;
 
@@ -1438,11 +1438,22 @@ void lp::IfStmt::print()
   this->_cond->print();
 
   // Consequent
-  this->_stmt1->print();
+  std::list<Statement *>::iterator stmtIter1;
+
+  for (stmtIter1 = this->_stmts1->begin(); stmtIter1 != this->_stmts1->end(); stmtIter1++)
+  {
+	(*stmtIter1)->print();
+  }
 
  // The alternative is printed if exists
-  if (this->_stmt2 != NULL)
-	  this->_stmt2->print();
+	if (this->_stmts2 != NULL){
+		std::list<Statement *>::iterator stmtIter2;
+
+		for (stmtIter2 = this->_stmts2->begin(); stmtIter2 != this->_stmts2->end(); stmtIter2++)
+		{
+		(*stmtIter2)->print();
+		}
+	}
 
   std::cout << std::endl;
 }
@@ -1450,14 +1461,26 @@ void lp::IfStmt::print()
 
 void lp::IfStmt::evaluate()
 {
-   // If the condition is true,
-	if (this->_cond->evaluateBool() == true )
-     // the consequent is run
-	  this->_stmt1->evaluate();
-
-    // Otherwise, the alternative is run if exists
-	else if (this->_stmt2 != NULL)
-		  this->_stmt2->evaluate();
+	if(this->_cond->getType() == BOOL){
+		// If the condition is true,
+		if (this->_cond->evaluateBool() == true ){
+			// the consequent is run
+			std::list<Statement *>::iterator stmtIter1;
+			for (stmtIter1 = this->_stmts1->begin(); stmtIter1 != this->_stmts1->end(); stmtIter1++){
+			 	(*stmtIter1)->evaluate();
+			}
+		}
+		// Otherwise, the alternative is run if exists
+		else if (this->_stmts2 != NULL){
+			std::list<Statement *>::iterator stmtIter2;
+			for (stmtIter2 = this->_stmts2->begin(); stmtIter2 != this->_stmts2->end(); stmtIter2++){
+				(*stmtIter2)->evaluate();
+			}
+		}
+	}
+	else{
+		warning("Runtime error: incompatible type for ", "Condition");
+	}
 }
 
 
@@ -1474,7 +1497,12 @@ void lp::WhileStmt::print()
   this->_cond->print();
 
   // Body of the while loop
-  this->_stmt->print();
+  std::list<Statement *>::iterator stmtIter;
+
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+  {
+	  (*stmtIter)->print();
+  }
 
   std::cout << std::endl;
 }
@@ -1482,10 +1510,18 @@ void lp::WhileStmt::print()
 
 void lp::WhileStmt::evaluate()
 {
-  // While the condition is true. the body is run
-  while (this->_cond->evaluateBool() == true)
-  {
-	  this->_stmt->evaluate();
+  if(this->_cond->getType() == BOOL){
+	  while (this->_cond->evaluateBool() == true)
+	  {
+		  std::list<Statement *>::iterator stmtIter;
+
+		  for(stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++){
+			  (*stmtIter)->evaluate();
+		  }
+	  }
+  }
+  else{
+	  warning("Runtime error: incompatible type for ", "Condition");
   }
 
 }
@@ -1519,7 +1555,6 @@ void lp::ForStmt::print()
 
 void lp::ForStmt::evaluate()
 {
-	std::cout << this->_variable << std::endl;
 	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_variable);
 
 	lp::NumericVariable *n;
@@ -1587,6 +1622,39 @@ void lp::ForStmt::evaluate()
 	table.eraseSymbol(this->_variable);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::RepeatStmt::print()
+{
+  std::cout << "RepeatStmt: "  << std::endl;
+
+  // Body of the while loop
+  std::list<Statement *>::iterator stmtIter;
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+  {
+	  (*stmtIter)->print();
+  }
+
+  this->_cond->print();
+
+  std::cout << std::endl;
+}
+
+void lp::RepeatStmt::evaluate(){
+	if(this->_cond->getType() == BOOL){
+		do{
+			std::list<Statement *>::iterator stmtIter;
+			for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++){
+				(*stmtIter)->evaluate();
+			}
+
+		} while(this->_cond->evaluateBool());
+	}
+	else{
+		warning("Runtime error: incompatible type for ", "Condition");
+	}
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 

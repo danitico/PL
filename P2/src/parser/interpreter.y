@@ -88,11 +88,11 @@
 
 /////////////////////////////////
 
-%token AT HASHTAG
-
 %token SEMICOLON
 
 %token ERASE PLACE REPETITION UNTIL FOR FROM STEP DO END_FOR WHILE END_WHILE IF THEN ELSE END_IF READ READ_STRING WRITE WRITE_STRING
+
+%token AT HASHTAG
 
 %right ASSIGNMENT
 
@@ -121,7 +121,6 @@
 %nonassoc UNARY
 
 %right POWER_OF
-
 
 %%
 
@@ -363,24 +362,24 @@ para: FOR VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 
 repetir: REPETITION stmtlist UNTIL cond
 		{
-			//crear nodo AST
+			$$ = new lp::RepeatStmt($2, $4);
 		}
 ;
 
 mientras: WHILE cond DO stmtlist END_WHILE
 		{
-			//crear nodo AST
+			$$ = new lp::WhileStmt($2, $4);
 		}
 ;
 
 si: IF cond THEN stmtlist END_IF
 	{
-		//CREAR NODO AST
+		$$ = new lp::IfStmt($2, $4);
 	}
 
 	| IF cond THEN stmtlist ELSE stmtlist END_IF
 	{
-		//crear nodo ast
+		$$ = new lp::IfStmt($2, $4, $6);
 	}
 ;
 
