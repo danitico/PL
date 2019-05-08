@@ -55,12 +55,12 @@ tengo que mejorarlo para que este concatene bien */
 "("                  {return LEFTPARENTHESIS;}
 ")"                  {return RIGHTPARENTHESIS;}
 
-"#"                           {BEGIN(COMMENTARY_1); return HASHTAG;}
+"#"                           {BEGIN(COMMENTARY_1);}
 <COMMENTARY_1>[^"#"|^\n]      {;}
 <COMMENTARY_1>\n              {lineNumber++;}
-<COMMENTARY_1>"#"             {BEGIN(INITIAL); return HASHTAG;}
+<COMMENTARY_1>"#"             {BEGIN(INITIAL);}
 
-"@"                  {BEGIN(COMMENTARY_2); return AT;}
+"@"                  {BEGIN(COMMENTARY_2);}
 <COMMENTARY_2>.      {;}
 <COMMENTARY_2>\n     {BEGIN(INITIAL); lineNumber++;}
 

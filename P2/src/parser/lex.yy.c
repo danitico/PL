@@ -1022,7 +1022,7 @@ YY_RULE_SETUP
 case 23:
 YY_RULE_SETUP
 #line 58 "interpreter.l"
-{BEGIN(COMMENTARY_1); return HASHTAG;}
+{BEGIN(COMMENTARY_1);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
@@ -1038,12 +1038,12 @@ YY_RULE_SETUP
 case 26:
 YY_RULE_SETUP
 #line 61 "interpreter.l"
-{BEGIN(INITIAL); return HASHTAG;}
+{BEGIN(INITIAL);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 63 "interpreter.l"
-{BEGIN(COMMENTARY_2); return AT;}
+{BEGIN(COMMENTARY_2);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP

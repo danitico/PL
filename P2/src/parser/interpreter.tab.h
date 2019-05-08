@@ -65,35 +65,33 @@ extern int yydebug;
     READ_STRING = 275,
     WRITE = 276,
     WRITE_STRING = 277,
-    AT = 278,
-    HASHTAG = 279,
-    ASSIGNMENT = 280,
-    COMMA = 281,
-    NUMBER = 282,
-    BOOL = 283,
-    STRINGS = 284,
-    VARIABLE = 285,
-    UNDEFINED = 286,
-    OR = 287,
-    AND = 288,
-    LESS_THAN = 289,
-    LESS_OR_EQUAL = 290,
-    GREATER_THAN = 291,
-    GREATER_OR_EQUAL = 292,
-    EQUAL = 293,
-    NOT_EQUAL = 294,
-    NOT = 295,
-    CONCATENATE = 296,
-    PLUS = 297,
-    MINUS = 298,
-    PRODUCT = 299,
-    DIVISION = 300,
-    MODULUS = 301,
-    INTEGER_DIVISION = 302,
-    LEFTPARENTHESIS = 303,
-    RIGHTPARENTHESIS = 304,
-    UNARY = 305,
-    POWER_OF = 306
+    ASSIGNMENT = 278,
+    COMMA = 279,
+    NUMBER = 280,
+    BOOL = 281,
+    STRINGS = 282,
+    VARIABLE = 283,
+    UNDEFINED = 284,
+    OR = 285,
+    AND = 286,
+    LESS_THAN = 287,
+    LESS_OR_EQUAL = 288,
+    GREATER_THAN = 289,
+    GREATER_OR_EQUAL = 290,
+    EQUAL = 291,
+    NOT_EQUAL = 292,
+    NOT = 293,
+    CONCATENATE = 294,
+    PLUS = 295,
+    MINUS = 296,
+    PRODUCT = 297,
+    DIVISION = 298,
+    MODULUS = 299,
+    INTEGER_DIVISION = 300,
+    LEFTPARENTHESIS = 301,
+    RIGHTPARENTHESIS = 302,
+    UNARY = 303,
+    POWER_OF = 304
   };
 #endif
 
@@ -114,7 +112,7 @@ union YYSTYPE
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 118 "interpreter.tab.h" /* yacc.c:1909  */
+#line 116 "interpreter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
