@@ -14,7 +14,7 @@
 
   Fichero de ejemplo nº 3 para el intérprete de pseudocódigo en español: ipe.exe
 #
- 
+
 @ Máximo común divisor mediante el algoritmo de Euclides
 
 _lugar(10,10);
@@ -42,6 +42,7 @@ fin_si;
 @ Se guardan los valores originales
 A1 := a;
 B1 := b;
+
 
 @ Se aplica el método de Euclides
 resto := a _mod b;

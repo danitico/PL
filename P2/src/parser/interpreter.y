@@ -245,6 +245,11 @@ exp:	NUMBER
 		  $$ = new lp::DivisionNode($1, $3);
 	   }
 
+	|	exp INTEGER_DIVISION exp
+		{
+			$$ = new lp::IntegerDivisionNode($1, $3);
+		}
+
 	| 	LEFTPARENTHESIS exp RIGHTPARENTHESIS
        	{
 		    // just copy up the expression node

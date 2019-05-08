@@ -21,10 +21,8 @@ letter  [a-zA-Z]
 identifier        {letter}({letter}|{digit}|\_({letter}|{digit}))*
 bad_identifier    ({letter}|{digit})+(\_\_)+({letter}+|{digit}+)?
 number            {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
-strings           "'"(.*|"\'".*"\'")*"'"
-/* PREGUNTAR A NICOLÁS */
-/* El regex de strings esta mal, me da problemas con el operador concatenar,
-tengo que mejorarlo para que este concatene bien */
+strings           "'"([^\|\|]*|"\'"[^\|\|]*"\'")*"'"
+
 %x COMMENTARY_1
 %x COMMENTARY_2
 %x ERROR
@@ -64,23 +62,6 @@ tengo que mejorarlo para que este concatene bien */
 <COMMENTARY_2>.      {;}
 <COMMENTARY_2>\n     {BEGIN(INITIAL); lineNumber++;}
 
-(?i:repetir)         {return REPETITION;}
-(?i:hasta)           {return UNTIL;}
-(?i:para)            {return FOR;}
-(?i:desde)           {return FROM;}
-(?i:paso)            {return STEP;}
-(?i:hacer)           {return DO;}
-(?i:fin_para)        {return END_FOR;}
-(?i:mientras)        {return WHILE;}
-(?i:fin_mientras)    {return END_WHILE;}
-(?i:si)              {return IF;}
-(?i:entonces)        {return THEN;}
-(?i:si_no)           {return ELSE;}
-(?i:fin_si)          {return END_IF;}
-(?i:leer)            {return READ;}
-(?i:leer_cadena)     {return READ_STRING;}
-(?i:escribir)        {return WRITE;}
-(?i:escribir_cadena) {return WRITE_STRING;}
 (?i:_borrar)         {return ERASE;}
 (?i:_lugar)          {return PLACE;}
 
@@ -89,7 +70,7 @@ tengo que mejorarlo para que este concatene bien */
 
 {identifier}   {
                      for(int i=0; yytext[i] != '\0'; i++){
-                        yytext[i]=toupper(yytext[i]);
+                        yytext[i]=tolower(yytext[i]);
                      }
                      std::string identifier(yytext);
                      yylval.identifier = strdup(yytext);

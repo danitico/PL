@@ -857,6 +857,42 @@ class DivisionNode : public NumericOperatorNode
   double evaluateNumber();
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   IntegerDivisionNode
+  \brief   Definition of atributes and methods of IntegerDivisionNode class
+  \note    IntegerDivisionNode Class publicly inherits from NumericOperatorNode class
+		   and adds its own print and evaluate functions
+*/
+class IntegerDivisionNode : public NumericOperatorNode
+{
+  public:
+/*!
+	\brief Constructor of IntegerDivisionNode uses NumericOperatorNode's constructor as members initializer
+	\param L: pointer to ExpNode
+	\param R: pointer to ExpNode
+	\post  A new IntegerDivisionNode is created with the parameter
+*/
+  IntegerDivisionNode(ExpNode *L, ExpNode *R): NumericOperatorNode(L,R)
+  {
+		// Empty
+  }
+/*!
+	\brief   Print the IntegerDivisionNode
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the IntegerDivisionNode
+	\return  double
+	\sa		 print
+*/
+  double evaluateNumber();
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

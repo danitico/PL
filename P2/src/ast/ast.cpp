@@ -537,6 +537,7 @@ double lp::DivisionNode::evaluateNumber()
 		else
 		{
 			warning("Runtime error", "Division by zero");
+			exit(-1);
 		}
 	}
 	else
@@ -547,7 +548,47 @@ double lp::DivisionNode::evaluateNumber()
   return result;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
+void lp::IntegerDivisionNode::print()
+{
+  std::cout << "IntegerDivisionNode: " << std::endl;
+  this->_left->print();
+  std::cout << " / ";
+  this->_right->print();
+}
+
+double lp::IntegerDivisionNode::evaluateNumber()
+{
+	int result = 0;
+
+	// Ckeck the types of the expressions
+	if (this->getType() == NUMBER)
+	{
+		double leftNumber, rightNumber;
+
+		leftNumber = this->_left->evaluateNumber();
+		rightNumber = this->_right->evaluateNumber();
+
+		// The divisor is not zero
+    	if(std::abs(rightNumber) > ERROR_BOUND)
+		{
+				result = leftNumber / rightNumber;
+		}
+		else
+		{
+			warning("Runtime error", "Division by zero");
+			exit(-1);
+		}
+	}
+	else
+	{
+		warning("Runtime error: the expressions are not numeric for", "Division");
+	}
+
+  return result;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1613,15 +1654,15 @@ void lp::ForStmt::evaluate()
 
 	if(inicio > final && step > 0){
 		warning("Runtime error: Infinite Loop", "inicio > final and step > 0");
-		return;
+		exit(-1);
 	}
 	else if(inicio < final && step < 0){
 		warning("Runtime error: Infinite Loop", "inicio < final and step < 0");
-		return;
+		exit(-1);
 	}
 	else if(step == 0){
 		warning("Runtime error: Infinite Loop", "step value is zero");
-		return;
+		exit(-1);
 	}
 
 	//We set the numeric variable to the initial value
@@ -1667,7 +1708,7 @@ void lp::RepeatStmt::evaluate(){
 				(*stmtIter)->evaluate();
 			}
 
-		} while(! this->_cond->evaluateBool());
+		} while(!this->_cond->evaluateBool());
 	}
 	else{
 		warning("Runtime error: incompatible type for ", "Condition");
