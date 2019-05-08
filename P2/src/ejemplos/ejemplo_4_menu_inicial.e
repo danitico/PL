@@ -9,26 +9,10 @@
   Departamento:  Informática y Análisis Numérico
   Centro:        Escuela Politécnica Superior de Córdoba
   Universidad de Córdoba
- #
-  Asignatura:    Procesadores de Lenguajes
-
-  Titulación:    Ingeniería Informática
-  Especialidad:  Computación
-  Curso:         Tercero
-  Cuatrimestre:  Segundo
-
-  Departamento:  Informática y Análisis Numérico
-  Centro:        Escuela Politécnica Superior de Córdoba
-  Universidad de Córdoba
 
   Curso académico: 2018 - 2019
 
   Fichero de ejemplo nº 3 para el intérprete de pseudocódigo en español: ipe.exe
-#
-
-  Curso académico: 2018 - 2019
-
-  Fichero de ejemplo nº 4 para el intérprete de pseudocódigo en español: ipe.exe
 #
 
 @ Bienvenida
@@ -107,13 +91,11 @@ repetir
  _lugar(40,10);
  escribir_cadena('\n Pulse una tecla para continuar --> ');
  leer_cadena(pausa);
-
- escribir(opcion);
- hasta (_no (opcion = 0));
+ hasta (opcion = 0);
 
 
 @ Despedida final
 
 @ _borrar;
 @ _lugar(10,10);
-escribir_cadena('El programa ha concluido');
+escribir_cadena('El programa ha concluido\n');

@@ -153,10 +153,10 @@ repetir
  escribir_cadena('\n Pulse una tecla para continuar --> ');
  leer_cadena(pausa);
 
-hasta (opcion <> 0);
+hasta (opcion = 0);
 
 @ Despedida final
 
 _borrar;
 _lugar(10,10);
-escribir_cadena('El programa ha concluido');
+escribir_cadena('El programa ha concluido\n');

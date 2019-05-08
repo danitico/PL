@@ -1667,7 +1667,7 @@ void lp::RepeatStmt::evaluate(){
 				(*stmtIter)->evaluate();
 			}
 
-		} while(this->_cond->evaluateBool());
+		} while(! this->_cond->evaluateBool());
 	}
 	else{
 		warning("Runtime error: incompatible type for ", "Condition");
