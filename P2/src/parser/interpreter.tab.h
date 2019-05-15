@@ -89,14 +89,16 @@ extern int yydebug;
     DIVIDE_VARIABLE = 299,
     PLUS = 300,
     MINUS = 301,
-    PRODUCT = 302,
-    DIVISION = 303,
-    MODULUS = 304,
-    INTEGER_DIVISION = 305,
-    LEFTPARENTHESIS = 306,
-    RIGHTPARENTHESIS = 307,
-    UNARY = 308,
-    POWER_OF = 309
+    PLUS_PLUS = 302,
+    MINUS_MINUS = 303,
+    PRODUCT = 304,
+    DIVISION = 305,
+    MODULUS = 306,
+    INTEGER_DIVISION = 307,
+    LEFTPARENTHESIS = 308,
+    RIGHTPARENTHESIS = 309,
+    UNARY = 310,
+    POWER_OF = 311
   };
 #endif
 
@@ -117,7 +119,7 @@ union YYSTYPE
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 121 "interpreter.tab.h" /* yacc.c:1909  */
+#line 123 "interpreter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

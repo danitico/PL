@@ -1481,43 +1481,62 @@ void lp::DivideVariableStmt::evaluate()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-// TODO: Crear una nueva clase abstracta para los ++ y los --
-// void lp::PlusPlusStmt::print()
-// {
-//   std::cout << "PlusPlusStmt: "  << std::endl;
-//   std::cout << this->_id << " = ";
-//   this->_exp->print();
-//   std::cout << std::endl;
-// }
-//
-// void lp::PlusPlusStmt::evaluate()
-// {
-// 	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
-//
-// 	switch(this->_exp->getType())
-// 	{
-// 		case NUMBER:
-// 		{
-// 			// Check the type of the first varible
-// 			if (firstVar->getType() == NUMBER)
-// 			{
-// 				// Get the identifier in the table of symbols as NumericVariable
-// 				lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
-//
-// 				v->setValue(v->getValue() + 1);
-// 			}
-// 				// The type of variable is not NUMBER
-// 			else
-// 			{
-// 				warning("Runtime error: incompatible type of variable for ", "DivideVariableStmt");
-// 			}
-// 		}
-// 		break;
-//
-// 		default:
-// 			warning("Runtime error: incompatible type of expression for ", "DivideVariableStmt");
-// 	}
-// }
+void lp::PlusPlusStmt::print()
+{
+  std::cout << "PlusPlusStmt: "  << std::endl;
+  std::cout << this->_id << " = ";
+  std::cout << std::endl;
+}
+
+void lp::PlusPlusStmt::evaluate()
+{
+	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
+
+	switch(firstVar->getType())
+	{
+		case NUMBER:
+		{
+			// Get the identifier in the table of symbols as NumericVariable
+			lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+			v->setValue(v->getValue() + 1);
+		}
+		break;
+
+		default:
+			warning("Runtime error: incompatible type of expression for ", "PlusPlusStmt");
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::MinusMinusStmt::print()
+{
+  std::cout << "MinusMinusStmt: "  << std::endl;
+  std::cout << this->_id << " = ";
+  std::cout << std::endl;
+}
+
+void lp::MinusMinusStmt::evaluate()
+{
+	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
+
+	switch(firstVar->getType())
+	{
+		case NUMBER:
+		{
+			// Get the identifier in the table of symbols as NumericVariable
+			lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+			v->setValue(v->getValue() - 1);
+		}
+		break;
+
+		default:
+			warning("Runtime error: incompatible type of expression for ", "MinusMinusStmt");
+	}
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

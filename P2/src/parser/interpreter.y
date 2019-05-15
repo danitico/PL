@@ -387,12 +387,22 @@ asgn: VARIABLE ASSIGNMENT exp
 
 	| VARIABLE PLUS_PLUS
 	{
-		$$ = new lp::PlusPlusStmt()
+		$$ = new lp::PlusPlusStmt($1);
 	}
 
 	| PLUS_PLUS VARIABLE
 	{
-		//nodo
+		$$ = new lp::PlusPlusStmt($2);
+	}
+
+	| VARIABLE MINUS_MINUS
+	{
+		$$ = new lp::MinusMinusStmt($1);
+	}
+
+	| MINUS_MINUS VARIABLE
+	{
+		$$ = new lp::MinusMinusStmt($2);
 	}
 
 	| CONSTANT ASSIGNMENT exp

@@ -1845,17 +1845,15 @@ class PlusPlusStmt : public Statement
 {
  private:
   std::string _id;    //!< Name of the variable of the assignment statement
-  ExpNode *_exp; 	 //!< Expresssion the assignment statement
 
  public:
 
 /*!
 	\brief Constructor of PlusPlusStmt
 	\param id: string, variable of the PlusPlusStmt
-	\param expression: pointer to ExpNode
 	\post  A new PlusPlusStmt is created with the parameters
 */
-  PlusPlusStmt(std::string id, ExpNode *expression): _id(id), _exp(expression)
+  PlusPlusStmt(std::string id): _id(id)
 	{
 
 	}
@@ -1869,6 +1867,48 @@ class PlusPlusStmt : public Statement
 
 /*!
 	\brief   Evaluate the PlusPlusStmt
+	\return  void
+	\sa		 print
+*/
+    void evaluate();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   MinusMinusStmt
+  \brief   Definition of atributes and methods of MinusMinusStmt class
+  \note    MinusMinusStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class MinusMinusStmt : public Statement
+{
+ private:
+  std::string _id;    //!< Name of the variable of the assignment statement
+
+ public:
+
+/*!
+	\brief Constructor of MinusMinusStmt
+	\param id: string, variable of the MinusMinusStmt
+	\post  A new MinusMinusStmt is created with the parameters
+*/
+  MinusMinusStmt(std::string id): _id(id)
+	{
+
+	}
+
+/*!
+	\brief   Print the MinusMinusStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the MinusMinusStmt
 	\return  void
 	\sa		 print
 */
