@@ -83,16 +83,20 @@ extern int yydebug;
     NOT_EQUAL = 293,
     NOT = 294,
     CONCATENATE = 295,
-    PLUS = 296,
-    MINUS = 297,
-    PRODUCT = 298,
-    DIVISION = 299,
-    MODULUS = 300,
-    INTEGER_DIVISION = 301,
-    LEFTPARENTHESIS = 302,
-    RIGHTPARENTHESIS = 303,
-    UNARY = 304,
-    POWER_OF = 305
+    SUM_VARIABLE = 296,
+    SUBSTRACT_VARIABLE = 297,
+    PRODUCT_VARIABLE = 298,
+    DIVIDE_VARIABLE = 299,
+    PLUS = 300,
+    MINUS = 301,
+    PRODUCT = 302,
+    DIVISION = 303,
+    MODULUS = 304,
+    INTEGER_DIVISION = 305,
+    LEFTPARENTHESIS = 306,
+    RIGHTPARENTHESIS = 307,
+    UNARY = 308,
+    POWER_OF = 309
   };
 #endif
 
@@ -113,7 +117,7 @@ union YYSTYPE
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 117 "interpreter.tab.h" /* yacc.c:1909  */
+#line 121 "interpreter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

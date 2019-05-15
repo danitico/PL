@@ -111,6 +111,7 @@
 
 %left CONCATENATE
 
+%left SUM_VARIABLE SUBSTRACT_VARIABLE PRODUCT_VARIABLE DIVIDE_VARIABLE
 %left PLUS MINUS
 %left PRODUCT DIVISION MODULUS INTEGER_DIVISION
 
@@ -143,6 +144,7 @@ stmtlist:
 
 				if(interactiveMode){
 					$2->evaluate();
+					std::cout << std::endl << "-> ";
 				}
 			}
 
@@ -361,6 +363,26 @@ asgn: VARIABLE ASSIGNMENT exp
 	| VARIABLE ASSIGNMENT asgn
 	{
 		$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+	}
+
+	| VARIABLE SUM_VARIABLE exp
+	{
+		$$ = new lp::SumVariableStmt($1, $3);
+	}
+
+	| VARIABLE SUBSTRACT_VARIABLE exp
+	{
+		$$ = new lp::SubstractVariableStmt($1, $3);
+	}
+
+	| VARIABLE PRODUCT_VARIABLE exp
+	{
+		$$ = new lp::ProductVariableStmt($1, $3);
+	}
+
+	| VARIABLE DIVIDE_VARIABLE exp
+	{
+		/* $$ = new lp::ProductVariableStmt($1, $3); */
 	}
 
 	| CONSTANT ASSIGNMENT exp

@@ -47,6 +47,10 @@ strings           "'"([^']|"\\\'")*"'"
 "-"                  {return MINUS;}
 "+"                  {return PLUS;}
 ":="                 {return ASSIGNMENT;}
+"+:="                {return SUM_VARIABLE;}
+"-:="                {return SUBSTRACT_VARIABLE;}
+"*:="                {return PRODUCT_VARIABLE;}
+"/:="                {return DIVIDE_VARIABLE;}
 ";"                  {return SEMICOLON;}
 ","                  {return COMMA;}
 "("                  {return LEFTPARENTHESIS;}

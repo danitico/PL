@@ -61,6 +61,7 @@ lp::AST *root; //!< Root of the abstract syntax tree AST
 // NEW in example 10
 
 #include "table/init.hpp"
+#include "includes/macros.hpp"
 
 
 /*
@@ -105,15 +106,21 @@ int main(int argc, char *argv[])
       otherwise
             the input device is the keyboard (stdin)
  */
- if (argc == 2)
- {
-     yyin = fopen(argv[1],"r");
+if (argc == 2)
+{
+   std::string fichero(argv[1]);
+   if(fichero[fichero.size() - 1] != 'e' || fichero[fichero.size() - 2] != '.'){
+      std::cout << BIRED << "El fichero no tiene el formato requerido" << RESET << std::endl;
+      exit(-1);
+   }
+   yyin = fopen(argv[1],"r");
 
-	 interactiveMode = false;
- }
+   interactiveMode = false;
+}
 else
  {
 	interactiveMode = true;
+   std::cout << "-> ";
  }
 
  // Copy the name of the interpreter

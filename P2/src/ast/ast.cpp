@@ -446,7 +446,6 @@ double lp::PlusNode::evaluateNumber()
   return result;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1310,6 +1309,128 @@ void lp::AssignmentStmt::evaluate()
 	}
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::SumVariableStmt::print()
+{
+  std::cout << "SumVariableStmt: "  << std::endl;
+  std::cout << this->_id << " = ";
+  this->_exp->print();
+  std::cout << std::endl;
+}
+
+void lp::SumVariableStmt::evaluate()
+{
+	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
+
+	switch(this->_exp->getType())
+	{
+		case NUMBER:
+		{
+			// Check the type of the first varible
+			if (firstVar->getType() == NUMBER)
+			{
+				// Get the identifier in the table of symbols as NumericVariable
+				lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+				// Assignment the value to the identifier in the table of symbols
+				v->setValue(v->getValue() + this->_exp->evaluateNumber());
+			}
+				// The type of variable is not NUMBER
+			else
+			{
+				warning("Runtime error: incompatible type of variable for ", "SumVariableAssigment");
+			}
+		}
+		break;
+
+		default:
+			warning("Runtime error: incompatible type of expression for ", "SumVariableAssigment");
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::SubstractVariableStmt::print()
+{
+  std::cout << "SubstractVariableStmt: "  << std::endl;
+  std::cout << this->_id << " = ";
+  this->_exp->print();
+  std::cout << std::endl;
+}
+
+void lp::SubstractVariableStmt::evaluate()
+{
+	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
+
+	switch(this->_exp->getType())
+	{
+		case NUMBER:
+		{
+			// Check the type of the first varible
+			if (firstVar->getType() == NUMBER)
+			{
+				// Get the identifier in the table of symbols as NumericVariable
+				lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+				// Assignment the value to the identifier in the table of symbols
+				v->setValue(v->getValue() - this->_exp->evaluateNumber());
+			}
+				// The type of variable is not NUMBER
+			else
+			{
+				warning("Runtime error: incompatible type of variable for ", "SubstractVariableStmt");
+			}
+		}
+		break;
+
+		default:
+			warning("Runtime error: incompatible type of expression for ", "SubstractVariableStmt");
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::ProductVariableStmt::print()
+{
+  std::cout << "ProductVariableStmt: "  << std::endl;
+  std::cout << this->_id << " = ";
+  this->_exp->print();
+  std::cout << std::endl;
+}
+
+void lp::ProductVariableStmt::evaluate()
+{
+	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
+
+	switch(this->_exp->getType())
+	{
+		case NUMBER:
+		{
+			// Check the type of the first varible
+			if (firstVar->getType() == NUMBER)
+			{
+				// Get the identifier in the table of symbols as NumericVariable
+				lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+				// Assignment the value to the identifier in the table of symbols
+				v->setValue(v->getValue() * this->_exp->evaluateNumber());
+			}
+				// The type of variable is not NUMBER
+			else
+			{
+				warning("Runtime error: incompatible type of variable for ", "ProductVariableStmt");
+			}
+		}
+		break;
+
+		default:
+			warning("Runtime error: incompatible type of expression for ", "ProductVariableStmt");
+	}
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

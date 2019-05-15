@@ -740,7 +740,6 @@ class PlusNode : public NumericOperatorNode
   double evaluateNumber();
 };
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1656,6 +1655,139 @@ class AssignmentStmt : public Statement
     void evaluate();
 
 };
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   SumVariableStmt
+  \brief   Definition of atributes and methods of SumVariableStmt class
+  \note    SumVariableStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class SumVariableStmt : public Statement
+{
+ private:
+  std::string _id;    //!< Name of the variable of the assignment statement
+  ExpNode *_exp; 	 //!< Expresssion the assignment statement
+
+ public:
+
+/*!
+	\brief Constructor of SumVariableStmt
+	\param id: string, variable of the SumVariableStmt
+	\param expression: pointer to ExpNode
+	\post  A new SumVariableStmt is created with the parameters
+*/
+  SumVariableStmt(std::string id, ExpNode *expression): _id(id), _exp(expression)
+	{
+
+	}
+
+/*!
+	\brief   Print the AssignmentStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the AssignmentStmt
+	\return  void
+	\sa		 print
+*/
+    void evaluate();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   SubstractVariableStmt
+  \brief   Definition of atributes and methods of SubstractVariableStmt class
+  \note    SubstractVariableStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class SubstractVariableStmt : public Statement
+{
+ private:
+  std::string _id;    //!< Name of the variable of the assignment statement
+  ExpNode *_exp; 	 //!< Expresssion the assignment statement
+
+ public:
+
+/*!
+	\brief Constructor of SubstractVariableStmt
+	\param id: string, variable of the SubstractVariableStmt
+	\param expression: pointer to ExpNode
+	\post  A new SubstractVariableStmt is created with the parameters
+*/
+  SubstractVariableStmt(std::string id, ExpNode *expression): _id(id), _exp(expression)
+	{
+
+	}
+
+/*!
+	\brief   Print the SubstractVariableStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the SubstractVariableStmt
+	\return  void
+	\sa		 print
+*/
+    void evaluate();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   ProductVariableStmt
+  \brief   Definition of atributes and methods of ProductVariableStmt class
+  \note    ProductVariableStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class ProductVariableStmt : public Statement
+{
+ private:
+  std::string _id;    //!< Name of the variable of the assignment statement
+  ExpNode *_exp; 	 //!< Expresssion the assignment statement
+
+ public:
+
+/*!
+	\brief Constructor of ProductVariableStmt
+	\param id: string, variable of the ProductVariableStmt
+	\param expression: pointer to ExpNode
+	\post  A new ProductVariableStmt is created with the parameters
+*/
+  ProductVariableStmt(std::string id, ExpNode *expression): _id(id), _exp(expression)
+	{
+
+	}
+
+/*!
+	\brief   Print the ProductVariableStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the ProductVariableStmt
+	\return  void
+	\sa		 print
+*/
+    void evaluate();
+
+};
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
