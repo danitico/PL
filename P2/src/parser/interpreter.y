@@ -112,7 +112,7 @@
 %left CONCATENATE
 
 %left SUM_VARIABLE SUBSTRACT_VARIABLE PRODUCT_VARIABLE DIVIDE_VARIABLE
-%left PLUS MINUS
+%left PLUS MINUS PLUS_PLUS MINUS_MINUS
 %left PRODUCT DIVISION MODULUS INTEGER_DIVISION
 
 %left LEFTPARENTHESIS RIGHTPARENTHESIS
@@ -382,7 +382,17 @@ asgn: VARIABLE ASSIGNMENT exp
 
 	| VARIABLE DIVIDE_VARIABLE exp
 	{
-		/* $$ = new lp::ProductVariableStmt($1, $3); */
+		$$ = new lp::DivideVariableStmt($1, $3);
+	}
+
+	| VARIABLE PLUS_PLUS
+	{
+		$$ = new lp::PlusPlusStmt()
+	}
+
+	| PLUS_PLUS VARIABLE
+	{
+		//nodo
 	}
 
 	| CONSTANT ASSIGNMENT exp

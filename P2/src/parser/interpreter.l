@@ -45,7 +45,9 @@ strings           "'"([^']|"\\\'")*"'"
 "/"                  {return DIVISION;}
 "*"                  {return PRODUCT;}
 "-"                  {return MINUS;}
+"--"                 {return MINUS_MINUS;}
 "+"                  {return PLUS;}
+"++"                 {return PLUS_PLUS;}
 ":="                 {return ASSIGNMENT;}
 "+:="                {return SUM_VARIABLE;}
 "-:="                {return SUBSTRACT_VARIABLE;}

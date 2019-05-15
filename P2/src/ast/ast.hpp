@@ -1788,6 +1788,93 @@ class ProductVariableStmt : public Statement
 
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   DivideVariableStmt
+  \brief   Definition of atributes and methods of DivideVariableStmt class
+  \note    DivideVariableStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class DivideVariableStmt : public Statement
+{
+ private:
+  std::string _id;    //!< Name of the variable of the assignment statement
+  ExpNode *_exp; 	 //!< Expresssion the assignment statement
+
+ public:
+
+/*!
+	\brief Constructor of DivideVariableStmt
+	\param id: string, variable of the DivideVariableStmt
+	\param expression: pointer to ExpNode
+	\post  A new DivideVariableStmt is created with the parameters
+*/
+  DivideVariableStmt(std::string id, ExpNode *expression): _id(id), _exp(expression)
+	{
+
+	}
+
+/*!
+	\brief   Print the DivideVariableStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the DivideVariableStmt
+	\return  void
+	\sa		 print
+*/
+    void evaluate();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
+  \class   PlusPlusStmt
+  \brief   Definition of atributes and methods of PlusPlusStmt class
+  \note    PlusPlusStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class PlusPlusStmt : public Statement
+{
+ private:
+  std::string _id;    //!< Name of the variable of the assignment statement
+  ExpNode *_exp; 	 //!< Expresssion the assignment statement
+
+ public:
+
+/*!
+	\brief Constructor of PlusPlusStmt
+	\param id: string, variable of the PlusPlusStmt
+	\param expression: pointer to ExpNode
+	\post  A new PlusPlusStmt is created with the parameters
+*/
+  PlusPlusStmt(std::string id, ExpNode *expression): _id(id), _exp(expression)
+	{
+
+	}
+
+/*!
+	\brief   Print the PlusPlusStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the PlusPlusStmt
+	\return  void
+	\sa		 print
+*/
+    void evaluate();
+
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

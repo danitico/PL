@@ -956,7 +956,7 @@ bool lp::NotEqualNode::evaluateBool()
 
 	if (this->getType() == BOOL)
 	{
-		double leftNumber, rightNumber;
+		double leftNumber, rightNumber; // TODO: Tengo que revisar todos los operadores, para que también sirvan para numeros y strings
 		leftNumber = this->_left->evaluateNumber();
 		rightNumber = this->_right->evaluateNumber();
 
@@ -1431,6 +1431,93 @@ void lp::ProductVariableStmt::evaluate()
 			warning("Runtime error: incompatible type of expression for ", "ProductVariableStmt");
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::DivideVariableStmt::print()
+{
+  std::cout << "DivideVariableStmt: "  << std::endl;
+  std::cout << this->_id << " = ";
+  this->_exp->print();
+  std::cout << std::endl;
+}
+
+void lp::DivideVariableStmt::evaluate()
+{
+	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
+
+	switch(this->_exp->getType())
+	{
+		case NUMBER:
+		{
+			// Check the type of the first varible
+			if (firstVar->getType() == NUMBER)
+			{
+				// Get the identifier in the table of symbols as NumericVariable
+				lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+				if(std::abs(this->_exp->evaluateNumber()) > ERROR_BOUND){
+					v->setValue(v->getValue() / this->_exp->evaluateNumber());
+				}
+				else{
+					warning("Runtime error", "Division by zero");
+					exit(-1);
+				}
+			}
+				// The type of variable is not NUMBER
+			else
+			{
+				warning("Runtime error: incompatible type of variable for ", "DivideVariableStmt");
+			}
+		}
+		break;
+
+		default:
+			warning("Runtime error: incompatible type of expression for ", "DivideVariableStmt");
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+// TODO: Crear una nueva clase abstracta para los ++ y los --
+// void lp::PlusPlusStmt::print()
+// {
+//   std::cout << "PlusPlusStmt: "  << std::endl;
+//   std::cout << this->_id << " = ";
+//   this->_exp->print();
+//   std::cout << std::endl;
+// }
+//
+// void lp::PlusPlusStmt::evaluate()
+// {
+// 	lp::Variable *firstVar = (lp::Variable *) table.getSymbol(this->_id);
+//
+// 	switch(this->_exp->getType())
+// 	{
+// 		case NUMBER:
+// 		{
+// 			// Check the type of the first varible
+// 			if (firstVar->getType() == NUMBER)
+// 			{
+// 				// Get the identifier in the table of symbols as NumericVariable
+// 				lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+//
+// 				v->setValue(v->getValue() + 1);
+// 			}
+// 				// The type of variable is not NUMBER
+// 			else
+// 			{
+// 				warning("Runtime error: incompatible type of variable for ", "DivideVariableStmt");
+// 			}
+// 		}
+// 		break;
+//
+// 		default:
+// 			warning("Runtime error: incompatible type of expression for ", "DivideVariableStmt");
+// 	}
+// }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

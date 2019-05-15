@@ -1885,7 +1885,7 @@ yyreduce:
   case 46:
 #line 384 "interpreter.y" /* yacc.c:1646  */
     {
-		/* $$ = new lp::ProductVariableStmt($1, $3); */
+		(yyval.st) = new lp::DivideVariableStmt((yyvsp[-2].identifier), (yyvsp[0].expNode));
 	}
 #line 1891 "interpreter.tab.c" /* yacc.c:1646  */
     break;
