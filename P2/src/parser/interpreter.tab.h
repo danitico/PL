@@ -72,26 +72,27 @@ extern int yydebug;
     STRINGS = 282,
     VARIABLE = 283,
     UNDEFINED = 284,
-    OR = 285,
-    AND = 286,
-    LESS_THAN = 287,
-    LESS_OR_EQUAL = 288,
-    GREATER_THAN = 289,
-    GREATER_OR_EQUAL = 290,
-    EQUAL = 291,
-    NOT_EQUAL = 292,
-    NOT = 293,
-    CONCATENATE = 294,
-    PLUS = 295,
-    MINUS = 296,
-    PRODUCT = 297,
-    DIVISION = 298,
-    MODULUS = 299,
-    INTEGER_DIVISION = 300,
-    LEFTPARENTHESIS = 301,
-    RIGHTPARENTHESIS = 302,
-    UNARY = 303,
-    POWER_OF = 304
+    CONSTANT = 285,
+    OR = 286,
+    AND = 287,
+    LESS_THAN = 288,
+    LESS_OR_EQUAL = 289,
+    GREATER_THAN = 290,
+    GREATER_OR_EQUAL = 291,
+    EQUAL = 292,
+    NOT_EQUAL = 293,
+    NOT = 294,
+    CONCATENATE = 295,
+    PLUS = 296,
+    MINUS = 297,
+    PRODUCT = 298,
+    DIVISION = 299,
+    MODULUS = 300,
+    INTEGER_DIVISION = 301,
+    LEFTPARENTHESIS = 302,
+    RIGHTPARENTHESIS = 303,
+    UNARY = 304,
+    POWER_OF = 305
   };
 #endif
 
@@ -112,7 +113,7 @@ union YYSTYPE
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 116 "interpreter.tab.h" /* yacc.c:1909  */
+#line 117 "interpreter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

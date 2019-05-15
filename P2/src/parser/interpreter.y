@@ -21,10 +21,10 @@
 	#include "../table/table.hpp"
 	#include "../table/numericVariable.hpp"
 	#include "../table/stringVariable.hpp"
-	/* #include "../table/logicalVariable.hpp" */
+	#include "../table/logicalVariable.hpp"
 
-	/* #include "../table/numericConstant.hpp" */
-	/* #include "../table/logicalConstant.hpp" */
+	#include "../table/numericConstant.hpp"
+	#include "../table/logicalConstant.hpp"
 	/* #include "../table/builtinParameter1.hpp" */
 	/* #include "../table/builtinParameter0.hpp" */
 	/* #include "../table/builtinParameter2.hpp" */
@@ -102,7 +102,7 @@
 
 %token <strings> STRINGS
 
-%token <identifier> VARIABLE UNDEFINED
+%token <identifier> VARIABLE UNDEFINED CONSTANT
 
 %left OR
 %left AND
@@ -280,10 +280,17 @@ exp:	NUMBER
   		  $$ = new lp::PowerNode($1, $3);
 		}
 
-	 | VARIABLE
+	| VARIABLE
 		{
 		  // Create a new variable node
 		  $$ = new lp::VariableNode($1);
+		}
+
+	| CONSTANT
+		{
+			// Create a new Constant node
+
+			$$ = new lp::ConstantNode($1);
 		}
 
 	| exp GREATER_THAN exp
@@ -354,6 +361,16 @@ asgn: VARIABLE ASSIGNMENT exp
 	| VARIABLE ASSIGNMENT asgn
 	{
 		$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+	}
+
+	| CONSTANT ASSIGNMENT exp
+	{
+		execerror("Semantic error in assignment: it is not allowed to modify a constant ", $1);
+	}
+
+	| CONSTANT ASSIGNMENT asgn
+	{
+		execerror("Semantic error in multiple assignment: it is not allowed to modify a constant ",$1);
 	}
 ;
 

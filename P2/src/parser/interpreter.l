@@ -19,9 +19,8 @@ digit   [0-9]
 letter  [a-zA-Z]
 
 identifier        {letter}({letter}|{digit}|\_({letter}|{digit}))*
-bad_identifier    ({letter}|{digit})+(\_\_)+({letter}+|{digit}+)?
 number            {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
-strings           "'"(.*|"\'".*"\'")*"'"
+strings           "'"([^']|"\\\'")*"'"
 
 %x COMMENTARY_1
 %x COMMENTARY_2

@@ -20,7 +20,8 @@ CFLAGS = -c -g  -Wall -ansi -O2 -std=c++11
 # MODIFIED in example 13: builtin.o builtinParameter1.o mathFunction.o
 # MODIFIED in example 14: builtinParameter0.o builtinParameter2.o
 OBJECTS= table.o symbol.o variable.o numericVariable.o \
-		init.o keyword.o stringVariable.o logicalVariable.o
+		init.o keyword.o stringVariable.o logicalVariable.o \
+		constant.o logicalConstant.o numericConstant.o
 
 # Predefined macros
 #
@@ -62,20 +63,20 @@ logicalVariable.o: logicalVariable.cpp logicalVariable.hpp variable.hpp symbol.h
 
 #######################################################
 # NEW in example 11
-# constant.o: constant.cpp constant.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
-#
+constant.o: constant.cpp constant.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
+
 # # NEW in example 11
-# numericConstant.o: numericConstant.cpp numericConstant.hpp constant.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
-#
+numericConstant.o: numericConstant.cpp numericConstant.hpp constant.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
+
 # #######################################################
 # # NEW in example 15
-# logicalConstant.o: logicalConstant.cpp logicalConstant.hpp constant.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
+logicalConstant.o: logicalConstant.cpp logicalConstant.hpp constant.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
 #######################################################
 
 

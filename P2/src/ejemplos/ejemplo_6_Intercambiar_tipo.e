@@ -8,12 +8,14 @@ leer(dato);
 
 escribir_cadena('El número introducido es -> ');
 escribir(dato);
+escribir_cadena('\n');
 
 escribir_cadena('Introduce una cadena de caracteres --> ');
 leer_cadena(dato);
 
 escribir_cadena('La cadena introducida es -> ');
 escribir_cadena(dato);
+escribir_cadena('\n');
 
 _lugar(20,10);
 escribir_cadena(' Fin del ejemplo de cambio del tipo de valor \n');

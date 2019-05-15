@@ -14,9 +14,9 @@
 
 
 //  NEW in example 11
-// #include "numericConstant.hpp"
+#include "numericConstant.hpp"
 
-// #include "logicalConstant.hpp"
+#include "logicalConstant.hpp"
 
 //  NEW in example 12
 #include "keyword.hpp"
@@ -42,39 +42,39 @@ void init(lp::Table &t)
  int i;
 
  //  MODIFIED in example 11
- // lp::NumericConstant *n;
- //
- // // The predefined numeric constants are installed in the table of symbols
- // for (i=0; numericConstant[i].name.compare("")!=0; i++)
-	// {
-	// 	// The  Predefined numeric constant is inserted into the symbol table
- //
-	// 	 n = new lp::NumericConstant(numericConstant[i].name,
-	// 								 CONSTANT,
-	// 								 NUMBER,
-	// 								 numericConstant[i].value);
- //
-	// 	// A pointer to the new NumericConstant is inserted into the table of symbols
-	// 	t.installSymbol(n);
-	// }
- //
- //
- // lp::LogicalConstant *l;
- // // The predefined logical constants are installed in the table of symbols
- // for (i=0; logicalConstant[i].name.compare("")!=0; i++)
-	// {
-	// 	// The  Predefined numeric constant is inserted into the symbol table
- //
-	// 	 l = new lp::LogicalConstant(logicalConstant[i].name,
-	// 								 CONSTANT,
-	// 								 BOOL,
-	// 								 logicalConstant[i].value);
- //
-	// 	// A pointer to the new LogicalConstant is inserted into the table of symbols
-	// 	t.installSymbol(l);
-	// }
- //
- //  //////////////////////////////////////////////
+ lp::NumericConstant *n;
+
+ // The predefined numeric constants are installed in the table of symbols
+ for (i=0; numericConstant[i].name.compare("")!=0; i++)
+	{
+		// The  Predefined numeric constant is inserted into the symbol table
+
+		 n = new lp::NumericConstant(numericConstant[i].name,
+									 CONSTANT,
+									 NUMBER,
+									 numericConstant[i].value);
+
+		// A pointer to the new NumericConstant is inserted into the table of symbols
+		t.installSymbol(n);
+	}
+
+
+ lp::LogicalConstant *l;
+ // The predefined logical constants are installed in the table of symbols
+ for (i=0; logicalConstant[i].name.compare("")!=0; i++)
+	{
+		// The  Predefined numeric constant is inserted into the symbol table
+
+		 l = new lp::LogicalConstant(logicalConstant[i].name,
+									 CONSTANT,
+									 BOOL,
+									 logicalConstant[i].value);
+
+		// A pointer to the new LogicalConstant is inserted into the table of symbols
+		t.installSymbol(l);
+	}
+
+  //////////////////////////////////////////////
 
  //  NEW in example 12
  lp::Keyword *k;
