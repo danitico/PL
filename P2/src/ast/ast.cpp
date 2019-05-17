@@ -2236,7 +2236,7 @@ void lp::SwitchStmt::evaluate(){
 					hasBeenExecuted = true;
 
 					if((*stmtIter)->getBreaking()){
-						goOn=false
+						goOn=false;
 						break;
 					}
 					else{
