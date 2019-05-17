@@ -122,10 +122,11 @@ union YYSTYPE
 	lp::ExpNode *expNode;
 	std::list<lp::ExpNode *>  *parameters;
 	std::list<lp::Statement *> *stmts;
+	std::list<lp::CasesStmt *> *cases;
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 129 "interpreter.tab.h" /* yacc.c:1909  */
+#line 130 "interpreter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

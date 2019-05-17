@@ -2322,79 +2322,6 @@ class RepeatStmt : public Statement
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 /*!
-  \class   SwitchStmt
-  \brief   Definition of atributes and methods of SwitchStmt class
-  \note    SwitchStmt Class publicly inherits from Statement class
-		   and adds its own print and evaluate functions
-*/
-class SwitchStmt : public Statement
-{
- private:
-  std::list<Statement *> *_blocks;  //!< List of statements
-  std::list<Statement *> *_defaultCase;  //!< List of statements
-  ExpNode *_cond;
-
-  public:
-
-/*!
-	\brief Constructor of SwitchStmt
-	\param condition: ExpNode of the condition
-	\param statement: Statement of the body of the loop
-	\post  A new SwitchStmt is created with the parameters
-*/
-  SwitchStmt(ExpNode *cond, std::list<Statement *> *blocks, std::list<Statement *> *defaultCase)
-	{
-		this->_blocks = blocks;
-		this->_defaultCase = defaultCase;
-      this->_cond = cond;
-	}
-
-   /*!
-   	\brief Constructor of SwitchStmt
-   	\param condition: ExpNode of the condition
-   	\param statement: Statement of the body of the loop
-   	\post  A new SwitchStmt is created with the parameters
-   */
-  SwitchStmt(ExpNode *cond, std::list<Statement *> *defaultCase)
-	{
-		this->_blocks = NULL;
-		this->_defaultCase = defaultCase;
-      this->_cond = cond;
-	}
-
-   /*!
-   	\brief Constructor of SwitchStmt
-   	\param condition: ExpNode of the condition
-   	\param statement: Statement of the body of the loop
-   	\post  A new SwitchStmt is created with the parameters
-   */
-  SwitchStmt(std::list<Statement *> *blocks, ExpNode *cond)
-	{
-		this->_blocks = blocks;
-		this->_defaultCase = NULL;
-      this->_cond = cond;
-	}
-
-
-/*!
-	\brief   Print the SwitchStmt
-	\return  void
-	\sa		 evaluate
-*/
-  void print();
-
-/*!
-	\brief   Evaluate the SwitchStmt
-	\return  void
-	\sa		 print
-*/
-  void evaluate();
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-/*!
   \class   CasesStmt
   \brief   Definition of atributes and methods of CasesStmt class
   \note    CasesStmt Class publicly inherits from Statement class
@@ -2423,6 +2350,19 @@ class CasesStmt : public Statement
       this->_breaking = breaking;
 	}
 
+   std::list<Statement *> *getStmts(){
+      return this->_stmts;
+   }
+
+   ExpNode *getCondition(){
+      return this->_cond;
+   }
+
+   bool getBreaking(){
+      return this->_breaking;
+   }
+
+
 /*!
 	\brief   Print the CasesStmt
 	\return  void
@@ -2440,6 +2380,67 @@ class CasesStmt : public Statement
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/*!
+  \class   SwitchStmt
+  \brief   Definition of atributes and methods of SwitchStmt class
+  \note    SwitchStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class SwitchStmt : public Statement
+{
+ private:
+  std::list<CasesStmt *> *_blocks;  //!< List of statements
+  std::list<Statement *> *_defaultCase;  //!< List of statements
+  ExpNode *_cond;
+
+  public:
+
+/*!
+	\brief Constructor of SwitchStmt
+	\param condition: ExpNode of the condition
+	\param statement: Statement of the body of the loop
+	\post  A new SwitchStmt is created with the parameters
+*/
+  SwitchStmt(ExpNode *cond, std::list<CasesStmt *> *blocks, std::list<Statement *> *defaultCase)
+	{
+		this->_blocks = blocks;
+		this->_defaultCase = defaultCase;
+      this->_cond = cond;
+	}
+
+   /*!
+   	\brief Constructor of SwitchStmt
+   	\param condition: ExpNode of the condition
+   	\param statement: Statement of the body of the loop
+   	\post  A new SwitchStmt is created with the parameters
+   */
+  SwitchStmt(std::list<CasesStmt *> *blocks, ExpNode *cond)
+	{
+		this->_blocks = blocks;
+		this->_defaultCase = NULL;
+      this->_cond = cond;
+	}
+
+/*!
+	\brief   Print the SwitchStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the SwitchStmt
+	\return  void
+	\sa		 print
+*/
+  void evaluate();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /*!
   \class   EraseStmt

@@ -68,6 +68,7 @@
 	lp::ExpNode *expNode;
 	std::list<lp::ExpNode *>  *parameters;
 	std::list<lp::Statement *> *stmts;
+	std::list<lp::CasesStmt *> *cases;
 	lp::Statement *st;
 	lp::AST *prog;
 }
@@ -79,7 +80,9 @@
 /* New in example 14 */
 /* %type <parameters> listOfExp restOfListOfExp */
 
-%type <stmts> stmtlist blocks
+%type <stmts> stmtlist
+
+%type <cases> blocks
 
 // New in example 17: if, while, block
 %type <st> stmt asgn print read si mientras para repetir borrar lugar segun
@@ -202,6 +205,11 @@ stmt: SEMICOLON
 		}
 
 		| lugar SEMICOLON
+		{
+			$$ = $1;
+		}
+
+		| segun SEMICOLON
 		{
 			$$ = $1;
 		}
@@ -492,7 +500,7 @@ cond: LEFTPARENTHESIS exp RIGHTPARENTHESIS
 
 blocks:
 		{
-			$$ = new std::list<lp::Statement *>();
+			$$ = new std::list<lp::CasesStmt *>();
 		}
 
 		| blocks VALUE exp COLON stmtlist
@@ -501,7 +509,7 @@ blocks:
 			$$->push_back(new lp::CasesStmt($3, $5, false));
 		}
 
-		| blocks VALUE exp COLON stmtlist BREAK
+		| blocks VALUE exp COLON stmtlist BREAK SEMICOLON
 		{
 			$$ = $1;
 			$$->push_back(new lp::CasesStmt($3, $5, true));
@@ -509,16 +517,11 @@ blocks:
 
 segun: SWITCH cond blocks DEFAULT COLON stmtlist END_SWITCH
 	{
-
-	}
-
-	| SWITCH cond DEFAULT COLON stmtlist END_SWITCH
-	{
-
+		$$ = new lp::SwitchStmt($2, $3, $6);
 	}
 
 	| SWITCH cond blocks END_SWITCH
 	{
-
+		$$ = new lp::SwitchStmt($3, $2);
 	}
 ;

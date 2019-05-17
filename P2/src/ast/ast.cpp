@@ -2065,6 +2065,228 @@ void lp::RepeatStmt::evaluate(){
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+void lp::SwitchStmt::print()
+{
+	std::cout << "SwitchStmt: "  << std::endl;
+
+	this->_cond->print();
+
+	if(this->_blocks->size() != 0){
+		std::list<CasesStmt *>::iterator stmtIter;
+		for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++)
+		{
+		  (*stmtIter)->print();
+		}
+	}
+
+	if(this->_defaultCase != NULL){
+		std::list<Statement *>::iterator stmtIter;
+		for (stmtIter = this->_defaultCase->begin(); stmtIter != this->_defaultCase->end(); stmtIter++)
+		{
+		  (*stmtIter)->print();
+		}
+	}
+
+	std::cout << std::endl;
+}
+
+void lp::SwitchStmt::evaluate(){
+	bool boolean; double number; std::string strings;
+
+	if(this->_blocks->size() == 0){
+		std::list<Statement *>::iterator stmtIter;
+		for (stmtIter = this->_defaultCase->begin(); stmtIter != this->_defaultCase->end(); stmtIter++)
+		{
+		  (*stmtIter)->evaluate();
+		}
+	}
+
+	else if(this->_defaultCase == NULL){
+		if(this->_cond->getType() == NUMBER){
+			bool goOn=false;
+			number=this->_cond->evaluateNumber();
+
+			std::list<CasesStmt *>::iterator stmtIter;
+			for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++)
+			{
+				if(std::abs( (number - (*stmtIter)->getCondition()->evaluateNumber())) < ERROR_BOUND || goOn){
+					(*stmtIter)->evaluate();
+
+					if((*stmtIter)->getBreaking()){
+						break;
+					}
+					else{
+						goOn=true;
+					}
+				}
+			}
+		}
+
+		if(this->_cond->getType() == BOOL){
+			bool goOn=false;
+			boolean=this->_cond->evaluateBool();
+
+			std::list<CasesStmt *>::iterator stmtIter;
+			for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++)
+			{
+				if ( boolean == (*stmtIter)->getCondition()->evaluateBool() || goOn) {
+					(*stmtIter)->evaluate();
+
+					if((*stmtIter)->getBreaking()){
+						break;
+					}
+					else{
+						goOn=true;
+					}
+				}
+			}
+		}
+
+		if(this->_cond->getType() == STRINGS){
+			bool goOn=false;
+			strings=this->_cond->evaluateString();
+
+			std::list<CasesStmt *>::iterator stmtIter;
+			for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++)
+			{
+				if ( strings == (*stmtIter)->getCondition()->evaluateString() || goOn) {
+					(*stmtIter)->evaluate();
+
+					if((*stmtIter)->getBreaking()){
+						break;
+					}
+					else{
+						goOn=true;
+					}
+				}
+			}
+		}
+	}
+
+	else{
+		if(this->_cond->getType() == NUMBER){
+			bool hasBeenExecuted = false, goOn=false;
+			number=this->_cond->evaluateNumber();
+
+			std::list<CasesStmt *>::iterator stmtIter;
+			for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++)
+			{
+				if(std::abs( (number - (*stmtIter)->getCondition()->evaluateNumber())) < ERROR_BOUND || goOn){
+					(*stmtIter)->evaluate();
+					hasBeenExecuted = true;
+
+					if((*stmtIter)->getBreaking()){
+						goOn=false;
+						break;
+					}
+					else{
+						goOn=true;
+					}
+				}
+			}
+
+			if(!hasBeenExecuted || goOn){
+				std::list<Statement *>::iterator stmtIter;
+				for (stmtIter = this->_defaultCase->begin(); stmtIter != this->_defaultCase->end(); stmtIter++)
+				{
+				  (*stmtIter)->evaluate();
+				}
+			}
+		}
+
+		if(this->_cond->getType() == BOOL){
+			bool hasBeenExecuted = false, goOn=false;
+			boolean=this->_cond->evaluateBool();
+
+			std::list<CasesStmt *>::iterator stmtIter;
+			for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++)
+			{
+				if ( boolean == (*stmtIter)->getCondition()->evaluateBool() || goOn){
+					(*stmtIter)->evaluate();
+					hasBeenExecuted = true;
+
+					if((*stmtIter)->getBreaking()){
+						goOn=false;
+						break;
+					}
+					else{
+						goOn=true;
+					}
+				}
+			}
+
+			if(!hasBeenExecuted || goOn){
+				std::list<Statement *>::iterator stmtIter;
+				for (stmtIter = this->_defaultCase->begin(); stmtIter != this->_defaultCase->end(); stmtIter++)
+				{
+				  (*stmtIter)->evaluate();
+				}
+			}
+		}
+
+		if(this->_cond->getType() == STRINGS){
+			bool hasBeenExecuted = false, goOn=false;
+			strings=this->_cond->evaluateString();
+
+			std::list<CasesStmt *>::iterator stmtIter;
+			for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++)
+			{
+				if ( strings == (*stmtIter)->getCondition()->evaluateString() || goOn){
+					(*stmtIter)->evaluate();
+					hasBeenExecuted = true;
+
+					if((*stmtIter)->getBreaking()){
+						goOn=false
+						break;
+					}
+					else{
+						goOn=true;
+					}
+				}
+			}
+
+			if(!hasBeenExecuted || goOn){
+				std::list<Statement *>::iterator stmtIter;
+				for (stmtIter = this->_defaultCase->begin(); stmtIter != this->_defaultCase->end(); stmtIter++)
+				{
+				  (*stmtIter)->evaluate();
+				}
+			}
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::CasesStmt::print()
+{
+  std::cout << "CasesStmt: "  << std::endl;
+
+  this->_cond->print();
+
+  // Body of the while loop
+  std::list<Statement *>::iterator stmtIter;
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+  {
+	  (*stmtIter)->print();
+  }
+
+  std::cout << "Break -> " << this->_breaking << std::endl;
+
+  std::cout << std::endl;
+}
+
+void lp::CasesStmt::evaluate(){
+	std::list<Statement *>::iterator stmtIter;
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++){
+		(*stmtIter)->evaluate();
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 void lp::EraseStmt::print()
 {
   std::cout << "EraseStmt "  << std::endl;
