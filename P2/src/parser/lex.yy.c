@@ -360,8 +360,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 46
-#define YY_END_OF_BUFFER 47
+#define YY_NUM_RULES 47
+#define YY_END_OF_BUFFER 48
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -371,15 +371,15 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[91] =
     {   0,
-        0,    0,    0,    0,    0,    0,    0,    0,   47,   43,
-       38,   39,   29,   43,   27,   28,   15,   18,   26,   16,
-       14,   41,   43,   25,    4,    8,    6,   33,   40,   43,
-       43,   30,   31,   46,   32,   34,   35,   44,   45,    0,
-       42,    0,   11,    0,   19,    0,   17,    0,    0,    0,
-       41,    0,   20,    5,    9,    7,   40,    0,    0,    0,
-        0,    0,    0,    1,    2,   10,   42,   23,   21,   22,
-       24,   41,    0,   41,   40,    0,    0,    0,    0,    3,
-        0,   13,    0,   12,    0,    0,    0,   37,   36,    0
+        0,    0,    0,    0,    0,    0,    0,    0,   48,   44,
+       39,   40,   30,   44,   27,   28,   15,   18,   26,   16,
+       14,   42,   29,   25,    4,    8,    6,   34,   41,   44,
+       44,   31,   32,   47,   33,   35,   36,   45,   46,    0,
+       43,    0,   11,    0,   19,    0,   17,    0,    0,    0,
+       42,    0,   20,    5,    9,    7,   41,    0,    0,    0,
+        0,    0,    0,    1,    2,   10,   43,   23,   21,   22,
+       24,   42,    0,   42,   41,    0,    0,    0,    0,    3,
+        0,   13,    0,   12,    0,    0,    0,   38,   37,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -968,65 +968,70 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 61 "interpreter.l"
-{BEGIN(COMMENTARY_1);}
+#line 60 "interpreter.l"
+{return COLON;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 62 "interpreter.l"
-{;}
+{BEGIN(COMMENTARY_1);}
 	YY_BREAK
 case 31:
-/* rule 31 can match eol */
 YY_RULE_SETUP
 #line 63 "interpreter.l"
-{lineNumber++;}
+{;}
 	YY_BREAK
 case 32:
+/* rule 32 can match eol */
 YY_RULE_SETUP
 #line 64 "interpreter.l"
-{BEGIN(INITIAL);}
+{lineNumber++;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 66 "interpreter.l"
-{BEGIN(COMMENTARY_2);}
+#line 65 "interpreter.l"
+{BEGIN(INITIAL);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 67 "interpreter.l"
-{;}
+{BEGIN(COMMENTARY_2);}
 	YY_BREAK
 case 35:
-/* rule 35 can match eol */
 YY_RULE_SETUP
 #line 68 "interpreter.l"
-{BEGIN(INITIAL); lineNumber++;}
+{;}
 	YY_BREAK
 case 36:
+/* rule 36 can match eol */
 YY_RULE_SETUP
-#line 70 "interpreter.l"
-{return ERASE;}
+#line 69 "interpreter.l"
+{BEGIN(INITIAL); lineNumber++;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 71 "interpreter.l"
-{return PLACE;}
+{return ERASE;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 73 "interpreter.l"
-{;}
+#line 72 "interpreter.l"
+{return PLACE;}
 	YY_BREAK
 case 39:
-/* rule 39 can match eol */
 YY_RULE_SETUP
 #line 74 "interpreter.l"
-{lineNumber++;}
+{;}
 	YY_BREAK
 case 40:
+/* rule 40 can match eol */
 YY_RULE_SETUP
-#line 76 "interpreter.l"
+#line 75 "interpreter.l"
+{lineNumber++;}
+	YY_BREAK
+case 41:
+YY_RULE_SETUP
+#line 77 "interpreter.l"
 {
                      for(int i=0; yytext[i] != '\0'; i++){
                         yytext[i]=tolower(yytext[i]);
@@ -1047,18 +1052,18 @@ YY_RULE_SETUP
                      }
                   }
 	YY_BREAK
-case 41:
+case 42:
 YY_RULE_SETUP
-#line 96 "interpreter.l"
+#line 97 "interpreter.l"
 {
                      yylval.number = atof(yytext);
                      return NUMBER;
                   }
 	YY_BREAK
-case 42:
-/* rule 42 can match eol */
+case 43:
+/* rule 43 can match eol */
 YY_RULE_SETUP
-#line 101 "interpreter.l"
+#line 102 "interpreter.l"
 {
                      std::string aux(yytext);
                      aux = aux.substr(1, aux.size()-2);
@@ -1071,40 +1076,40 @@ case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENTARY_1):
 case YY_STATE_EOF(COMMENTARY_2):
 case YY_STATE_EOF(ERROR):
-#line 109 "interpreter.l"
+#line 110 "interpreter.l"
 {return 0;}
 	YY_BREAK
-case 43:
+case 44:
 YY_RULE_SETUP
-#line 111 "interpreter.l"
+#line 112 "interpreter.l"
 {
             BEGIN(ERROR);
             yymore();
          }
 	YY_BREAK
-case 44:
+case 45:
 YY_RULE_SETUP
-#line 116 "interpreter.l"
+#line 117 "interpreter.l"
 {
                                                          yymore();
                                                       }
 	YY_BREAK
-case 45:
-/* rule 45 can match eol */
+case 46:
+/* rule 46 can match eol */
 YY_RULE_SETUP
-#line 120 "interpreter.l"
+#line 121 "interpreter.l"
 {
                   yyless(yyleng-1);
                   warning("Lexical error", yytext);
                   BEGIN(INITIAL);
 					}
 	YY_BREAK
-case 46:
+case 47:
 YY_RULE_SETUP
-#line 126 "interpreter.l"
+#line 127 "interpreter.l"
 ECHO;
 	YY_BREAK
-#line 1108 "lex.yy.c"
+#line 1113 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2100,7 +2105,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 126 "interpreter.l"
+#line 127 "interpreter.l"
 
 
 

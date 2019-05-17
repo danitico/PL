@@ -57,6 +57,7 @@ strings           "'"([^']|"\\\'")*"'"
 ","                  {return COMMA;}
 "("                  {return LEFTPARENTHESIS;}
 ")"                  {return RIGHTPARENTHESIS;}
+":"                  {return COLON;}
 
 "#"                           {BEGIN(COMMENTARY_1);}
 <COMMENTARY_1>[^"#"|^\n]      {;}

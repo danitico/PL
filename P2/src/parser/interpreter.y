@@ -79,18 +79,18 @@
 /* New in example 14 */
 /* %type <parameters> listOfExp restOfListOfExp */
 
-%type <stmts> stmtlist
+%type <stmts> stmtlist blocks
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read si mientras para repetir borrar lugar
+%type <st> stmt asgn print read si mientras para repetir borrar lugar segun
 
 %type <prog> program
 
 /////////////////////////////////
 
-%token SEMICOLON
+%token SEMICOLON COLON
 
-%token ERASE PLACE REPETITION UNTIL FOR FROM STEP DO END_FOR WHILE END_WHILE IF THEN ELSE END_IF READ READ_STRING WRITE WRITE_STRING
+%token ERASE PLACE REPETITION UNTIL FOR FROM STEP DO END_FOR WHILE END_WHILE IF THEN ELSE END_IF READ READ_STRING WRITE WRITE_STRING SWITCH END_SWITCH VALUE BREAK DEFAULT
 
 %right ASSIGNMENT
 
@@ -487,5 +487,38 @@ lugar: PLACE LEFTPARENTHESIS NUMBER COMMA NUMBER RIGHTPARENTHESIS
 cond: LEFTPARENTHESIS exp RIGHTPARENTHESIS
 	{
 		$$ = $2;
+	}
+;
+
+blocks:
+		{
+			$$ = new std::list<lp::Statement *>();
+		}
+
+		| blocks VALUE exp COLON stmtlist
+		{
+			$$ = $1;
+			$$->push_back(new lp::CasesStmt($3, $5, false));
+		}
+
+		| blocks VALUE exp COLON stmtlist BREAK
+		{
+			$$ = $1;
+			$$->push_back(new lp::CasesStmt($3, $5, true));
+		}
+
+segun: SWITCH cond blocks DEFAULT COLON stmtlist END_SWITCH
+	{
+
+	}
+
+	| SWITCH cond DEFAULT COLON stmtlist END_SWITCH
+	{
+
+	}
+
+	| SWITCH cond blocks END_SWITCH
+	{
+
 	}
 ;

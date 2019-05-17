@@ -90,6 +90,11 @@ static struct {
                         "paso", STEP,
                         "hacer", DO,
                         "fin_para", END_FOR,
+                        "segun", SWITCH,
+                        "fin_segun", END_SWITCH,
+                        "valor", VALUE,
+                        "defecto", DEFAULT,
+                        "romper", BREAK,
                         "",      0
 	                   };
 

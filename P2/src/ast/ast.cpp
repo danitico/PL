@@ -1391,7 +1391,7 @@ void lp::AssignmentStmt::evaluate()
 					firstVar->setValue(secondVar->getValue());
 
 				}
-				// The type of variable is not NUMBER
+				// The type of variable is not BOOL
 				else
 				{
 					// Delete the first variable from the table of symbols
