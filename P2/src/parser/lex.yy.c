@@ -1077,7 +1077,7 @@ case YY_STATE_EOF(COMMENTARY_1):
 case YY_STATE_EOF(COMMENTARY_2):
 case YY_STATE_EOF(ERROR):
 #line 110 "interpreter.l"
-{return 0;}
+{std::cout << std::endl; return 0;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP

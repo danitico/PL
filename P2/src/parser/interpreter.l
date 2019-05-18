@@ -107,7 +107,7 @@ strings           "'"([^']|"\\\'")*"'"
                      return STRINGS;
                   }
 
-<<EOF>>  {return 0;}
+<<EOF>>  {std::cout << std::endl; return 0;}
 
 .        {
             BEGIN(ERROR);

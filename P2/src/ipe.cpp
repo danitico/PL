@@ -109,7 +109,7 @@ if (argc == 2)
 else
  {
 	interactiveMode = true;
-   std::cout << "-> ";
+   std::cout << " > ";
  }
 
  // Copy the name of the interpreter
