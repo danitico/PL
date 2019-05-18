@@ -1,8 +1,8 @@
 /*!
 	\file    ast.cpp
 	\brief   Code of funcitons of AST clas
-	\author
-	\date    2018-12-13
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 

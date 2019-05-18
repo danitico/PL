@@ -1,10 +1,11 @@
-a := 1;
+a := 0;
 
 segun(a)
-   defecto:
+   valor 0:
       escribir_cadena('Tengo un 10\n');
+      romper;
+
+   valor 1:
+      escribir_cadena('Vamos a verlo\n');
+      romper;
 fin_segun;
-
-
-escribir(a);
-escribir_cadena('\n');

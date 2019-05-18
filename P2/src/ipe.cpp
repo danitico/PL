@@ -1,31 +1,25 @@
 /*!
-  \file interpreter.cpp
+  \file ipe.cpp
   \brief Main program
 */
 
 /*!
- \mainpage Flex and Bison: example 17
- \author
- \date     2018 - 4 - 26
+ \mainpage Trabajo Final: Intérprete de pseudocódigo en castellano
+ \author   Daniel Ranchal Parrado
+ \date     2019 - 05 - 18
  \version  1.0
  \note Novelties
-	+ AST: intermidiate code
-	+ New statements: if, while, block
+	+ Según
+	+ Operadores ++, --, +:=, -:=, *:=, /:=
 */
 
 
 
-// New in example 2
 #include <stdio.h>
 #include <string>
 //
 
 /////////////////////////////
-/*
-  NEW in example 16
-  AST class
-  IMPORTANT: must be written before interpreter.tab.h
-*/
 #include "ast/ast.hpp"
 ////////////////////////////////////////
 
@@ -33,18 +27,15 @@
 
 int lineNumber = 1; //!< Line counter
 
-/* NEW in example 15 */
 bool interactiveMode; //!< Control the interactive mode of execution of the interpreter
 
 
-// New in example 2
 extern FILE * yyin; //!< Standard input device for yylex()
 std::string progname; //!<  Program name
 //
 
 
 //////////////////////////////////////////////
-// NEW in example 6
 
 // Use for recovery of runtime errors
 #include <setjmp.h>
@@ -58,7 +49,6 @@ lp::AST *root; //!< Root of the abstract syntax tree AST
 /////////////////////////////////////////////
 
 //////////////////////////////////////////////
-// NEW in example 10
 
 #include "table/init.hpp"
 #include "includes/macros.hpp"
@@ -72,7 +62,6 @@ lp::AST *root; //!< Root of the abstract syntax tree AST
 extern jmp_buf begin; //!<  It enables recovery of runtime errors
 
 //////////////////////////////////////////////
-// NEW in example 7
 
 #include "table/table.hpp"
 
@@ -146,7 +135,6 @@ else
 
  if (interactiveMode == false)
  {
-  /* NEW in example 15 */
   /*  root->print(); */
    root->evaluate();
  }

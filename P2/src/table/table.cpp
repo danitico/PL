@@ -1,9 +1,9 @@
-/*!	
+/*!
 
 	\file   table.cpp
 	\brief   Code of some functions of Table class
-	\author  
-	\date    2017-12-13
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 
@@ -17,8 +17,8 @@
 
 
 
-bool lp::Table::lookupSymbol(const std::string & name) const 
-{		
+bool lp::Table::lookupSymbol(const std::string & name) const
+{
 	if (this->_table.find(name) !=  this->_table.end())
 		return true;
 	else
@@ -82,7 +82,3 @@ void lp::Table::printTable()
 		std::cout<<it->first<<", "<<getSymbol(it->first)->getToken()<< std::endl;
 	}
 }
-
-
-
-

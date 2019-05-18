@@ -1,8 +1,8 @@
 /*!
-	\file    StringVariable.hpp
+	\file    stringVariable.hpp
 	\brief   Declaration of StringVariable class
-	\author
-	\date    2017-12-1
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 

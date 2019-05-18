@@ -1,8 +1,8 @@
-/*!	
+/*!
 	\file    variable.hpp
 	\brief   Declaration of Variable class
-	\author  
-	\date    2017-12-1
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 
@@ -14,13 +14,13 @@
 
 #include "symbol.hpp"
 
-/*!	
+/*!
 	\namespace lp
 	\brief Name space for the subject Language Processors
 */
 namespace lp{
 
-/*!	
+/*!
   \class     Variable
   \attention Abstrac class
   \brief     Definition of atributes and methods of Variable class
@@ -28,22 +28,22 @@ namespace lp{
 */
 class Variable:public lp::Symbol
 {
-/*!		
+/*!
 \name Protected atribute of Variable class
 */
 	protected:
 		int      	_type;    //!< \brief Type of the  Variable: UNDEFINED, NUMERICVAR, STRINGVAR, LOGICALVAR
 
-/*!		
+/*!
 \name Public methods of Variable class
 */
 	public:
 
-/*!	
+/*!
 	\name Constructors
 */
-		
-/*!		
+
+/*!
 	\brief Constructor with arguments with default values
 	\note  Inline function that uses Symbol's constructor as members initializer
 	\param name: name of the Variable
@@ -57,8 +57,8 @@ class Variable:public lp::Symbol
 	{
 		this->setType(type);
 	}
-		
-/*!		
+
+/*!
 	\brief Copy constructor
 	\note  Inline function
 	\param s: object of Variable class
@@ -77,7 +77,7 @@ class Variable:public lp::Symbol
 	}
 
 
-/*!	
+/*!
 	\name Observer
 */
 
@@ -92,34 +92,34 @@ class Variable:public lp::Symbol
 	inline int getType() const
 	{
 		return this->_type;
-	}	
+	}
 
 
-/*!	
+/*!
 	\name Modifier
 */
 
 
-/*!	
+/*!
 	\brief   This functions modifies the token of the Variable
 	\note    Función inline
 	\param   type: new type of the Variable
 	\pre     None
-	\post    The type of the Variable is equal to the parameter 
+	\post    The type of the Variable is equal to the parameter
 	\return  void
 	\sa 	 setName, setToken
 */
-	inline void setType(int type) 
+	inline void setType(int type)
 	{
 	    this->_type = type;
 	}
 
 
-/*!	
+/*!
 	\name Operator
 */
-	
-/*!		
+
+/*!
 	\brief  Assignment Operator
 	\note   Virtual method: can be redefined in the heir class
 	\param  v: objecto of Variable class
@@ -127,15 +127,15 @@ class Variable:public lp::Symbol
 	\return Reference to this object
 */
 	virtual Variable &operator=(const Variable &v);
-		
 
-		
-/*!	
+
+
+/*!
 	\name I/O Functions
 */
-		
 
-/*!		
+
+/*!
 	\brief Write a Variable
 	\note  Virtual method: can be redefined in the heir class
 	\pre   None
@@ -145,7 +145,7 @@ class Variable:public lp::Symbol
 	virtual void write() const;
 
 
-/*!		
+/*!
 	\brief   Read a Variable
 	\note   Virtual method: can be redefined in the heir class
 	\pre     None
@@ -154,7 +154,7 @@ class Variable:public lp::Symbol
 */
 	virtual void read();
 
-	
+
 // End of Variable class
 };
 

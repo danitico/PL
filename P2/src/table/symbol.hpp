@@ -1,8 +1,8 @@
-/*! 	
+/*!
 	\file   symbol.hpp
 	\brief  Declaration of Symbol class
-	\author 
-	\date    2017-12-1
+	\author Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 
 */
@@ -14,7 +14,7 @@
 
 #include "symbolInterface.hpp"
 
-/*!	
+/*!
 	\namespace lp
 	\brief Name space for the subject Language Processors
 */
@@ -28,24 +28,24 @@ namespace lp{
 class Symbol:public lp::SymbolInterface
 {
 
-/*!		
+/*!
 \name Protected atributes of Symbol class
 */
 	protected:
 		std::string _name;    //!< \brief Name of the Symbol
 		int      	_token;   //!< \brief Token of the Symbol
 
-/*!	
+/*!
 \name Public methods of Symbol class
 */
 	public:
 
 
-/*!	
+/*!
 	\name Constructors
 */
-		
-/*!		
+
+/*!
 	\brief Constructor with arguments with default values
 	\note  Inline function
 	\param name: name of the Symbol
@@ -60,8 +60,8 @@ class Symbol:public lp::SymbolInterface
 
 		this->setToken(token);
 	}
-		
-/*!		
+
+/*!
 	\brief Copy constructor
 	\note  Inline function
 	\param s: object of Symbol class
@@ -81,7 +81,7 @@ class Symbol:public lp::SymbolInterface
 	\name Observers
 */
 
-/*!	
+/*!
 	\brief  Public method that returns the name of the Symbol
 	\note   Inline Function
 	\pre    None
@@ -95,7 +95,7 @@ class Symbol:public lp::SymbolInterface
 	}
 
 
-/*!	
+/*!
 	\brief   Public method that returns the token of the Symbol
 	\note    Inline function
 	\pre     None
@@ -106,19 +106,19 @@ class Symbol:public lp::SymbolInterface
 	inline int getToken() const
 	{
 		return this->_token;
-	}	
+	}
 
-	
+
 /*!
 	\name Modifiers
 */
-	
-/*!	
+
+/*!
 	\brief   This functions modifies the name of the Symbol
 	\note    Inline function
 	\param   name: new name of the Symbol
 	\pre     None
-	\post    The name of the Symbol is equal to the parameter 
+	\post    The name of the Symbol is equal to the parameter
 	\return  void
 	\sa 	 setToken
 */
@@ -128,25 +128,25 @@ class Symbol:public lp::SymbolInterface
 	}
 
 
-/*!	
+/*!
 	\brief   This functions modifies the token of the Symbol
 	\note    Inline function
 	\param   token: new value of the Variable
 	\pre     None
-	\post    The token of the Symbol is equal to the parameter 
+	\post    The token of the Symbol is equal to the parameter
 	\return  void
 	\sa 	 setName
 */
-	inline void setToken(int token) 
+	inline void setToken(int token)
 	{
 	    this->_token = token;
 	}
 
-/*!	
+/*!
 	\name Relational operators
 */
-	
-/*!		
+
+/*!
 	\brief  Comparison operator that compares the lexicographic equality of two Symbols
 	\param  s: object of Symbol class
 	\pre    nome
@@ -155,8 +155,8 @@ class Symbol:public lp::SymbolInterface
 */
 	bool operator==(const Symbol & s) const;
 
-		
-/*!		
+
+/*!
 	\brief  Comparison operator that compares the lexicographic inequality of two objects
 	\param  s: object of Variable class
 	\pre    nome
@@ -176,4 +176,4 @@ class Symbol:public lp::SymbolInterface
 }
 
 // End of _SYMBOL_HPP_
-#endif  
+#endif

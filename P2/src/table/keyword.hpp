@@ -1,8 +1,8 @@
-/*!	
+/*!
 	\file    keyword.hpp
 	\brief   Declaration of Keyword class
-	\author  
-	\date    2017-12-1
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 
@@ -14,13 +14,13 @@
 
 #include "symbol.hpp"
 
-/*!	
+/*!
 	\namespace lp
 	\brief Name space for the subject Language Processors
 */
 namespace lp{
 
-/*!	
+/*!
   \class     Keyword
   \attention Abstrac class
   \brief     Definition of atributes and methods of Keyword class
@@ -28,23 +28,23 @@ namespace lp{
 */
 class Keyword:public lp::Symbol
 {
-/*!		
+/*!
 \name No own attributes of Keyword class
 */
 
 
 
 
-/*!		
+/*!
 \name Public methods of Keyword class
 */
 	public:
 
-/*!	
+/*!
 	\name Constructors
 */
-		
-/*!		
+
+/*!
 	\brief Constructor with arguments with default values
 	\note  Inline function that uses Symbol's constructor as members initializer
 	\param name: name of the Keyword
@@ -57,8 +57,8 @@ class Keyword:public lp::Symbol
 	{
 		// Empty
 	}
-		
-/*!		
+
+/*!
 	\brief Copy constructor
 	\note  Inline function
 	\param k: object of Keyword class
@@ -75,26 +75,26 @@ class Keyword:public lp::Symbol
 	}
 
 
-/*!	
+/*!
 	\name Operator
 */
-	
-/*!		
+
+/*!
 	\brief  Assignment Operator
 	\param  k: objecto of Keyword class
 	\post   The atributes of this object are equal to the atributes of the parameter
 	\return Reference to this object
 */
 	Keyword &operator=(const Keyword &k);
-		
 
-		
-/*!	
+
+
+/*!
 	\name I/O Functions
 */
-		
 
-/*!		
+
+/*!
 	\brief Write a Keyword
 	\pre   None
 	\post  None
@@ -103,7 +103,7 @@ class Keyword:public lp::Symbol
 	void write() const;
 
 
-/*!		
+/*!
 	\brief   Read a Keyword
 	\pre     None
 	\post    The atributes of the Keyword are modified with the read values
@@ -111,7 +111,7 @@ class Keyword:public lp::Symbol
 */
 	void read();
 
-	
+
 // End of Keyword class
 };
 

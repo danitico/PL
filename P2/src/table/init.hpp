@@ -1,8 +1,8 @@
 /*!
 	\file   init.hpp
 	\brief   Prototype of the function for the initialization of table of symbols
-	\author
-	\date    2017-12-5
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 

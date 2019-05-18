@@ -1580,7 +1580,7 @@ yyreduce:
 
 				if(interactiveMode){
 					(yyvsp[0].st)->evaluate();
-					std::cout << std::endl << "-> ";
+					std::cout << std::endl << " > ";
 				}
 			}
 #line 1587 "interpreter.tab.c" /* yacc.c:1646  */
@@ -2143,7 +2143,7 @@ yyreduce:
   case 71:
 #line 524 "interpreter.y" /* yacc.c:1646  */
     {
-		(yyval.st) = new lp::SwitchStmt((yyvsp[-1].cases), (yyvsp[-2].expNode));
+		(yyval.st) = new lp::SwitchStmt((yyvsp[-2].expNode), (yyvsp[-1].cases));
 	}
 #line 2149 "interpreter.tab.c" /* yacc.c:1646  */
     break;

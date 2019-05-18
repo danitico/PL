@@ -1,8 +1,8 @@
-/*!	
+/*!
 	\file    constant.cpp
 	\brief   Code of some functions of Constant class
-	\author 
-	\date    2017-10-19
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 
@@ -20,7 +20,7 @@
 lp::Constant &lp::Constant::operator=(const lp::Constant &c)
   {
  	// Check that is not the current object
-		if (this != &c) 
+		if (this != &c)
 		{
 			// Inherited methods
 			this->setName(c.getName());
@@ -36,10 +36,10 @@ lp::Constant &lp::Constant::operator=(const lp::Constant &c)
   }
 
 
-/*	
+/*
   	I/O Functions
 */
-	
+
 
 void lp::Constant::read()
 {
@@ -49,14 +49,14 @@ void lp::Constant::read()
 
    std::cout << "Token of the Constant: ";
    std::cin >> this->_token;
-   // The \n character is read 
-   std::cin.ignore(); 
+   // The \n character is read
+   std::cin.ignore();
 
   // Own attribute
    std::cout << "Type of the Constant: ";
    std::cin >> this->_type;
-   // The \n character is read 
-   std::cin.ignore(); 
+   // The \n character is read
+   std::cin.ignore();
 
 }
 
@@ -71,5 +71,3 @@ void lp::Constant::write() const
   std::cout << "Token:" << this->getType() << std::endl;
 
 }
-
-

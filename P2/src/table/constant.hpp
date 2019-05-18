@@ -1,8 +1,8 @@
-/*!	
+/*!
 	\file    constant.hpp
 	\brief   Declaration of Constant class
-	\author  
-	\date    2017-12-5
+	\author  Daniel Ranchal Parrado
+	\date    2017-05-18
 	\version 1.0
 */
 
@@ -14,13 +14,13 @@
 
 #include "symbol.hpp"
 
-/*!	
+/*!
 	\namespace lp
 	\brief Name space for the subject Language Processors
 */
 namespace lp{
 
-/*!	
+/*!
   \class     Constant
   \attention Abstrac class
   \brief     Definition of atributes and methods of Constant class
@@ -28,22 +28,22 @@ namespace lp{
 */
 class Constant:public lp::Symbol
 {
-/*!		
+/*!
 \name Protected atribute of Constant class
 */
 	protected:
 		int      	_type;    //!< \brief Type of the  Constant: NUMERICVAR, STRINGVAR
 
-/*!		
+/*!
 \name Public methods of Constant class
 */
 	public:
 
-/*!	
+/*!
 	\name Constructors
 */
-		
-/*!		
+
+/*!
 	\brief Constructor with arguments with default values
 	\note  Inline function that uses Symbol's constructor as members initializer
 	\param name: name of the Constant
@@ -57,8 +57,8 @@ class Constant:public lp::Symbol
 	{
 		this->setType(type);
 	}
-		
-/*!		
+
+/*!
 	\brief Copy constructor
 	\note  Inline function
 	\param c: object of Constant class
@@ -77,7 +77,7 @@ class Constant:public lp::Symbol
 	}
 
 
-/*!	
+/*!
 	\name Observer
 */
 
@@ -92,34 +92,34 @@ class Constant:public lp::Symbol
 	inline int getType() const
 	{
 		return this->_type;
-	}	
+	}
 
 
-/*!	
+/*!
 	\name Modifier
 */
 
 
-/*!	
+/*!
 	\brief   This functions modifies the token of the Constant
 	\note    Función inline
 	\param   type: new type of the Constant
 	\pre     None
-	\post    The type of the Constant is equal to the parameter 
+	\post    The type of the Constant is equal to the parameter
 	\return  void
 	\sa 	 setName, setToken
 */
-	inline void setType(int type) 
+	inline void setType(int type)
 	{
 	    this->_type = type;
 	}
 
 
-/*!	
+/*!
 	\name Operator
 */
-	
-/*!		
+
+/*!
 	\brief  Assignment Operator
 	\note   Virtual method: can be redefined in the heir class
 	\param  c: objecto of Constant class
@@ -127,15 +127,15 @@ class Constant:public lp::Symbol
 	\return Reference to this object
 */
 	virtual Constant &operator=(const Constant &c);
-		
 
-		
-/*!	
+
+
+/*!
 	\name I/O Functions
 */
-		
 
-/*!		
+
+/*!
 	\brief Write a Constant
 	\note  Virtual method: can be redefined in the heir class
 	\pre   None
@@ -145,7 +145,7 @@ class Constant:public lp::Symbol
 	virtual void write() const;
 
 
-/*!		
+/*!
 	\brief   Read a Constant
 	\note    Virtual method: can be redefined in the heir class
 	\pre     None
@@ -154,7 +154,7 @@ class Constant:public lp::Symbol
 */
 	virtual void read();
 
-	
+
 // End of Constant class
 };
 

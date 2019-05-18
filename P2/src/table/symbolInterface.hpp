@@ -1,8 +1,8 @@
-/*! 	
+/*!
 	\file   symbolInterface.hpp
 	\brief  Declaration of abstract SymbolInterface class
-	\author 
-	\date    2017-12-1
+	\author Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 
 */
@@ -13,7 +13,7 @@
 #include <string>
 
 
-/*!	
+/*!
 	\namespace lp
 	\brief Name space for the subject Language Processors
 */
@@ -22,11 +22,11 @@ namespace lp{
 
 /*!
   \class SymbolInterface
-  \brief Prototype of the pure virtual methods 
+  \brief Prototype of the pure virtual methods
 */
 class SymbolInterface{
 
-/*!	
+/*!
 \name Public methods of SymbolInterface class
 */
 	public:
@@ -34,7 +34,7 @@ class SymbolInterface{
 /*!
 	\name Observers
 */
-/*!	
+/*!
 	\brief   Name of the Symbol
 	\warning Pure virtual function: it must be redefined in the heir class
 	\pre     None
@@ -45,7 +45,7 @@ class SymbolInterface{
 	virtual const std::string &getName() const = 0;
 
 
-/*!	
+/*!
 	\brief   Token of the Symbol
 	\warning Pure virtual function: it must be redefined in the heir class
 	\pre     None
@@ -53,38 +53,38 @@ class SymbolInterface{
 	\return  int Token of the Symbol
 	\sa		 getName, getValue
 */
-	virtual int getToken() const = 0;	
+	virtual int getToken() const = 0;
 
 
-	
+
 /*!
 	\name Modifiers
 */
-		
-/*!	
+
+/*!
 	\brief   This functions modifies the name of the Symbol
 	\warning Pure virtual function: it must be redefined in the heir class
 	\param   name: new name of the Symbol
 	\pre     None
-	\post    The name of the Symbol is equal to the parameter 
+	\post    The name of the Symbol is equal to the parameter
 	\return  void
 	\sa 	 setValue, setToken
 */
 	virtual void setName(const std::string & name) = 0;
-		
-/*!	
+
+/*!
 	\brief   This functions modifies the token of the Symbol
 	\warning Pure virtual function: it must be redefined in the heir class
 	\param   token: new value of the Symbol
 	\pre     None
-	\post    The token of the Symbol is equal to the parameter 
+	\post    The token of the Symbol is equal to the parameter
 	\return  void
 	\sa 	 setName, setValue
 */
 	virtual void setToken(int token) = 0;
 
 
-	
+
 // End of definition of SymbolInterface class
 };
 
@@ -92,4 +92,4 @@ class SymbolInterface{
 }
 
 // End of _SYMBOLINTERFACE_HPP_
-#endif  
+#endif

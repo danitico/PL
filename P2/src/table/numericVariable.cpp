@@ -1,8 +1,8 @@
-/*!	
+/*!
 	\file    numericVariable.cpp
 	\brief   Code of some functions of NumericVariable class
-	\author 
-	\date    2017-10-19
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 
@@ -16,7 +16,7 @@
 
 
 /*
- Definitions of the read and write functions of the NumericVariable class 
+ Definitions of the read and write functions of the NumericVariable class
 */
 
 void lp::NumericVariable::read()
@@ -27,20 +27,20 @@ void lp::NumericVariable::read()
 
    std::cout << "Token of the NumericVariable: ";
    std::cin >> this->_token;
-   // The \n character is read 
-   std::cin.ignore(); 
+   // The \n character is read
+   std::cin.ignore();
 
    std::cout << "Type of the NumericVariable: ";
    std::cin >> this->_type;
-   // The \n character is read 
-   std::cin.ignore(); 
+   // The \n character is read
+   std::cin.ignore();
 
 
    // Own attribute
    std::cout << "Value of the NumericVariable: ";
    std::cin >> this->_value;
-   // The \n character is read 
-   std::cin.ignore(); 
+   // The \n character is read
+   std::cin.ignore();
 }
 
 
@@ -58,7 +58,7 @@ void lp::NumericVariable::write() const
 lp::NumericVariable &lp::NumericVariable::operator=(const lp::NumericVariable &n)
   {
  	// Check that is not the current object
-		if (this != &n) 
+		if (this != &n)
 		{
 			// Inherited methods
 			this->setName(n.getName());
@@ -76,7 +76,7 @@ lp::NumericVariable &lp::NumericVariable::operator=(const lp::NumericVariable &n
   }
 
 
-/*!	
+/*!
 	\namespace lp
 	\brief Name space for the subject Language Processors
 */
@@ -88,17 +88,17 @@ std::istream &operator>>(std::istream &i, lp::NumericVariable &n)
   i >> n._name;
 
   i >> n._token;
-  // The \n character is read 
+  // The \n character is read
   i.ignore();
 
 
   i >> n._type;
-  // The \n character is read 
+  // The \n character is read
   i.ignore();
 
 
   i >> n._token;
-  // The \n character is read 
+  // The \n character is read
   i.ignore();
 
   ////////////////////////////////////
@@ -106,12 +106,12 @@ std::istream &operator>>(std::istream &i, lp::NumericVariable &n)
   // Own attribute
 
   i >> n._value;
-  // The \n character is read 
+  // The \n character is read
   i.ignore();
 
   ////////////////////////////////////
 
-/* Alternative way using an auxiliar string 
+/* Alternative way using an auxiliar string
 
   std::string auxiliar;
 
@@ -148,8 +148,4 @@ std::ostream &operator<<(std::ostream &o, lp::NumericVariable const &n)
 }
 
 // End of name space lp
-} 
-
-
-
-
+}

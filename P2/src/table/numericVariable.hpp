@@ -1,8 +1,8 @@
-/*!	
+/*!
 	\file    numericVariable.hpp
 	\brief   Declaration of NumericVariable class
-	\author  
-	\date    2017-12-1
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 
@@ -14,35 +14,35 @@
 
 #include "variable.hpp"
 
-/*!	
+/*!
 	\namespace lp
 	\brief Name space for the subject Language Processors
 */
 namespace lp{
 
-/*!	
+/*!
   \class NumericVariable
   \brief Definition of atributes and methods of NumericVariable class
   \note  NumericVariable Class publicly inherits from Variable class
 */
 class NumericVariable:public lp::Variable
 {
-/*!		
+/*!
 \name Private atributes of NumericVariable class
 */
 	private:
 		double      _value;   //!< \brief Numeric value of the NumericVariable
 
-/*!		
+/*!
 \name Public methods of NumericVariable class
 */
 	public:
 
-/*!	
+/*!
 	\name Constructors
 */
-		
-/*!		
+
+/*!
 	\brief Constructor with arguments with default values
 	\note  Inline function that uses Variable's constructor as members initializer
 	\param name: name of the NumericVariable
@@ -53,13 +53,13 @@ class NumericVariable:public lp::Variable
 	\post  A new NumericVariable is created with the values of the parameters
 	\sa   setName, setValue
 */
-	inline NumericVariable(std::string name="", int token = 0, int type = 0, double value=0.0): 
+	inline NumericVariable(std::string name="", int token = 0, int type = 0, double value=0.0):
  	Variable(name,token,type)
 	{
 		this->setValue(value);
 	}
-		
-/*!		
+
+/*!
 	\brief Copy constructor
 	\note  Inline function
 	\param n: object of NumericVariable class
@@ -75,17 +75,17 @@ class NumericVariable:public lp::Variable
 		this->setToken(n.getToken());
 
 		this->setType(n.getType());
-		
+
 		// Own method
 		this->setValue(n.getValue());
 	}
 
 
-/*!	
+/*!
 	\name Observer
 */
-	
-/*!	
+
+/*!
 	\brief  Public method that returns the value of the NumericVariable
 	\note   Función inline
 	\pre    None
@@ -100,16 +100,16 @@ class NumericVariable:public lp::Variable
 
 
 
-/*!	
+/*!
 	\name Modifier
 */
-		
-/*!	
+
+/*!
 	\brief   This functions modifies the value of the NumericVariable
 	\note    Inline function
 	\param   value: new value of the NumericVariable
 	\pre     None
-	\post    The value of the NumericVariable is equal to the parameter 
+	\post    The value of the NumericVariable is equal to the parameter
 	\return  void
 	\sa 	 setValue
 */
@@ -120,12 +120,12 @@ class NumericVariable:public lp::Variable
 
 
 
-		
-/*!	
+
+/*!
 	\name I/O Functions
 */
-		
-/*!		
+
+/*!
 	\brief Read a NumericVariable
 	\pre   None
 	\post  The atributes of the NumericVariable are modified with the read values
@@ -133,8 +133,8 @@ class NumericVariable:public lp::Variable
 */
 	void read();
 
-	
-/*!		
+
+/*!
 	\brief Write a NumericVariable
 	\pre   None
 	\post  None
@@ -143,21 +143,21 @@ class NumericVariable:public lp::Variable
 	void write() const;
 
 
-/*!	
+/*!
 	\name Operators
 */
-	
-/*!		
+
+/*!
 	\brief  Assignment Operator
 	\param  n: objectoof NumericVariable class
 	\post   The atributes of this object are equal to the atributes of the parameter
 	\return Reference to this object
 */
 	NumericVariable &operator=(const NumericVariable &n);
-	
+
 
  //! \name Friend functions
-/*!		
+/*!
 	\brief  Insertion operator
 	\param  i: input stream
 	\param  n: object of NumericVariable class
@@ -167,7 +167,7 @@ class NumericVariable:public lp::Variable
 */
 	friend std::istream &operator>>(std::istream &i, NumericVariable &n);
 
-/*!		
+/*!
 	\brief  Extraction operator
 	\param  o: output stream
 	\param  n: object of NumericVariable class
@@ -176,7 +176,7 @@ class NumericVariable:public lp::Variable
 	\return The output stream
 */
 	friend std::ostream &operator<<(std::ostream &o, NumericVariable const &n);
-	
+
 // End of NumericVariable class
 };
 

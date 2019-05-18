@@ -1,8 +1,8 @@
 /*!
-	\file    StringVariable.cpp
+	\file    stringVariable.cpp
 	\brief   Code of some functions of StringVariable class
-	\author
-	\date    2017-10-19
+	\author  Daniel Ranchal Parrado
+	\date    2019-05-18
 	\version 1.0
 */
 

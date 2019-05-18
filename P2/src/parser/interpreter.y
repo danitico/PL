@@ -147,7 +147,7 @@ stmtlist:
 
 				if(interactiveMode){
 					$2->evaluate();
-					std::cout << std::endl << "-> ";
+					std::cout << std::endl << " > ";
 				}
 			}
 
@@ -522,6 +522,6 @@ segun: SWITCH cond blocks DEFAULT COLON stmtlist END_SWITCH
 
 	| SWITCH cond blocks END_SWITCH
 	{
-		$$ = new lp::SwitchStmt($3, $2);
+		$$ = new lp::SwitchStmt($2, $3);
 	}
 ;
