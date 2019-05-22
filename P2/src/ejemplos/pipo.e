@@ -1,2 +1,2 @@
-a := 'a' || 'b';
-escribir_cadena(a);
+a := 'a' || 'b' || '\n';
+escribir_cadena(a );

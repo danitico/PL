@@ -2328,7 +2328,7 @@ void lp::ExecutionStmt::evaluate()
 	}
 	else{
 		std::string command = "./ipe.exe " + this->_file;
-		if(!system(command.c_str())){
+		if(system(command.c_str()) != 0){
 			execerror("Something went bad when executing file", this->_file);
 		}
 	}
