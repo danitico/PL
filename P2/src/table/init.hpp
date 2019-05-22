@@ -96,6 +96,7 @@ static struct {
                         "valor", VALUE,
                         "defecto", DEFAULT,
                         "romper", BREAK,
+                        "ejecutar", EXECUTE,
                         "",      0
 	                   };
 

@@ -2532,6 +2532,46 @@ class PlaceStmt : public Statement
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 /*!
+  \class   ExecutionStmt
+  \brief   Definition of atributes and methods of ExecutionStmt class
+  \note    ExecutionStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class ExecutionStmt : public Statement
+{
+   private:
+      std::string _file; //!< Name of the file
+
+   public:
+      /*!
+      	\brief Constructor of ExecutionStmt
+         \param file Name of the file
+      	\post  A new ExecutionStmt is created
+      */
+      ExecutionStmt(std::string file)
+      {
+         this->_file = file;
+      }
+
+      /*!
+      	\brief   Print the ExecutionStmt
+      	\return  void
+      	\sa		 evaluate()
+      */
+      void print();
+
+      /*!
+      \brief   Evaluate the ExecutionStmt
+      \return  void
+      \sa		 print
+      */
+      void evaluate();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
   \class   AST
   \brief   Definition of atributes and methods of AST class
 */

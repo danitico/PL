@@ -86,7 +86,7 @@
 %type <cases> blocks
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read si mientras para repetir borrar lugar segun
+%type <st> stmt asgn print read si mientras para repetir borrar lugar segun ejecutar
 
 %type <prog> program
 
@@ -94,7 +94,7 @@
 
 %token SEMICOLON COLON
 
-%token ERASE PLACE REPETITION UNTIL FOR FROM STEP DO END_FOR WHILE END_WHILE IF THEN ELSE END_IF READ READ_STRING WRITE WRITE_STRING SWITCH END_SWITCH VALUE BREAK DEFAULT
+%token ERASE PLACE REPETITION UNTIL FOR FROM STEP DO END_FOR WHILE END_WHILE IF THEN ELSE END_IF READ READ_STRING WRITE WRITE_STRING SWITCH END_SWITCH VALUE BREAK DEFAULT EXECUTE
 
 %right ASSIGNMENT
 
@@ -211,6 +211,11 @@ stmt: SEMICOLON
 		}
 
 		| segun SEMICOLON
+		{
+			$$ = $1;
+		}
+
+		| ejecutar SEMICOLON
 		{
 			$$ = $1;
 		}
@@ -565,6 +570,11 @@ segun: SWITCH cond blocks DEFAULT COLON stmtlist END_SWITCH
 		$$ = new lp::SwitchStmt($2, $3);
 	}
 ;
+
+ejecutar: EXECUTE LEFTPARENTHESIS STRINGS RIGHTPARENTHESIS
+	{
+		$$ = new lp::ExecutionStmt($3);
+	}
 
 listOfExp:
 	{

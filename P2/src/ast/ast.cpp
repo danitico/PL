@@ -2315,6 +2315,28 @@ void lp::PlaceStmt::evaluate()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+void lp::ExecutionStmt::print()
+{
+  std::cout << "Execution Stmt "  << std::endl;
+  std::cout << "File -> " << this->_file << std::endl;
+}
+
+void lp::ExecutionStmt::evaluate()
+{
+	if(this->_file == ""){
+		execerror("Syntax error: The name of the file cannot be blank", "this->_file");
+	}
+	else{
+		std::string command = "./ipe.exe " + this->_file;
+		if(!system(command.c_str())){
+			execerror("Something went bad when executing file", this->_file);
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 void lp::AST::print()
 {
   std::list<Statement *>::iterator stmtIter;
