@@ -79,32 +79,33 @@ extern int yydebug;
     VARIABLE = 289,
     UNDEFINED = 290,
     CONSTANT = 291,
-    OR = 292,
-    AND = 293,
-    LESS_THAN = 294,
-    LESS_OR_EQUAL = 295,
-    GREATER_THAN = 296,
-    GREATER_OR_EQUAL = 297,
-    EQUAL = 298,
-    NOT_EQUAL = 299,
-    NOT = 300,
-    CONCATENATE = 301,
-    SUM_VARIABLE = 302,
-    SUBSTRACT_VARIABLE = 303,
-    PRODUCT_VARIABLE = 304,
-    DIVIDE_VARIABLE = 305,
-    PLUS = 306,
-    MINUS = 307,
-    PLUS_PLUS = 308,
-    MINUS_MINUS = 309,
-    PRODUCT = 310,
-    DIVISION = 311,
-    MODULUS = 312,
-    INTEGER_DIVISION = 313,
-    LEFTPARENTHESIS = 314,
-    RIGHTPARENTHESIS = 315,
-    UNARY = 316,
-    POWER_OF = 317
+    BUILTIN = 292,
+    OR = 293,
+    AND = 294,
+    LESS_THAN = 295,
+    LESS_OR_EQUAL = 296,
+    GREATER_THAN = 297,
+    GREATER_OR_EQUAL = 298,
+    EQUAL = 299,
+    NOT_EQUAL = 300,
+    NOT = 301,
+    CONCATENATE = 302,
+    SUM_VARIABLE = 303,
+    SUBSTRACT_VARIABLE = 304,
+    PRODUCT_VARIABLE = 305,
+    DIVIDE_VARIABLE = 306,
+    PLUS = 307,
+    MINUS = 308,
+    PLUS_PLUS = 309,
+    MINUS_MINUS = 310,
+    PRODUCT = 311,
+    DIVISION = 312,
+    MODULUS = 313,
+    INTEGER_DIVISION = 314,
+    LEFTPARENTHESIS = 315,
+    RIGHTPARENTHESIS = 316,
+    UNARY = 317,
+    POWER_OF = 318
   };
 #endif
 
@@ -113,7 +114,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 63 "interpreter.y" /* yacc.c:1909  */
+#line 64 "interpreter.y" /* yacc.c:1909  */
 
 	char * identifier;
 	char * strings;
@@ -126,7 +127,7 @@ union YYSTYPE
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 130 "interpreter.tab.h" /* yacc.c:1909  */
+#line 131 "interpreter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

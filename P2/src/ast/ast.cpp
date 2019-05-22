@@ -32,9 +32,9 @@
 #include "../table/numericConstant.hpp"
 #include "../table/logicalConstant.hpp"
 
-// #include "../table/builtinParameter0.hpp"
-// #include "../table/builtinParameter1.hpp"
-// #include "../table/builtinParameter2.hpp"
+#include "../table/builtinParameter0.hpp"
+#include "../table/builtinParameter1.hpp"
+#include "../table/builtinParameter2.hpp"
 
 #include "../parser/interpreter.tab.h"
 
@@ -658,122 +658,122 @@ double lp::PowerNode::evaluateNumber()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// int lp::BuiltinFunctionNode_0::getType()
-// {
-// 	return	NUMBER;
-// }
-//
-//
-// void lp::BuiltinFunctionNode_0::print()
-// {
-// 	std::cout << "BuiltinFunctionNode_0: "  << std::endl;
-// 	std::cout << this->_id;
-// 	std::cout << " ( ) " ;
-// }
-//
-// double lp::BuiltinFunctionNode_0::evaluateNumber()
-// {
-// 	// Get the identifier in the table of symbols as BuiltinParameter0
-// 	lp::BuiltinParameter0 *f = (lp::BuiltinParameter0 *) table.getSymbol(this->_id);
-//
-// 	// Apply the function and copy the result
-//    	return f->getFunction()();
-// }
-//
-//
-// ///////////////////////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////
-//
-// int lp::BuiltinFunctionNode_1::getType()
-// {
-// 	int result = 0;
-//
-// 	if (this->_exp->getType() == NUMBER)
-// 		result = NUMBER;
-// 	else
-// 		warning("Runtime error: incompatible type for", "BuiltinFunctionNode_1");
-//
-// 	return	result;
-// }
-//
-// void lp::BuiltinFunctionNode_1::print()
-// {
-// 	std::cout << "BuiltinFunctionNode_1: "  << std::endl;
-// 	std::cout << this->_id;
-// 	std::cout << " ( " ;
-// 	this->_exp->print();
-// 	std::cout << " ) " ;
-// }
-//
-// double lp::BuiltinFunctionNode_1::evaluateNumber()
-// {
-// 	double result = 0.0;
-//
-// 	// Ckeck the type of the expression
-// 	if (this->getType() == NUMBER)
-// 	{
-// 		// Get the identifier in the table of symbols as BuiltinParameter1
-// 		lp::BuiltinParameter1 *f = (lp::BuiltinParameter1 *) table.getSymbol( this->_id);
-//
-// 		// Apply the function to the parameter and copy the result
-// 		result = f->getFunction()(this->_exp->evaluateNumber());
-// 	}
-// 	else
-// 	{
-// 		warning("Runtime error: incompatible type of parameter for ", this->_id);
-// 	}
-//
-// 	return result;
-// }
-//
-//
-// ///////////////////////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////
-//
-// int lp::BuiltinFunctionNode_2::getType()
-// {
-// 	int result = 0;
-//
-// 	if (this->_exp1->getType() == this->_exp2->getType())
-// 		result = this->_exp1->getType();
-// 	else
-// 		warning("Runtime error: incompatible types for", "BuiltinFunctionNode_2");
-//
-// 	return	result;
-// }
-//
-//
-// void lp::BuiltinFunctionNode_2::print()
-// {
-// 	std::cout << "BuiltinFunctionNode_2: "  << std::endl;
-// 	std::cout << this->_id;
-// 	std::cout << " ( " ;
-// 	this->_exp1->print();
-// 	std::cout << " , " ;
-// 	this->_exp2->print();
-// 	std::cout << " ) " ;
-// }
-//
-// double lp::BuiltinFunctionNode_2::evaluateNumber()
-// {
-// 	double result = 0.0;
-//
-// 	// Ckeck the types of the expressions
-// 	if (this->getType() == NUMBER)
-// 	{
-// 		// Get the identifier in the table of symbols as BuiltinParameter2
-// 		lp::BuiltinParameter2 *f = (lp::BuiltinParameter2 *) table.getSymbol(this->_id);
-//
-// 		// Apply the function to the parameters and copy the result
-// 	  	result = f->getFunction()(this->_exp1->evaluateNumber(),this->_exp2->evaluateNumber());
-// 	}
-// 	else
-// 	{
-// 		warning("Runtime error: incompatible types of parameters for ", this->_id);
-// 	}
-//
-//   return result;
-// }
+int lp::BuiltinFunctionNode_0::getType()
+{
+	return	NUMBER;
+}
+
+
+void lp::BuiltinFunctionNode_0::print()
+{
+	std::cout << "BuiltinFunctionNode_0: "  << std::endl;
+	std::cout << this->_id;
+	std::cout << " ( ) " ;
+}
+
+double lp::BuiltinFunctionNode_0::evaluateNumber()
+{
+	// Get the identifier in the table of symbols as BuiltinParameter0
+	lp::BuiltinParameter0 *f = (lp::BuiltinParameter0 *) table.getSymbol(this->_id);
+
+	// Apply the function and copy the result
+   	return f->getFunction()();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+int lp::BuiltinFunctionNode_1::getType()
+{
+	int result = 0;
+
+	if (this->_exp->getType() == NUMBER)
+		result = NUMBER;
+	else
+		warning("Runtime error: incompatible type for", "BuiltinFunctionNode_1");
+
+	return	result;
+}
+
+void lp::BuiltinFunctionNode_1::print()
+{
+	std::cout << "BuiltinFunctionNode_1: "  << std::endl;
+	std::cout << this->_id;
+	std::cout << " ( " ;
+	this->_exp->print();
+	std::cout << " ) " ;
+}
+
+double lp::BuiltinFunctionNode_1::evaluateNumber()
+{
+	double result = 0.0;
+
+	// Ckeck the type of the expression
+	if (this->getType() == NUMBER)
+	{
+		// Get the identifier in the table of symbols as BuiltinParameter1
+		lp::BuiltinParameter1 *f = (lp::BuiltinParameter1 *) table.getSymbol( this->_id);
+
+		// Apply the function to the parameter and copy the result
+		result = f->getFunction()(this->_exp->evaluateNumber());
+	}
+	else
+	{
+		warning("Runtime error: incompatible type of parameter for ", this->_id);
+	}
+
+	return result;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+int lp::BuiltinFunctionNode_2::getType()
+{
+	int result = 0;
+
+	if (this->_exp1->getType() == this->_exp2->getType())
+		result = this->_exp1->getType();
+	else
+		warning("Runtime error: incompatible types for", "BuiltinFunctionNode_2");
+
+	return	result;
+}
+
+
+void lp::BuiltinFunctionNode_2::print()
+{
+	std::cout << "BuiltinFunctionNode_2: "  << std::endl;
+	std::cout << this->_id;
+	std::cout << " ( " ;
+	this->_exp1->print();
+	std::cout << " , " ;
+	this->_exp2->print();
+	std::cout << " ) " ;
+}
+
+double lp::BuiltinFunctionNode_2::evaluateNumber()
+{
+	double result = 0.0;
+
+	// Ckeck the types of the expressions
+	if (this->getType() == NUMBER)
+	{
+		// Get the identifier in the table of symbols as BuiltinParameter2
+		lp::BuiltinParameter2 *f = (lp::BuiltinParameter2 *) table.getSymbol(this->_id);
+
+		// Apply the function to the parameters and copy the result
+	  	result = f->getFunction()(this->_exp1->evaluateNumber(),this->_exp2->evaluateNumber());
+	}
+	else
+	{
+		warning("Runtime error: incompatible types of parameters for ", this->_id);
+	}
+
+  return result;
+}
 
 
 

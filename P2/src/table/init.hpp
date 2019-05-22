@@ -23,14 +23,14 @@
 
 ///////////////////////////////////////
 // NEW in example 13
-// #include "mathFunction.hpp"
-// #include "builtinParameter1.hpp"
+#include "mathFunction.hpp"
+#include "builtinParameter1.hpp"
 ///////////////////////////////////////
 
 ///////////////////////////////////////
 // NEW in example 14
-// #include "builtinParameter0.hpp"
-// #include "builtinParameter2.hpp"
+#include "builtinParameter0.hpp"
+#include "builtinParameter2.hpp"
 ///////////////////////////////////////
 
 
@@ -102,40 +102,40 @@ static struct {
 
 // NEW in example 13
 
-// static struct {    /* Predefined functions names */
-//                 std::string name ;
-// 				lp::TypePointerDoubleFunction_1 function;
-//               } function_1 [] = {
-// 									"sin",     sin,
-// 		    						"cos",     cos,
-// 		    						"atan",    atan,
-// 		    						"log",     Log,
-// 		    						"log10",   Log10,
-// 		    						"exp",     Exp,
-// 		    						"sqrt",    Sqrt,
-// 		    						"integer", integer,
-// 		    						"abs",     fabs,
-// 		    						"",       0
-// 		              };
-//
-// // NEW in example 14
-// static struct {
-//                 std::string name ;
-// 				lp::TypePointerDoubleFunction_0 function;
-//               } function_0 [] = {
-// 						"random", Random,
-// 		                "",       0
-// 		              };
-//
-//
-// // NEW in example 14
-// static struct {    /* Nombres predefinidos de funciones con 2 argumentos */
-//                 std::string name ;
-// 				lp::TypePointerDoubleFunction_2 function;
-//               } function_2 [] = {
-// 	                   "atan2",   Atan2,
-// 		                "",       0
-// 		              };
+static struct {    /* Predefined functions names */
+                std::string name ;
+				lp::TypePointerDoubleFunction_1 function;
+              } function_1 [] = {
+									"sin",     sin,
+		    						"cos",     cos,
+		    						"atan",    atan,
+		    						"log",     Log,
+		    						"log10",   Log10,
+		    						"exp",     Exp,
+		    						"sqrt",    Sqrt,
+		    						"integer", integer,
+		    						"abs",     fabs,
+		    						"",       0
+		              };
+
+// NEW in example 14
+static struct {
+                std::string name ;
+				lp::TypePointerDoubleFunction_0 function;
+              } function_0 [] = {
+						"random", Random,
+		                "",       0
+		              };
+
+
+// NEW in example 14
+static struct {    /* Nombres predefinidos de funciones con 2 argumentos */
+                std::string name ;
+				lp::TypePointerDoubleFunction_2 function;
+              } function_2 [] = {
+	                   "atan2",   Atan2,
+		                "",       0
+		              };
 
 
 

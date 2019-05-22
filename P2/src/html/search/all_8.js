@@ -5,6 +5,7 @@ var searchData=
   ['init_2ecpp',['init.cpp',['../init_8cpp.html',1,'']]],
   ['init_2ehpp',['init.hpp',['../init_8hpp.html',1,'']]],
   ['installsymbol',['installSymbol',['../classlp_1_1Table.html#aef4ef0061f49bf9bba06e6570d40e979',1,'lp::Table::installSymbol()'],['../classlp_1_1TableInterface.html#a12efe4c74f7edcbfc0c2d782ffd15fb9',1,'lp::TableInterface::installSymbol()']]],
+  ['integer',['integer',['../mathFunction_8cpp.html#a866aaa40dad8109135f82fab2fd1e552',1,'integer(double x):&#160;mathFunction.cpp'],['../mathFunction_8hpp.html#a866aaa40dad8109135f82fab2fd1e552',1,'integer(double x):&#160;mathFunction.cpp']]],
   ['integerdivisionnode',['IntegerDivisionNode',['../classlp_1_1IntegerDivisionNode.html',1,'lp::IntegerDivisionNode'],['../classlp_1_1IntegerDivisionNode.html#a506dddce34235c6c8f4a157b131acbdb',1,'lp::IntegerDivisionNode::IntegerDivisionNode()']]],
   ['interactivemode',['interactiveMode',['../ipe_8cpp.html#aae4554cb8b91e3653644cde3ffac6c6e',1,'interactiveMode():&#160;ipe.cpp'],['../interpreter_8y.html#aae4554cb8b91e3653644cde3ffac6c6e',1,'interactiveMode():&#160;ipe.cpp']]],
   ['interpreter_2el',['interpreter.l',['../interpreter_8l.html',1,'']]],

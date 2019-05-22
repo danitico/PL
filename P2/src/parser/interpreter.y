@@ -8,6 +8,7 @@
 	#include <string>
 	#include <setjmp.h>
 	#include <signal.h>
+	#include <cmath>
 
 	/* Error recovery functions */
 	#include "../error/error.hpp"
@@ -25,9 +26,9 @@
 
 	#include "../table/numericConstant.hpp"
 	#include "../table/logicalConstant.hpp"
-	/* #include "../table/builtinParameter1.hpp" */
-	/* #include "../table/builtinParameter0.hpp" */
-	/* #include "../table/builtinParameter2.hpp" */
+	#include "../table/builtinParameter1.hpp"
+	#include "../table/builtinParameter0.hpp"
+	#include "../table/builtinParameter2.hpp"
 
 	#include "../table/init.hpp"
 
@@ -78,7 +79,7 @@
 %type <expNode> exp cond
 
 /* New in example 14 */
-/* %type <parameters> listOfExp restOfListOfExp */
+%type <parameters> listOfExp restOfListOfExp
 
 %type <stmts> stmtlist
 
@@ -105,7 +106,7 @@
 
 %token <strings> STRINGS
 
-%token <identifier> VARIABLE UNDEFINED CONSTANT
+%token <identifier> VARIABLE UNDEFINED CONSTANT BUILTIN
 
 %left OR
 %left AND
@@ -361,6 +362,45 @@ exp:	NUMBER
 	 	{
 			$$ = new lp::ConcatenateNode($1, $3);
 		}
+
+	 | BUILTIN LEFTPARENTHESIS listOfExp RIGHTPARENTHESIS
+	 	{
+			lp::Builtin *f = (lp::Builtin *) table.getSymbol($1);
+
+			if(f->getNParameters() == (int) $3->size()){
+				switch(f->getNParameters()){
+					case 0:
+						{
+							$$ = new lp::BuiltinFunctionNode_0($1);
+						}
+						break;
+
+					case 1:
+						{
+							lp::ExpNode *e = $3->front();
+
+							$$ = new lp::BuiltinFunctionNode_1($1, e);
+						}
+						break;
+
+					case 2:
+						{
+							lp::ExpNode *e1 = $3->front();
+							$3->pop_front();
+							lp::ExpNode *e2 = $3->front();
+
+							$$ = new lp::BuiltinFunctionNode_2($1, e1, e2);
+						}
+						break;
+
+					default:
+						execerror("Syntax error: too many parameters for function ", $1);
+				}
+			}
+			else{
+				execerror("Syntax error: incompatible number of parameters for function", $1);
+			}
+		}
 ;
 
 asgn: VARIABLE ASSIGNMENT exp
@@ -523,5 +563,31 @@ segun: SWITCH cond blocks DEFAULT COLON stmtlist END_SWITCH
 	| SWITCH cond blocks END_SWITCH
 	{
 		$$ = new lp::SwitchStmt($2, $3);
+	}
+;
+
+listOfExp:
+	{
+		$$ = new std::list<lp::ExpNode *>();
+	}
+
+	| exp restOfListOfExp
+	{
+		$$ = $2;
+
+		$$->push_front($1);
+	}
+;
+
+restOfListOfExp:
+	{
+		$$ = new std::list<lp::ExpNode *>();
+	}
+
+	| COMMA exp restOfListOfExp
+	{
+		$$ = $3;
+
+		$$->push_front($2);
 	}
 ;

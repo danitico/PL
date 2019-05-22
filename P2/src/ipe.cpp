@@ -104,6 +104,11 @@ if (argc == 2)
    }
    yyin = fopen(argv[1],"r");
 
+   if(yyin == NULL){
+      std::cout << BIRED << "El fichero no existe" << RESET << std::endl;
+      exit(-1);
+   }
+
    interactiveMode = false;
 }
 else

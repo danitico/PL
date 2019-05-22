@@ -21,7 +21,8 @@ CFLAGS = -c -g  -Wall -ansi -O2 -std=c++11
 # MODIFIED in example 14: builtinParameter0.o builtinParameter2.o
 OBJECTS= table.o symbol.o variable.o numericVariable.o \
 		init.o keyword.o stringVariable.o logicalVariable.o \
-		constant.o logicalConstant.o numericConstant.o
+		constant.o logicalConstant.o numericConstant.o builtin.o \
+		builtinParameter1.o builtinParameter0.o builtinParameter2.o mathFunction.o
 
 # Predefined macros
 #
@@ -88,28 +89,28 @@ keyword.o: keyword.cpp keyword.hpp symbol.hpp symbolInterface.hpp
 
 
 # NEW in example 13
-# builtin.o: builtin.cpp builtin.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
-#
-# builtinParameter1.o: builtinParameter1.cpp builtinParameter1.hpp builtin.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
-#
-# mathFunction.o: mathFunction.cpp mathFunction.hpp ../error/error.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
-# ################################################################
-#
-# # NEW in example 14
-# builtinParameter0.o: builtinParameter0.cpp builtinParameter0.hpp builtin.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
-#
-# builtinParameter2.o: builtinParameter2.cpp builtinParameter2.hpp builtin.hpp symbol.hpp symbolInterface.hpp
-# 	@echo "Compiling " $<
-# 	@$(CPP) $(CFLAGS) $<
+builtin.o: builtin.cpp builtin.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
+
+builtinParameter1.o: builtinParameter1.cpp builtinParameter1.hpp builtin.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
+
+mathFunction.o: mathFunction.cpp mathFunction.hpp ../error/error.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
 ################################################################
+
+# NEW in example 14
+builtinParameter0.o: builtinParameter0.cpp builtinParameter0.hpp builtin.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
+
+builtinParameter2.o: builtinParameter2.cpp builtinParameter2.hpp builtin.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
+###############################################################
 
 
 

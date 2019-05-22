@@ -45,7 +45,8 @@ OBJECTS= $(NAME).tab.o lex.yy.o
 INCLUDES = ../error/error.hpp ../includes/macros.hpp \
 			../table/table.hpp  ../table/numericVariable.hpp \
 			../table/init.hpp ../table/stringVariable.hpp ../table/logicalVariable.hpp \
-			../table/numericConstant.hpp
+			../table/numericConstant.hpp ../table/builtinParameter0.hpp \
+			../table/builtinParameter1.hpp ../table/builtinParameter2.hpp
 
 
 #######################################################
