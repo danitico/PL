@@ -28,7 +28,7 @@
 int lineNumber = 1; //!< Line counter
 
 bool interactiveMode; //!< Control the interactive mode of execution of the interpreter
-
+int manageInteractiveMode=0;
 
 extern FILE * yyin; //!< Standard input device for yylex()
 std::string progname; //!<  Program name
@@ -114,7 +114,7 @@ if (argc == 2)
 else
  {
 	interactiveMode = true;
-   std::cout << " > ";
+   std::cout << BIYELLOW << " > " << RESET;
  }
 
  // Copy the name of the interpreter

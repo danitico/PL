@@ -44,6 +44,8 @@
 
 	extern bool interactiveMode; //!< Control the interactive mode of execution of the interpreter
 
+	extern int manageInteractiveMode;
+
 	extern std::string progname; //!<  Program name
 	/*
 	jhmp_buf
@@ -147,8 +149,10 @@ stmtlist:
 				$$->push_back($2);
 
 				if(interactiveMode){
-					$2->evaluate();
-					std::cout << std::endl << " > ";
+					if(manageInteractiveMode == 0){
+						$2->evaluate();
+						std::cout << std::endl << BIYELLOW << " > " << RESET;
+					}
 				}
 			}
 

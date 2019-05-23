@@ -10,8 +10,10 @@
    #include "../table/table.hpp"
    #include "../table/numericVariable.hpp"
 
+   bool isFor=false;
    extern lp::Table table;
    extern int lineNumber;
+   extern int manageInteractiveMode;
 %}
 
 /** @name REGULAR EXPRESSIONS */
@@ -80,6 +82,24 @@ strings           "'"([^']|"\\\'")*"'"
                      }
                      std::string identifier(yytext);
                      yylval.identifier = strdup(yytext);
+
+                     if(identifier == "si" || identifier == "mientras" || identifier == "para" || identifier == "segun"){
+                        manageInteractiveMode++;
+                     }
+
+                     if(identifier == "repetir"){
+                        manageInteractiveMode++;
+                        isFor = true;
+                     }
+
+                     if(identifier == "fin_si" || identifier == "fin_mientras" || identifier == "fin_para" || identifier == "fin_segun"){
+                        manageInteractiveMode--;
+                     }
+
+                     if(identifier == "hasta" && isFor){
+                        manageInteractiveMode--;
+                        isFor=false;
+                     }
 
                      if(! table.lookupSymbol(identifier)){
                         lp::NumericVariable *var = new lp::NumericVariable(identifier, VARIABLE, NUMBER, 0.0);

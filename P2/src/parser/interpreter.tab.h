@@ -115,7 +115,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 64 "interpreter.y" /* yacc.c:1909  */
+#line 66 "interpreter.y" /* yacc.c:1909  */
 
 	char * identifier;
 	char * strings;
