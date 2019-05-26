@@ -28,7 +28,7 @@
 int lineNumber = 1; //!< Line counter
 
 bool interactiveMode; //!< Control the interactive mode of execution of the interpreter
-int manageInteractiveMode=0;
+int manageInteractiveMode=0; //!< It is used to run some bugged functions in interactive mode
 
 extern FILE * yyin; //!< Standard input device for yylex()
 std::string progname; //!<  Program name

@@ -1998,7 +1998,13 @@ void lp::ForStmt::evaluate()
 		return;
 	}
 
-	step = this->_step->evaluateNumber();
+	if(this->_step != NULL){
+		step = this->_step->evaluateNumber();
+	}
+	else{
+		step = 1;
+	}
+
 
 	if(inicio > final && step > 0){
 		warning("Runtime error: Infinite Loop", "inicio > final and step > 0");
@@ -2365,6 +2371,19 @@ void lp::ExecutionStmt::evaluate()
 			execerror("Something went bad when executing file", this->_file);
 		}
 	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::ExitStmt::print()
+{
+  std::cout << "Exit Stmt "  << std::endl;
+}
+
+void lp::ExitStmt::evaluate()
+{
+	exit(0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

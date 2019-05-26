@@ -63,6 +63,7 @@ strings           "'"([^']|"\\\'")*"'"
 
 "#"                           {BEGIN(COMMENTARY_1);}
 <COMMENTARY_1>[^"#"|^\n]      {;}
+<COMMENTARY_1>\^              {;}
 <COMMENTARY_1>\n              {lineNumber++;}
 <COMMENTARY_1>"#"             {BEGIN(INITIAL);}
 
@@ -72,6 +73,8 @@ strings           "'"([^']|"\\\'")*"'"
 
 (?i:_borrar)         {return ERASE;}
 (?i:_lugar)          {return PLACE;}
+(?i:_terminar)       {return KILL;}
+(?i:_ejecutar)       {return EXECUTE;}
 
 [ \t]                {;}
 \n                   {lineNumber++;}

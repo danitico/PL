@@ -1,6 +1,6 @@
-/*! 
+/*!
   \file mathFunction.cpp
-  \brief Code of mathematical functions 
+  \brief Code of mathematical functions
 */
 
 
@@ -53,6 +53,10 @@ double integer(double x)
  return  (double) (long) x;
 }
 
+double f(double x)
+{
+   return (double) pow(x, 3) - 1.;
+}
 
 ////////////////////////////////
 
@@ -71,7 +75,9 @@ double Atan2(double x, double y)
  return errcheck(atan(x/y),"double tangent arc");
 }
 
+double RandomRange(double min, double max)
+{
+   srand(time(NULL));
 
-
-
-
+   return (rand()/(double)RAND_MAX)*(max-min) + min;
+}

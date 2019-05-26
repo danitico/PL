@@ -96,7 +96,6 @@ static struct {
                         "valor", VALUE,
                         "defecto", DEFAULT,
                         "romper", BREAK,
-                        "ejecutar", EXECUTE,
                         "",      0
 	                   };
 
@@ -116,6 +115,7 @@ static struct {    /* Predefined functions names */
 		    						"sqrt",    Sqrt,
 		    						"integer", integer,
 		    						"abs",     fabs,
+                           "f",       f,
 		    						"",       0
 		              };
 
@@ -135,6 +135,7 @@ static struct {    /* Nombres predefinidos de funciones con 2 argumentos */
 				lp::TypePointerDoubleFunction_2 function;
               } function_2 [] = {
 	                   "atan2",   Atan2,
+                      "randomrange", RandomRange,
 		                "",       0
 		              };
 

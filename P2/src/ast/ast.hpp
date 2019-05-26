@@ -2578,6 +2578,42 @@ class ExecutionStmt : public Statement
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 /*!
+  \class   ExitStmt
+  \brief   Definition of atributes and methods of ExitStmt class
+  \note    ExitStmt Class publicly inherits from Statement class
+		   and adds its own print and evaluate functions
+*/
+class ExitStmt : public Statement
+{
+   public:
+      /*!
+      	\brief Constructor of ExitStmt
+      	\post  A new ExecutionStmt is created
+      */
+      ExitStmt()
+      {
+
+      }
+
+      /*!
+      	\brief   Print the ExitStmt
+      	\return  void
+      	\sa		 evaluate()
+      */
+      void print();
+
+      /*!
+      \brief   Evaluate the ExitStmt
+      \return  void
+      \sa		 print
+      */
+      void evaluate();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!
   \class   AST
   \brief   Definition of atributes and methods of AST class
 */

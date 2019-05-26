@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['sametype',['sameType',['../classlp_1_1SwitchStmt.html#a21df81aba02bd7e300dc1024c0bb561c',1,'lp::SwitchStmt']]],
   ['setfunction',['setFunction',['../classlp_1_1BuiltinParameter0.html#a02869804b64ee2086415a5e04a0aba88',1,'lp::BuiltinParameter0::setFunction()'],['../classlp_1_1BuiltinParameter1.html#afe596d433230812b77d7c9d757321ce0',1,'lp::BuiltinParameter1::setFunction()'],['../classlp_1_1BuiltinParameter2.html#a968a4a77d9bc4306858d1edc3c9fef4f',1,'lp::BuiltinParameter2::setFunction()']]],
   ['setname',['setName',['../classlp_1_1Symbol.html#afa2573736a4fff8aafbc038e9741bed6',1,'lp::Symbol::setName()'],['../classlp_1_1SymbolInterface.html#a1c598c3509e26cbb31626dbfd6fc2f1e',1,'lp::SymbolInterface::setName()']]],
   ['setnparameters',['setNParameters',['../classlp_1_1Builtin.html#a8d1a8a2c908913bfe8face179f9c1792',1,'lp::Builtin']]],

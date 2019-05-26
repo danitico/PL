@@ -12,6 +12,12 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -101,6 +107,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a50f4ee3664a3b28a873c64e81121d26c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlp_1_1SwitchStmt.html#a50f4ee3664a3b28a873c64e81121d26c">print</a> ()</td></tr>
 <tr class="memdesc:a50f4ee3664a3b28a873c64e81121d26c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the <a class="el" href="classlp_1_1SwitchStmt.html" title="Definition of atributes and methods of SwitchStmt class. ">SwitchStmt</a>.  <a href="#a50f4ee3664a3b28a873c64e81121d26c">More...</a><br /></td></tr>
 <tr class="separator:a50f4ee3664a3b28a873c64e81121d26c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21df81aba02bd7e300dc1024c0bb561c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlp_1_1SwitchStmt.html#a21df81aba02bd7e300dc1024c0bb561c">sameType</a> ()</td></tr>
+<tr class="memdesc:a21df81aba02bd7e300dc1024c0bb561c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all conditions have the same type of data.  <a href="#a21df81aba02bd7e300dc1024c0bb561c">More...</a><br /></td></tr>
+<tr class="separator:a21df81aba02bd7e300dc1024c0bb561c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b9c83d82b55ae26a6780839ce188374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlp_1_1SwitchStmt.html#a3b9c83d82b55ae26a6780839ce188374">evaluate</a> ()</td></tr>
 <tr class="memdesc:a3b9c83d82b55ae26a6780839ce188374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the <a class="el" href="classlp_1_1SwitchStmt.html" title="Definition of atributes and methods of SwitchStmt class. ">SwitchStmt</a>.  <a href="#a3b9c83d82b55ae26a6780839ce188374">More...</a><br /></td></tr>
 <tr class="separator:a3b9c83d82b55ae26a6780839ce188374"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,7 +220,7 @@ std::list&lt; <a class="el" href="classlp_1_1Statement.html">Statement</a> * &gt
 
 <p>Implements <a class="el" href="classlp_1_1Statement.html#a3973fbf31c6ef15bc5e7c644c3ba54ea">lp::Statement</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ast_8cpp_source.html#l02093">2093</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ast_8cpp_source.html#l02117">2117</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -244,7 +253,29 @@ std::list&lt; <a class="el" href="classlp_1_1Statement.html">Statement</a> * &gt
 
 <p>Reimplemented from <a class="el" href="classlp_1_1Statement.html#aede7d8c27e026f3728316a1fc6e1200c">lp::Statement</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ast_8cpp_source.html#l02068">2068</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ast_8cpp_source.html#l02074">2074</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a21df81aba02bd7e300dc1024c0bb561c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21df81aba02bd7e300dc1024c0bb561c">&#9670;&nbsp;</a></span>sameType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool lp::SwitchStmt::sameType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if all conditions have the same type of data. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ast_8cpp_source.html#l02099">2099</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>

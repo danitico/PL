@@ -12,6 +12,12 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -76,9 +82,17 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a44bf2f6ee91a35522c07c779325d3ef0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpreter_8l.html#a44bf2f6ee91a35522c07c779325d3ef0">lineNumber</a></td></tr>
-<tr class="memdesc:a44bf2f6ee91a35522c07c779325d3ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Line counter.  <a href="#a44bf2f6ee91a35522c07c779325d3ef0">More...</a><br /></td></tr>
+<tr class="memitem:a1c3671f774276086f0b06f52dea5d4a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlp_1_1Table.html">lp::Table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpreter_8l.html#a1c3671f774276086f0b06f52dea5d4a8">table</a></td></tr>
+<tr class="memdesc:a1c3671f774276086f0b06f52dea5d4a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of Symbols.  <a href="#a1c3671f774276086f0b06f52dea5d4a8">More...</a><br /></td></tr>
+<tr class="separator:a1c3671f774276086f0b06f52dea5d4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44bf2f6ee91a35522c07c779325d3ef0"><td class="memItemLeft" align="right" valign="top"><a id="a44bf2f6ee91a35522c07c779325d3ef0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpreter_8l.html#a44bf2f6ee91a35522c07c779325d3ef0">lineNumber</a></td></tr>
+<tr class="memdesc:a44bf2f6ee91a35522c07c779325d3ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Line counter. <br /></td></tr>
 <tr class="separator:a44bf2f6ee91a35522c07c779325d3ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e257ccfe13e7965ac1f7f072d0a9831"><td class="memItemLeft" align="right" valign="top"><a id="a5e257ccfe13e7965ac1f7f072d0a9831"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpreter_8l.html#a5e257ccfe13e7965ac1f7f072d0a9831">manageInteractiveMode</a></td></tr>
+<tr class="memdesc:a5e257ccfe13e7965ac1f7f072d0a9831"><td class="mdescLeft">&#160;</td><td class="mdescRight">It is used to run some bugged functions in interactive mode. <br /></td></tr>
+<tr class="separator:a5e257ccfe13e7965ac1f7f072d0a9831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 REGULAR EXPRESSIONS</h2></td></tr>
@@ -102,26 +116,6 @@ digit [0-9] letter [a-zA-Z]&#160;</td><td class="memItemRight" valign="bottom"><
 
 <p class="definition">Definition in file <a class="el" href="interpreter_8l_source.html">interpreter.l</a>.</p>
 </div><h2 class="groupheader">Variable Documentation</h2>
-<a id="a44bf2f6ee91a35522c07c779325d3ef0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44bf2f6ee91a35522c07c779325d3ef0">&#9670;&nbsp;</a></span>lineNumber</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int lineNumber</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div><div class="line"><span class="preprocessor">   #include &lt;cstdlib&gt;</span></div><div class="line"><span class="preprocessor">   #include &quot;../ast/ast.hpp&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;interpreter.tab.h&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;../error/error.hpp&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;../table/table.hpp&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;../table/numericVariable.hpp&quot;</span></div><div class="line"></div><div class="line">   <span class="keyword">extern</span> <a class="code" href="classlp_1_1Table.html">lp::Table</a> <a class="code" href="ipe_8cpp.html#a1c3671f774276086f0b06f52dea5d4a8">table</a></div><div class="ttc" id="classlp_1_1Table_html"><div class="ttname"><a href="classlp_1_1Table.html">lp::Table</a></div><div class="ttdoc">Definition of atributes and methods of Table class. </div><div class="ttdef"><b>Definition:</b> <a href="table_8hpp_source.html#l00030">table.hpp:30</a></div></div>
-<div class="ttc" id="ipe_8cpp_html_a1c3671f774276086f0b06f52dea5d4a8"><div class="ttname"><a href="ipe_8cpp.html#a1c3671f774276086f0b06f52dea5d4a8">table</a></div><div class="ttdeci">lp::Table table</div><div class="ttdoc">Table of Symbols. </div><div class="ttdef"><b>Definition:</b> <a href="ipe_8cpp_source.html#l00068">ipe.cpp:68</a></div></div>
-</div><!-- fragment -->
-<p>Line counter. </p>
-
-<p class="definition">Definition at line <a class="el" href="ipe_8cpp_source.html#l00028">28</a> of file <a class="el" href="ipe_8cpp_source.html">ipe.cpp</a>.</p>
-
-</div>
-</div>
 <a id="a16f849325c40ea5aa2652c50666d4fc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16f849325c40ea5aa2652c50666d4fc4">&#9670;&nbsp;</a></span>n</h2>
 
@@ -134,7 +128,25 @@ digit [0-9] letter [a-zA-Z]&#160;</td><td class="memItemRight" valign="bottom"><
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div><div class="line">                  yyless(yyleng-1)</div></div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="interpreter_8l_source.html#l00121">121</a> of file <a class="el" href="interpreter_8l_source.html">interpreter.l</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interpreter_8l_source.html#l00144">144</a> of file <a class="el" href="interpreter_8l_source.html">interpreter.l</a>.</p>
+
+</div>
+</div>
+<a id="a1c3671f774276086f0b06f52dea5d4a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c3671f774276086f0b06f52dea5d4a8">&#9670;&nbsp;</a></span>table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlp_1_1Table.html">lp::Table</a> table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div><div class="line"><span class="preprocessor">   #include &lt;cstdlib&gt;</span></div><div class="line"><span class="preprocessor">   #include &quot;../ast/ast.hpp&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;interpreter.tab.h&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;../error/error.hpp&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;../table/table.hpp&quot;</span></div><div class="line"><span class="preprocessor">   #include &quot;../table/numericVariable.hpp&quot;</span></div><div class="line"></div><div class="line">   <span class="keywordtype">bool</span> isFor=<span class="keyword">false</span></div></div><!-- fragment -->
+<p>Table of Symbols. </p>
+
+<p class="definition">Definition at line <a class="el" href="ipe_8cpp_source.html#l00068">68</a> of file <a class="el" href="ipe_8cpp_source.html">ipe.cpp</a>.</p>
 
 </div>
 </div>

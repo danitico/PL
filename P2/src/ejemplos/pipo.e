@@ -1,2 +1,3 @@
 a := 'a' || 'b' || '\n';
-escribir_cadena(a );
+_terminar;
+escribir_cadena(a);
