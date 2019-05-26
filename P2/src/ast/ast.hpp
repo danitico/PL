@@ -2439,6 +2439,12 @@ class SwitchStmt : public Statement
 */
   void print();
 
+  /*!
+  	\brief   Checks if all conditions have the same type of data
+  	\return  bool
+  */
+  bool sameType();
+
 /*!
 	\brief   Evaluate the SwitchStmt
 	\return  void

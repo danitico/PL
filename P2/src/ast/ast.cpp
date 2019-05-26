@@ -2090,8 +2090,41 @@ void lp::SwitchStmt::print()
 	std::cout << std::endl;
 }
 
+bool lp::SwitchStmt::sameType(){
+	if(this->_blocks->size() == 0){
+		return true;
+	}
+	else{
+		int type = this->_cond->getType();
+
+		std::list<CasesStmt *>::iterator stmtIter;
+		for (stmtIter = this->_blocks->begin(); stmtIter != this->_blocks->end(); stmtIter++){
+			if((*stmtIter)->getCondition()->getType() != type){
+				return false;
+			}
+		}
+
+		return true;
+	}
+}
+
 void lp::SwitchStmt::evaluate(){
 	bool boolean; double number; std::string strings;
+
+	if(!sameType()){
+		if(this->_cond->getType() == NUMBER){
+			warning("The case Statements have not the same type as the condition of switch Statement", "NUMBER");
+			exit(-1);
+		}
+		else if(this->_cond->getType() == BOOL){
+			warning("The case Statements have not the same type as the condition of switch Statement", "BOOL");
+			exit(-1);
+		}
+		else if(this->_cond->getType() == STRINGS){
+			warning("The case Statements have not the same type as the condition of switch Statement", "STRINGS");
+			exit(-1);
+		}
+	}
 
 	if(this->_blocks->size() == 0){
 		std::list<Statement *>::iterator stmtIter;
