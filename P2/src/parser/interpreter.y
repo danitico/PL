@@ -487,6 +487,16 @@ para: FOR VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 	{
 		$$ = new lp::ForStmt($2, $10, $4, $6, $8);
 	}
+
+	| FOR CONSTANT FROM exp UNTIL exp DO stmtlist END_FOR
+	{
+		execerror("Semantic error in for statement: it is not allowed to modify a constant ", $2);
+	}
+
+	| FOR CONSTANT FROM exp UNTIL exp STEP exp DO stmtlist END_FOR
+	{
+		execerror("Semantic error in for statement: it is not allowed to modify a constant ", $2);
+	}
 ;
 
 repetir: REPETITION stmtlist UNTIL cond
@@ -531,6 +541,16 @@ read: READ LEFTPARENTHESIS VARIABLE RIGHTPARENTHESIS
 	| READ_STRING LEFTPARENTHESIS VARIABLE RIGHTPARENTHESIS
 	{
 		$$ = new lp::ReadStringStmt($3);
+	}
+
+	| READ LEFTPARENTHESIS CONSTANT RIGHTPARENTHESIS
+	{
+		execerror("Semantic error in for statement: it is not allowed to modify a constant ", $3);
+	}
+
+	| READ_STRING LEFTPARENTHESIS CONSTANT RIGHTPARENTHESIS
+	{
+		execerror("Semantic error in for statement: it is not allowed to modify a constant ", $3);
 	}
 ;
 

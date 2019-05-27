@@ -1954,7 +1954,10 @@ void lp::ForStmt::print()
 
   this->_fin->print();
 
-  this->_step->print();
+  if(this->_step != NULL){
+	  this->_step->print();
+  }
+
 
   std::cout << std::endl;
 }
