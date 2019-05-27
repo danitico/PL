@@ -108,7 +108,7 @@
 
 %token <strings> STRINGS
 
-%token <identifier> VARIABLE UNDEFINED CONSTANT BUILTIN
+%token <identifier> VARIABLE CONSTANT BUILTIN
 
 %left OR
 %left AND

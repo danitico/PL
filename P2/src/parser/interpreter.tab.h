@@ -79,35 +79,34 @@ extern int yydebug;
     BOOL = 289,
     STRINGS = 290,
     VARIABLE = 291,
-    UNDEFINED = 292,
-    CONSTANT = 293,
-    BUILTIN = 294,
-    OR = 295,
-    AND = 296,
-    LESS_THAN = 297,
-    LESS_OR_EQUAL = 298,
-    GREATER_THAN = 299,
-    GREATER_OR_EQUAL = 300,
-    EQUAL = 301,
-    NOT_EQUAL = 302,
-    NOT = 303,
-    CONCATENATE = 304,
-    SUM_VARIABLE = 305,
-    SUBSTRACT_VARIABLE = 306,
-    PRODUCT_VARIABLE = 307,
-    DIVIDE_VARIABLE = 308,
-    PLUS = 309,
-    MINUS = 310,
-    PLUS_PLUS = 311,
-    MINUS_MINUS = 312,
-    PRODUCT = 313,
-    DIVISION = 314,
-    MODULUS = 315,
-    INTEGER_DIVISION = 316,
-    LEFTPARENTHESIS = 317,
-    RIGHTPARENTHESIS = 318,
-    UNARY = 319,
-    POWER_OF = 320
+    CONSTANT = 292,
+    BUILTIN = 293,
+    OR = 294,
+    AND = 295,
+    LESS_THAN = 296,
+    LESS_OR_EQUAL = 297,
+    GREATER_THAN = 298,
+    GREATER_OR_EQUAL = 299,
+    EQUAL = 300,
+    NOT_EQUAL = 301,
+    NOT = 302,
+    CONCATENATE = 303,
+    SUM_VARIABLE = 304,
+    SUBSTRACT_VARIABLE = 305,
+    PRODUCT_VARIABLE = 306,
+    DIVIDE_VARIABLE = 307,
+    PLUS = 308,
+    MINUS = 309,
+    PLUS_PLUS = 310,
+    MINUS_MINUS = 311,
+    PRODUCT = 312,
+    DIVISION = 313,
+    MODULUS = 314,
+    INTEGER_DIVISION = 315,
+    LEFTPARENTHESIS = 316,
+    RIGHTPARENTHESIS = 317,
+    UNARY = 318,
+    POWER_OF = 319
   };
 #endif
 
@@ -129,7 +128,7 @@ union YYSTYPE
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 133 "interpreter.tab.h" /* yacc.c:1909  */
+#line 132 "interpreter.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
