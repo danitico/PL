@@ -1,5 +1,5 @@
 /**
-	@file interpreter.y
+	@file ipe.y
 	@brief Grammar file
 */
 

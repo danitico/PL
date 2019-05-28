@@ -62,7 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 6 "interpreter.y" /* yacc.c:339  */
+#line 6 "ipe.y" /* yacc.c:339  */
 
 	#include <iostream>
 	#include <string>
@@ -118,7 +118,7 @@
 
 	extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
-#line 122 "interpreter.tab.c" /* yacc.c:339  */
+#line 122 "ipe.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -137,9 +137,9 @@
 #endif
 
 /* In a future release of Bison, this section will be replaced
-   by #include "interpreter.tab.h".  */
-#ifndef YY_YY_INTERPRETER_TAB_H_INCLUDED
-# define YY_YY_INTERPRETER_TAB_H_INCLUDED
+   by #include "ipe.tab.h".  */
+#ifndef YY_YY_IPE_TAB_H_INCLUDED
+# define YY_YY_IPE_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 1
@@ -223,7 +223,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 66 "interpreter.y" /* yacc.c:355  */
+#line 66 "ipe.y" /* yacc.c:355  */
 
 	char * identifier;
 	char * strings;
@@ -236,7 +236,7 @@ union YYSTYPE
 	lp::Statement *st;
 	lp::AST *prog;
 
-#line 240 "interpreter.tab.c" /* yacc.c:355  */
+#line 240 "ipe.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -249,11 +249,11 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_INTERPRETER_TAB_H_INCLUDED  */
+#endif /* !YY_YY_IPE_TAB_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-#line 257 "interpreter.tab.c" /* yacc.c:358  */
+#line 257 "ipe.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1632,24 +1632,24 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 135 "interpreter.y" /* yacc.c:1646  */
+#line 135 "ipe.y" /* yacc.c:1646  */
     {
 				(yyval.prog) = new lp::AST((yyvsp[0].stmts));
 				root = (yyval.prog);
 			}
-#line 1641 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1641 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 142 "interpreter.y" /* yacc.c:1646  */
+#line 142 "ipe.y" /* yacc.c:1646  */
     {
 				(yyval.stmts) = new std::list<lp::Statement *>();
 			}
-#line 1649 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1649 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 147 "interpreter.y" /* yacc.c:1646  */
+#line 147 "ipe.y" /* yacc.c:1646  */
     {
 				(yyval.stmts) = (yyvsp[-1].stmts);
 				(yyval.stmts)->push_back((yyvsp[0].st));
@@ -1661,347 +1661,347 @@ yyreduce:
 					}
 				}
 			}
-#line 1665 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1665 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 160 "interpreter.y" /* yacc.c:1646  */
+#line 160 "ipe.y" /* yacc.c:1646  */
     {
 				(yyval.stmts) = (yyvsp[-1].stmts);
 
 				yyclearin;
 			}
-#line 1675 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1675 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 168 "interpreter.y" /* yacc.c:1646  */
+#line 168 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = new lp::EmptyStmt();
 		}
-#line 1683 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1683 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 173 "interpreter.y" /* yacc.c:1646  */
+#line 173 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1691 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1691 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 178 "interpreter.y" /* yacc.c:1646  */
+#line 178 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1699 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1699 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 183 "interpreter.y" /* yacc.c:1646  */
+#line 183 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1707 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1707 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 188 "interpreter.y" /* yacc.c:1646  */
+#line 188 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1715 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1715 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 193 "interpreter.y" /* yacc.c:1646  */
+#line 193 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1723 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1723 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 198 "interpreter.y" /* yacc.c:1646  */
+#line 198 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1731 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1731 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 203 "interpreter.y" /* yacc.c:1646  */
+#line 203 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1739 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1739 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 208 "interpreter.y" /* yacc.c:1646  */
+#line 208 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1747 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1747 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 213 "interpreter.y" /* yacc.c:1646  */
+#line 213 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1755 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1755 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 218 "interpreter.y" /* yacc.c:1646  */
+#line 218 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1763 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1763 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 223 "interpreter.y" /* yacc.c:1646  */
+#line 223 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1771 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1771 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 228 "interpreter.y" /* yacc.c:1646  */
+#line 228 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = (yyvsp[-1].st);
 		}
-#line 1779 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1779 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 234 "interpreter.y" /* yacc.c:1646  */
+#line 234 "ipe.y" /* yacc.c:1646  */
     {
 			// Create a new number node
 			(yyval.expNode) = new lp::NumberNode((yyvsp[0].number));
 		}
-#line 1788 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1788 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 240 "interpreter.y" /* yacc.c:1646  */
+#line 240 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.expNode) = new lp::StringsNode((yyvsp[0].strings));
 		}
-#line 1796 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1796 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 245 "interpreter.y" /* yacc.c:1646  */
+#line 245 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.expNode) = new lp::BoolNode((yyvsp[0].logic));
 		}
-#line 1804 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1804 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 250 "interpreter.y" /* yacc.c:1646  */
+#line 250 "ipe.y" /* yacc.c:1646  */
     {
 			// Create a new plus node
 			 (yyval.expNode) = new lp::PlusNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
 		 }
-#line 1813 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1813 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 256 "interpreter.y" /* yacc.c:1646  */
+#line 256 "ipe.y" /* yacc.c:1646  */
     {
 			// Create a new minus node
 			(yyval.expNode) = new lp::MinusNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
 		}
-#line 1822 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1822 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 262 "interpreter.y" /* yacc.c:1646  */
+#line 262 "ipe.y" /* yacc.c:1646  */
     {
 			// Create a new multiplication node
 			(yyval.expNode) = new lp::MultiplicationNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
 		}
-#line 1831 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1831 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 268 "interpreter.y" /* yacc.c:1646  */
+#line 268 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new division node
 		  (yyval.expNode) = new lp::DivisionNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
 	   }
-#line 1840 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1840 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 274 "interpreter.y" /* yacc.c:1646  */
+#line 274 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.expNode) = new lp::IntegerDivisionNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
 		}
-#line 1848 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1848 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 279 "interpreter.y" /* yacc.c:1646  */
+#line 279 "ipe.y" /* yacc.c:1646  */
     {
 		    // just copy up the expression node
 			(yyval.expNode) = (yyvsp[-1].expNode);
 		 }
-#line 1857 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1857 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 285 "interpreter.y" /* yacc.c:1646  */
+#line 285 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new unary plus node
   		  (yyval.expNode) = new lp::UnaryPlusNode((yyvsp[0].expNode));
 		}
-#line 1866 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1866 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 291 "interpreter.y" /* yacc.c:1646  */
+#line 291 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new unary minus node
   		  (yyval.expNode) = new lp::UnaryMinusNode((yyvsp[0].expNode));
 		}
-#line 1875 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1875 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 297 "interpreter.y" /* yacc.c:1646  */
+#line 297 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new modulo node
 		  (yyval.expNode) = new lp::ModuloNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
        }
-#line 1884 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1884 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 303 "interpreter.y" /* yacc.c:1646  */
+#line 303 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new power node
   		  (yyval.expNode) = new lp::PowerNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
 		}
-#line 1893 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1893 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 309 "interpreter.y" /* yacc.c:1646  */
+#line 309 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new variable node
 		  (yyval.expNode) = new lp::VariableNode((yyvsp[0].identifier));
 		}
-#line 1902 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1902 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 315 "interpreter.y" /* yacc.c:1646  */
+#line 315 "ipe.y" /* yacc.c:1646  */
     {
 			// Create a new Constant node
 
 			(yyval.expNode) = new lp::ConstantNode((yyvsp[0].identifier));
 		}
-#line 1912 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1912 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 322 "interpreter.y" /* yacc.c:1646  */
+#line 322 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "greater than" node
  			(yyval.expNode) = new lp::GreaterThanNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1921 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1921 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 328 "interpreter.y" /* yacc.c:1646  */
+#line 328 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "greater or equal" node
  			(yyval.expNode) = new lp::GreaterOrEqualNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1930 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1930 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 334 "interpreter.y" /* yacc.c:1646  */
+#line 334 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "less than" node
  			(yyval.expNode) = new lp::LessThanNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1939 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1939 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 340 "interpreter.y" /* yacc.c:1646  */
+#line 340 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "less or equal" node
  			(yyval.expNode) = new lp::LessOrEqualNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1948 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1948 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 346 "interpreter.y" /* yacc.c:1646  */
+#line 346 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "equal" node
  			(yyval.expNode) = new lp::EqualNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1957 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1957 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 352 "interpreter.y" /* yacc.c:1646  */
+#line 352 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "not equal" node
  			(yyval.expNode) = new lp::NotEqualNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1966 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1966 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 358 "interpreter.y" /* yacc.c:1646  */
+#line 358 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "logic and" node
  			(yyval.expNode) = new lp::AndNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1975 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1975 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 364 "interpreter.y" /* yacc.c:1646  */
+#line 364 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "logic or" node
  			(yyval.expNode) = new lp::OrNode((yyvsp[-2].expNode),(yyvsp[0].expNode));
 		}
-#line 1984 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1984 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 370 "interpreter.y" /* yacc.c:1646  */
+#line 370 "ipe.y" /* yacc.c:1646  */
     {
 		  // Create a new "logic negation" node
  			(yyval.expNode) = new lp::NotNode((yyvsp[0].expNode));
 		}
-#line 1993 "interpreter.tab.c" /* yacc.c:1646  */
+#line 1993 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 376 "interpreter.y" /* yacc.c:1646  */
+#line 376 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.expNode) = new lp::ConcatenateNode((yyvsp[-2].expNode), (yyvsp[0].expNode));
 		}
-#line 2001 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2001 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 381 "interpreter.y" /* yacc.c:1646  */
+#line 381 "ipe.y" /* yacc.c:1646  */
     {
 			lp::Builtin *f = (lp::Builtin *) table.getSymbol((yyvsp[-3].identifier));
 
@@ -2039,337 +2039,337 @@ yyreduce:
 				execerror("Syntax error: incompatible number of parameters for function", (yyvsp[-3].identifier));
 			}
 		}
-#line 2043 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2043 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 421 "interpreter.y" /* yacc.c:1646  */
+#line 421 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::AssignmentStmt((yyvsp[-2].identifier), (yyvsp[0].expNode));
 	}
-#line 2051 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2051 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 426 "interpreter.y" /* yacc.c:1646  */
+#line 426 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::AssignmentStmt((yyvsp[-2].identifier), (lp::AssignmentStmt *) (yyvsp[0].st));
 	}
-#line 2059 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2059 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 431 "interpreter.y" /* yacc.c:1646  */
+#line 431 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::SumVariableStmt((yyvsp[-2].identifier), (yyvsp[0].expNode));
 	}
-#line 2067 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2067 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 436 "interpreter.y" /* yacc.c:1646  */
+#line 436 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::SubstractVariableStmt((yyvsp[-2].identifier), (yyvsp[0].expNode));
 	}
-#line 2075 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2075 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 441 "interpreter.y" /* yacc.c:1646  */
+#line 441 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::ProductVariableStmt((yyvsp[-2].identifier), (yyvsp[0].expNode));
 	}
-#line 2083 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2083 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 446 "interpreter.y" /* yacc.c:1646  */
+#line 446 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::DivideVariableStmt((yyvsp[-2].identifier), (yyvsp[0].expNode));
 	}
-#line 2091 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2091 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 451 "interpreter.y" /* yacc.c:1646  */
+#line 451 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::PlusPlusStmt((yyvsp[-1].identifier));
 	}
-#line 2099 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2099 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 456 "interpreter.y" /* yacc.c:1646  */
+#line 456 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::PlusPlusStmt((yyvsp[0].identifier));
 	}
-#line 2107 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2107 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 461 "interpreter.y" /* yacc.c:1646  */
+#line 461 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::MinusMinusStmt((yyvsp[-1].identifier));
 	}
-#line 2115 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2115 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 466 "interpreter.y" /* yacc.c:1646  */
+#line 466 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::MinusMinusStmt((yyvsp[0].identifier));
 	}
-#line 2123 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2123 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 471 "interpreter.y" /* yacc.c:1646  */
+#line 471 "ipe.y" /* yacc.c:1646  */
     {
 		execerror("Semantic error in assignment: it is not allowed to modify a constant ", (yyvsp[-2].identifier));
 	}
-#line 2131 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2131 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 476 "interpreter.y" /* yacc.c:1646  */
+#line 476 "ipe.y" /* yacc.c:1646  */
     {
 		execerror("Semantic error in multiple assignment: it is not allowed to modify a constant ",(yyvsp[-2].identifier));
 	}
-#line 2139 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2139 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 482 "interpreter.y" /* yacc.c:1646  */
+#line 482 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::ForStmt((yyvsp[-7].identifier), (yyvsp[-1].stmts), (yyvsp[-5].expNode), (yyvsp[-3].expNode));
 	}
-#line 2147 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2147 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 487 "interpreter.y" /* yacc.c:1646  */
+#line 487 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::ForStmt((yyvsp[-9].identifier), (yyvsp[-1].stmts), (yyvsp[-7].expNode), (yyvsp[-5].expNode), (yyvsp[-3].expNode));
 	}
-#line 2155 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2155 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 492 "interpreter.y" /* yacc.c:1646  */
+#line 492 "ipe.y" /* yacc.c:1646  */
     {
 		execerror("Semantic error in for statement: it is not allowed to modify a constant ", (yyvsp[-7].identifier));
 	}
-#line 2163 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2163 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 497 "interpreter.y" /* yacc.c:1646  */
+#line 497 "ipe.y" /* yacc.c:1646  */
     {
 		execerror("Semantic error in for statement: it is not allowed to modify a constant ", (yyvsp[-9].identifier));
 	}
-#line 2171 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2171 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 503 "interpreter.y" /* yacc.c:1646  */
+#line 503 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = new lp::RepeatStmt((yyvsp[-2].stmts), (yyvsp[0].expNode));
 		}
-#line 2179 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2179 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 509 "interpreter.y" /* yacc.c:1646  */
+#line 509 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.st) = new lp::WhileStmt((yyvsp[-3].expNode), (yyvsp[-1].stmts));
 		}
-#line 2187 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2187 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 515 "interpreter.y" /* yacc.c:1646  */
+#line 515 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::IfStmt((yyvsp[-3].expNode), (yyvsp[-1].stmts));
 	}
-#line 2195 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2195 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 520 "interpreter.y" /* yacc.c:1646  */
+#line 520 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::IfStmt((yyvsp[-5].expNode), (yyvsp[-3].stmts), (yyvsp[-1].stmts));
 	}
-#line 2203 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2203 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 526 "interpreter.y" /* yacc.c:1646  */
+#line 526 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::PrintStmt((yyvsp[-1].expNode));
 	}
-#line 2211 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2211 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 531 "interpreter.y" /* yacc.c:1646  */
+#line 531 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::PrintStringStmt((yyvsp[-1].expNode));
 	}
-#line 2219 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2219 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 537 "interpreter.y" /* yacc.c:1646  */
+#line 537 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::ReadStmt((yyvsp[-1].identifier));
 	}
-#line 2227 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2227 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 542 "interpreter.y" /* yacc.c:1646  */
+#line 542 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::ReadStringStmt((yyvsp[-1].identifier));
 	}
-#line 2235 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2235 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 547 "interpreter.y" /* yacc.c:1646  */
+#line 547 "ipe.y" /* yacc.c:1646  */
     {
 		execerror("Semantic error in for statement: it is not allowed to modify a constant ", (yyvsp[-1].identifier));
 	}
-#line 2243 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2243 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 552 "interpreter.y" /* yacc.c:1646  */
+#line 552 "ipe.y" /* yacc.c:1646  */
     {
 		execerror("Semantic error in for statement: it is not allowed to modify a constant ", (yyvsp[-1].identifier));
 	}
-#line 2251 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2251 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 558 "interpreter.y" /* yacc.c:1646  */
+#line 558 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::EraseStmt();
 	}
-#line 2259 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2259 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 564 "interpreter.y" /* yacc.c:1646  */
+#line 564 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::PlaceStmt((yyvsp[-3].number), (yyvsp[-1].number));
 	}
-#line 2267 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2267 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 570 "interpreter.y" /* yacc.c:1646  */
+#line 570 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::ExitStmt();
 	}
-#line 2275 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2275 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 74:
-#line 576 "interpreter.y" /* yacc.c:1646  */
+#line 576 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.expNode) = (yyvsp[-1].expNode);
 	}
-#line 2283 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2283 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 75:
-#line 582 "interpreter.y" /* yacc.c:1646  */
+#line 582 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.cases) = new std::list<lp::CasesStmt *>();
 		}
-#line 2291 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2291 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 76:
-#line 587 "interpreter.y" /* yacc.c:1646  */
+#line 587 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.cases) = (yyvsp[-4].cases);
 			(yyval.cases)->push_back(new lp::CasesStmt((yyvsp[-2].expNode), (yyvsp[0].stmts), false));
 		}
-#line 2300 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2300 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 77:
-#line 593 "interpreter.y" /* yacc.c:1646  */
+#line 593 "ipe.y" /* yacc.c:1646  */
     {
 			(yyval.cases) = (yyvsp[-6].cases);
 			(yyval.cases)->push_back(new lp::CasesStmt((yyvsp[-4].expNode), (yyvsp[-2].stmts), true));
 		}
-#line 2309 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2309 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 78:
-#line 599 "interpreter.y" /* yacc.c:1646  */
+#line 599 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::SwitchStmt((yyvsp[-5].expNode), (yyvsp[-4].cases), (yyvsp[-1].stmts));
 	}
-#line 2317 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2317 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 79:
-#line 604 "interpreter.y" /* yacc.c:1646  */
+#line 604 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::SwitchStmt((yyvsp[-2].expNode), (yyvsp[-1].cases));
 	}
-#line 2325 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2325 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 80:
-#line 610 "interpreter.y" /* yacc.c:1646  */
+#line 610 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.st) = new lp::ExecutionStmt((yyvsp[-1].strings));
 	}
-#line 2333 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2333 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 81:
-#line 615 "interpreter.y" /* yacc.c:1646  */
+#line 615 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.parameters) = new std::list<lp::ExpNode *>();
 	}
-#line 2341 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2341 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 620 "interpreter.y" /* yacc.c:1646  */
+#line 620 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.parameters) = (yyvsp[0].parameters);
 
 		(yyval.parameters)->push_front((yyvsp[-1].expNode));
 	}
-#line 2351 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2351 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 83:
-#line 628 "interpreter.y" /* yacc.c:1646  */
+#line 628 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.parameters) = new std::list<lp::ExpNode *>();
 	}
-#line 2359 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2359 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
   case 84:
-#line 633 "interpreter.y" /* yacc.c:1646  */
+#line 633 "ipe.y" /* yacc.c:1646  */
     {
 		(yyval.parameters) = (yyvsp[0].parameters);
 
 		(yyval.parameters)->push_front((yyvsp[-1].expNode));
 	}
-#line 2369 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2369 "ipe.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 2373 "interpreter.tab.c" /* yacc.c:1646  */
+#line 2373 "ipe.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

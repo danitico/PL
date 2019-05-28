@@ -1,11 +1,11 @@
 /**
-   @file interpreter.l
+   @file ipe.l
    @brief Lexical file
 */
 %{
    #include <cstdlib>
    #include "../ast/ast.hpp"
-   #include "interpreter.tab.h"
+   #include "ipe.tab.h"
    #include "../error/error.hpp"
    #include "../table/table.hpp"
    #include "../table/numericVariable.hpp"

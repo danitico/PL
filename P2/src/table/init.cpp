@@ -31,8 +31,8 @@
 
 
 
-//  interpreter.tab.h contains the number values of the tokens produced by the parser
-#include "../parser/interpreter.tab.h"
+//  ipe.tab.h contains the number values of the tokens produced by the parser
+#include "../parser/ipe.tab.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////

@@ -546,15 +546,15 @@ static int yy_more_len = 0;
 #define YY_MORE_ADJ (yy_more_len)
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "interpreter.l"
+#line 1 "ipe.l"
 /**
-   @file interpreter.l
+   @file ipe.l
    @brief Lexical file
 */
-#line 6 "interpreter.l"
+#line 6 "ipe.l"
    #include <cstdlib>
    #include "../ast/ast.hpp"
-   #include "interpreter.tab.h"
+   #include "ipe.tab.h"
    #include "../error/error.hpp"
    #include "../table/table.hpp"
    #include "../table/numericVariable.hpp"
@@ -752,7 +752,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 31 "interpreter.l"
+#line 31 "ipe.l"
 
 
 #line 759 "lex.yy.c"
@@ -846,225 +846,225 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 33 "interpreter.l"
+#line 33 "ipe.l"
 {return OR;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 34 "interpreter.l"
+#line 34 "ipe.l"
 {return AND;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 35 "interpreter.l"
+#line 35 "ipe.l"
 {return NOT;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 37 "interpreter.l"
+#line 37 "ipe.l"
 {return LESS_THAN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 38 "interpreter.l"
+#line 38 "ipe.l"
 {return LESS_OR_EQUAL;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 39 "interpreter.l"
+#line 39 "ipe.l"
 {return GREATER_THAN;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 40 "interpreter.l"
+#line 40 "ipe.l"
 {return GREATER_OR_EQUAL;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 41 "interpreter.l"
+#line 41 "ipe.l"
 {return EQUAL;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 42 "interpreter.l"
+#line 42 "ipe.l"
 {return NOT_EQUAL;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 43 "interpreter.l"
+#line 43 "ipe.l"
 {return CONCATENATE;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 44 "interpreter.l"
+#line 44 "ipe.l"
 {return POWER_OF;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 45 "interpreter.l"
+#line 45 "ipe.l"
 {return MODULUS;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 46 "interpreter.l"
+#line 46 "ipe.l"
 {return INTEGER_DIVISION;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 47 "interpreter.l"
+#line 47 "ipe.l"
 {return DIVISION;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 48 "interpreter.l"
+#line 48 "ipe.l"
 {return PRODUCT;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 49 "interpreter.l"
+#line 49 "ipe.l"
 {return MINUS;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 50 "interpreter.l"
+#line 50 "ipe.l"
 {return MINUS_MINUS;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 51 "interpreter.l"
+#line 51 "ipe.l"
 {return PLUS;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 52 "interpreter.l"
+#line 52 "ipe.l"
 {return PLUS_PLUS;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 53 "interpreter.l"
+#line 53 "ipe.l"
 {return ASSIGNMENT;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 54 "interpreter.l"
+#line 54 "ipe.l"
 {return SUM_VARIABLE;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 55 "interpreter.l"
+#line 55 "ipe.l"
 {return SUBSTRACT_VARIABLE;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 56 "interpreter.l"
+#line 56 "ipe.l"
 {return PRODUCT_VARIABLE;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 57 "interpreter.l"
+#line 57 "ipe.l"
 {return DIVIDE_VARIABLE;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 58 "interpreter.l"
+#line 58 "ipe.l"
 {return SEMICOLON;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 59 "interpreter.l"
+#line 59 "ipe.l"
 {return COMMA;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 60 "interpreter.l"
+#line 60 "ipe.l"
 {return LEFTPARENTHESIS;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 61 "interpreter.l"
+#line 61 "ipe.l"
 {return RIGHTPARENTHESIS;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 62 "interpreter.l"
+#line 62 "ipe.l"
 {return COLON;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 64 "interpreter.l"
+#line 64 "ipe.l"
 {BEGIN(COMMENTARY_1);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 65 "interpreter.l"
+#line 65 "ipe.l"
 {;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 66 "interpreter.l"
+#line 66 "ipe.l"
 {;}
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 67 "interpreter.l"
+#line 67 "ipe.l"
 {lineNumber++;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 68 "interpreter.l"
+#line 68 "ipe.l"
 {BEGIN(INITIAL);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 70 "interpreter.l"
+#line 70 "ipe.l"
 {BEGIN(COMMENTARY_2);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 71 "interpreter.l"
+#line 71 "ipe.l"
 {;}
 	YY_BREAK
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 72 "interpreter.l"
+#line 72 "ipe.l"
 {BEGIN(INITIAL); lineNumber++;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 74 "interpreter.l"
+#line 74 "ipe.l"
 {return ERASE;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 75 "interpreter.l"
+#line 75 "ipe.l"
 {return PLACE;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 76 "interpreter.l"
+#line 76 "ipe.l"
 {return KILL;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 77 "interpreter.l"
+#line 77 "ipe.l"
 {return EXECUTE;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 79 "interpreter.l"
+#line 79 "ipe.l"
 {;}
 	YY_BREAK
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 80 "interpreter.l"
+#line 80 "ipe.l"
 {lineNumber++;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 82 "interpreter.l"
+#line 82 "ipe.l"
 {
                      for(int i=0; yytext[i] != '\0'; i++){
                         yytext[i]=tolower(yytext[i]);
@@ -1105,7 +1105,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 120 "interpreter.l"
+#line 120 "ipe.l"
 {
                      yylval.number = atof(yytext);
                      return NUMBER;
@@ -1114,7 +1114,7 @@ YY_RULE_SETUP
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 125 "interpreter.l"
+#line 125 "ipe.l"
 {
                      std::string aux(yytext);
                      aux = aux.substr(1, aux.size()-2);
@@ -1127,12 +1127,12 @@ case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENTARY_1):
 case YY_STATE_EOF(COMMENTARY_2):
 case YY_STATE_EOF(ERROR):
-#line 133 "interpreter.l"
+#line 133 "ipe.l"
 {std::cout << std::endl; return 0;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 135 "interpreter.l"
+#line 135 "ipe.l"
 {
             BEGIN(ERROR);
             yymore();
@@ -1140,7 +1140,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 140 "interpreter.l"
+#line 140 "ipe.l"
 {
                                                          yymore();
                                                       }
@@ -1148,7 +1148,7 @@ YY_RULE_SETUP
 case 49:
 /* rule 49 can match eol */
 YY_RULE_SETUP
-#line 144 "interpreter.l"
+#line 144 "ipe.l"
 {
                   yyless(yyleng-1);
                   warning("Lexical error", yytext);
@@ -1157,7 +1157,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 150 "interpreter.l"
+#line 150 "ipe.l"
 ECHO;
 	YY_BREAK
 #line 1164 "lex.yy.c"
@@ -2156,7 +2156,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 150 "interpreter.l"
+#line 150 "ipe.l"
 
 
 

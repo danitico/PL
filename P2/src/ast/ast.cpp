@@ -36,7 +36,7 @@
 #include "../table/builtinParameter1.hpp"
 #include "../table/builtinParameter2.hpp"
 
-#include "../parser/interpreter.tab.h"
+#include "../parser/ipe.tab.h"
 
 
 

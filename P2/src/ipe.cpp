@@ -23,7 +23,7 @@
 #include "ast/ast.hpp"
 ////////////////////////////////////////
 
-#include "./parser/interpreter.tab.h"
+#include "./parser/ipe.tab.h"
 
 int lineNumber = 1; //!< Line counter
 
