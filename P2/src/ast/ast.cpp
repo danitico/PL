@@ -1,6 +1,6 @@
 /*!
 	\file    ast.cpp
-	\brief   Code of funcitons of AST clas
+	\brief   Code of functions of AST class
 	\author  Daniel Ranchal Parrado
 	\date    2019-05-18
 	\version 1.0
