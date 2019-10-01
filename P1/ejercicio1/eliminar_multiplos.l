@@ -39,7 +39,7 @@ int main(int argc, char **argv){
 
    yyout=fopen(argv[3], "w");
    if(yyout == NULL){
-      printf("No se puede abrir el fichero de escritura\n");
+      printf("No se puede abrir el fichero de escritura");
       exit(-1);
    }
 
